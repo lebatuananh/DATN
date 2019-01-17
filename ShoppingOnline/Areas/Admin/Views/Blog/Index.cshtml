@@ -1,0 +1,125 @@
+@{
+    ViewData["Title"] = "Blog Management";
+}
+
+@section styles{
+    <link href="~/lib/cropper/dist/cropper.css" rel="stylesheet"/>
+    <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet"/>
+    <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet"/>
+
+}
+
+@section scripts{
+    <script src="~/lib/cropper/dist/cropper.js" asp-append-version="true"></script>
+    <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/blog/index.js" asp-append-version="true"></script>
+    <script>
+        var blog = new BlogController();
+        blog.initialize();
+    </script>
+}
+
+<div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>List Blogs</h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <li>
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <i class="fa fa-wrench"></i>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="#">Settings 1</a>
+                        </li>
+                        <li>
+                            <a href="#">Settings 2</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="close-link">
+                        <i class="fa fa-close"></i>
+                    </a>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <div class="title_right">
+            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                    <input type="text" id="txtKeyword" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" id="btnSearch" type="button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-2 col-xs-12 form-group pull-right">
+                <button id="btnCreate" class="btn btn-success pull-right">
+                    <i class="fa fa-plus" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="x_content">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th width="12%">Action</th>
+                    <th>Name</th>
+                    <th>Image</th>
+                    <th>Description</th>
+                    <th>CreatedDate</th>
+                    <th>Status</th>
+                </tr>
+                </thead>
+                <tbody id="tbl-content"></tbody>
+            </table>
+
+            <!--Pagination-->
+            <div class="row">
+                <div class="col-sm-5">
+                    <div class="dataTables_info" id="datatable-checkbox_info" role="status" aria-live="polite">
+                        <select id="ddlShowPage">
+                            <option value="10" selected="selected">10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                            <option value="50">50</option>
+                        </select>
+                        <span class="item-per-page">
+                            entries/page.
+                        </span>
+                        Total entries: <strong id="lblTotalRecords"></strong>
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <div class="dataTables_paginate paging_simple_numbers" id="datatable-checkbox_paginate">
+                        <ul id="paginationUL"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script id="table-template" type="x-tmpl-mustache">
+    <tr>
+        <th scope="row">
+            <button class="fa fa-pencil-square-o btn btn-info btn-xs btnEdit" data-id="{{Id}}"></button>
+            <button class="fa fa-trash btn btn-danger btn-xs btnDelete" data-id="{{Id}}"></button>
+        </th>
+        <td>{{Name}}</td>
+        <td>{{{Image}}}</td>
+        <td>{{Description}}</td>
+        <td>{{CreatedDate}}</td>
+        <td>{{{Status}}}</td>
+    </tr>
+</script>
+@Html.Partial("_AddEditModal.cshtml")

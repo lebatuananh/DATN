@@ -1,0 +1,175 @@
+﻿@using Microsoft.AspNetCore.Localization
+@{
+    var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic page needs -->
+    <meta charset="utf-8">
+    <!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <![endif]-->
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>@ViewData["Title"]</title>
+    <meta name="description" content="@ViewData["MetaDescription"]">
+    <meta name="keywords" content="@ViewData["MetaKeyword"]" />
+    <meta content="1215071285311730" property="fb:app_id" />
+    <meta content="HCGnCsK74ST" property="fb:admins" />
+    <!-- Mobile specific metas  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicons Icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="~/client-side/favicon.ico">
+    <link href="~/lib/notifyjs/dist/styles/metro/notify-metro.css" rel="stylesheet" />
+    <!-- CSS Style -->
+    <link rel="stylesheet" href="~/client-side/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" />
+    <style>
+
+        .ui-autocomplete-category {
+            font-weight: bold;
+            color: #1f8dd6;
+            padding: .2em .4em;
+            margin: .8em 0 .2em;
+            line-height: 1.5;
+        }
+
+        .ui-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            outline: 0;
+            text-align: left;
+            cursor: default;
+            border: 1px solid #ccc;
+            border-top: 0;
+            background: #fff;
+            box-shadow: -1px 1px 3px rgba(0,0,0,.1);
+            /* core styles should not be changed */
+            position: absolute;
+            display: none;
+            z-index: 9999;
+            max-height: 254px;
+            overflow: hidden;
+            overflow-y: auto;
+            box-sizing: border-box;
+        }
+
+        .ui-menu-item {
+            position: relative;
+            padding: 0 .6em;
+            line-height: 23px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 1.02em;
+            color: #333;
+            margin: 0;
+            cursor: pointer;
+            list-style-image: url("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7")
+        }
+
+            .ui-menu-item b {
+                font-weight: normal;
+                color: #1f8dd6;
+            }
+
+        .ui-widget {
+            font-family: "Montserrat", Arial, sans-serif;
+            font-size: 1em;
+        }
+    </style>
+    @RenderSection("Styles", false)
+
+</head>
+
+<body class="@ViewData["BodyClass"]">
+    <div id="fb-root"></div>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.2&appId=1215071285311730&autoLogAppEvents=1';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- mobile menu -->
+    @await Component.InvokeAsync("MobileMenu")
+    <!-- end mobile menu -->
+    <div id="page">
+
+        <!-- Header -->
+        @*@Html.Partial("_Header.cshtml")*@
+        <partial name="_Header.cshtml" />
+        <!-- end header -->
+        <nav>
+            <div class="container">
+                <div class="row">
+                    <div class="mm-toggle-wrap">
+                        <div class="mm-toggle">
+                            <i class="fa fa-align-justify"></i>
+                        </div>
+                        <span class="mm-label">All Categories</span>
+                    </div>
+                    <div class="col-md-3 col-sm-3 mega-container hidden-xs">
+                        @await Component.InvokeAsync("CategoryMenu")
+                    </div>
+                    <div class="col-md-9 col-sm-9 jtv-megamenu">
+                        @await Component.InvokeAsync("MainMenu")
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        @RenderBody()
+        <!-- Footer -->
+        @*@Html.Partial("_Footer.cshtml")*@
+        <partial name="_Footer.cshtml" />
+        <!-- End Footer -->
+    </div>
+
+    <!-- JS -->
+    <!-- jquery js -->
+    <script type="text/javascript" src="~/client-side/js/jquery.min.js"></script>
+
+    <!-- bootstrap js -->
+    <script type="text/javascript" src="~/client-side/js/bootstrap.min.js"></script>
+
+    <!-- owl.carousel.min js -->
+    <script type="text/javascript" src="~/client-side/js/owl.carousel.min.js"></script>
+
+    <!-- jquery.mobile-menu js -->
+    <script type="text/javascript" src="~/client-side/js/mobile-menu.js"></script>
+
+    <!--jquery-ui.min js -->
+    @*<script type="text/javascript" src="~/client-side/js/jquery-ui.js"></script>*@
+    <!-- main js -->
+    <script type="text/javascript" src="~/client-side/js/main.js"></script>
+
+    <!-- countdown js -->
+    <script type="text/javascript" src="~/client-side/js/countdown.js"></script>
+    <script src="~/lib/notifyjs/dist/notify.js"></script>
+    <script src="~/app-client/shared/localize/resources.@(requestCulture.RequestCulture.Culture.Name).js"></script>
+    <script src="~/app-client/shared/core.js"></script>
+    <script src="~/app-client/controllers/base/index.js"></script>
+    <script>
+        var BaseController = new BaseController();
+        BaseController.initialize();
+    </script>
+    <script src="~/app-client/controllers/header/index.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+            integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+            crossorigin="anonymous"></script>
+    <script>
+        var HeaderController = new HeaderController();
+        HeaderController.initialize();
+    </script>
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>

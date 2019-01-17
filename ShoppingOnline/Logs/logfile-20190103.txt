@@ -1,0 +1,1146 @@
+2019-01-03T11:03:07.2239567+07:00 0HLJH61EG6AAI:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/   (ca22a1cb)
+2019-01-03T11:03:07.4905842+07:00 0HLJH61EG6AAI:00000001 [INF] "Identity.Application" was not authenticated. Failure message: "Ticket expired" (48071232)
+2019-01-03T11:03:08.6103321+07:00 0HLJH61EG6AAI:00000001 [INF] Route matched with "{action = \"Index\", controller = \"Home\", area = \"\"}". Executing action "ShoppingOnline.WebApplication.Controllers.Home.HomeController.Index (ShoppingOnline.WebApplication)" (a44c0341)
+2019-01-03T11:03:08.6774976+07:00 0HLJH61EG6AAI:00000001 [INF] Executing action method "ShoppingOnline.WebApplication.Controllers.Home.HomeController.Index (ShoppingOnline.WebApplication)" - Validation state: Valid (dad538d7)
+2019-01-03T11:03:08.8951041+07:00 0HLJH61EG6AAI:00000001 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=ShoppingOnline.Data.EF " (9958f5bb)
+2019-01-03T11:03:09.5276465+07:00 0HLJH61EG6AAI:00000001 [WRN] The Include operation for navigation '"[c].Products"' is unnecessary and was ignored because the navigation is not reachable in the final query results. See https://go.microsoft.com/fwlink/?linkid=850303 for more information. (10efaee6)
+2019-01-03T11:03:10.3384719+07:00 0HLJH61EG6AAI:00000001 [INF] Executed DbCommand ("18"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [c].[Id], [c].[Name], [c].[Description], [c].[ParentId], [c].[HomeOrder], [c].[Image], [c].[HomeFlag], [c].[DateCreated], [c].[DateModified], [c].[SortOrder], [c].[Status], [c].[SeoPageTitle], [c].[SeoAlias], [c].[SeoKeywords], [c].[SeoDescription]
+FROM [ProductCategories] AS [c]
+WHERE [c].[HomeFlag] = 1
+ORDER BY [c].[HomeOrder], [c].[Id]" (0723d8ff)
+2019-01-03T11:03:10.4461732+07:00 0HLJH61EG6AAI:00000001 [INF] Executed DbCommand ("27"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[HomeOrder], [t].[Id], [c.Products].[Id] AS [Id0], [c.Products].[Name], [c.Products].[CategoryId], [c.Products].[Image], [c.Products].[Price], [c.Products].[PromotionPrice], [c.Products].[OriginalPrice], [c.Products].[Description], [c.Products].[Content], [c.Products].[HomeFlag], [c.Products].[HotFlag], [c.Products].[ViewCount], [c.Products].[Tags], [c.Products].[Unit], [c.Products].[SeoPageTitle], [c.Products].[SeoAlias], [c.Products].[SeoKeywords], [c.Products].[SeoDescription], [c.Products].[DateCreated], [c.Products].[DateModified], [c.Products].[Status]
+FROM [Products] AS [c.Products]
+INNER JOIN (
+    SELECT TOP(@__p_0) [c0].[HomeOrder], [c0].[Id]
+    FROM [ProductCategories] AS [c0]
+    WHERE [c0].[HomeFlag] = 1
+    ORDER BY [c0].[HomeOrder], [c0].[Id]
+) AS [t] ON [c.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[HomeOrder], [t].[Id], [c.Products].[Id]" (0723d8ff)
+2019-01-03T11:03:10.5411143+07:00 0HLJH61EG6AAI:00000001 [INF] Executed DbCommand ("40"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t1].[HomeOrder], [t1].[Id], [t1].[Id0], [c.Products.ProductTags].[Id] AS [Id2], [c.Products.ProductTags].[ProductId], [c.Products.ProductTags].[TagId], CASE
+    WHEN [c.Products.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag].[Name], [dto.Tag].[Type]
+FROM [ProductTags] AS [c.Products.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag] ON [c.Products.ProductTags].[TagId] = [dto.Tag].[Id]
+INNER JOIN (
+    SELECT [t0].[HomeOrder], [t0].[Id], [c.Products0].[Id] AS [Id0]
+    FROM [Products] AS [c.Products0]
+    INNER JOIN (
+        SELECT TOP(@__p_0) [c1].[HomeOrder], [c1].[Id]
+        FROM [ProductCategories] AS [c1]
+        WHERE [c1].[HomeFlag] = 1
+        ORDER BY [c1].[HomeOrder], [c1].[Id]
+    ) AS [t0] ON [c.Products0].[CategoryId] = [t0].[Id]
+) AS [t1] ON [c.Products.ProductTags].[ProductId] = [t1].[Id0]
+ORDER BY [t1].[HomeOrder], [t1].[Id], [t1].[Id0]" (0723d8ff)
+2019-01-03T11:03:10.8690055+07:00 0HLJH61EG6AAI:00000001 [INF] Executed DbCommand ("17"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[CategoryId], [x].[Image], [x].[Price], [x].[PromotionPrice], [x].[OriginalPrice], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[Unit], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[ParentId], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[DateCreated], [x.ProductCategory].[DateModified], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoDescription], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[Status] AS [Status0], [x.ProductCategory].[Id]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE ([x].[Status] = 1) AND ([x].[HotFlag] = 1)
+ORDER BY [DateCreated0] DESC, [x].[Id], [x.ProductCategory].[Id]" (0723d8ff)
+2019-01-03T11:03:10.9338879+07:00 0HLJH61EG6AAI:00000001 [INF] Executed DbCommand ("17"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[DateCreated], [t].[Id], [x.ProductTags].[Id] AS [Id1], [x.ProductTags].[ProductId], [x.ProductTags].[TagId], CASE
+    WHEN [x.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag].[Name], [dto.Tag].[Type]
+FROM [ProductTags] AS [x.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag] ON [x.ProductTags].[TagId] = [dto.Tag].[Id]
+INNER JOIN (
+    SELECT TOP(@__p_0) [x0].[DateCreated], [x0].[Id]
+    FROM [Products] AS [x0]
+    INNER JOIN [ProductCategories] AS [x.ProductCategory0] ON [x0].[CategoryId] = [x.ProductCategory0].[Id]
+    WHERE ([x0].[Status] = 1) AND ([x0].[HotFlag] = 1)
+    ORDER BY [x0].[DateCreated] DESC, [x0].[Id]
+) AS [t] ON [x.ProductTags].[ProductId] = [t].[Id]
+ORDER BY [t].[DateCreated] DESC, [t].[Id]" (0723d8ff)
+2019-01-03T11:03:10.9653112+07:00 0HLJH61EG6AAI:00000001 [INF] Executed DbCommand ("13"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t0].[DateCreated], [t0].[Id], [t0].[Id0], [x.ProductCategory.Products].[Id] AS [Id1], [x.ProductCategory.Products].[Name], [x.ProductCategory.Products].[CategoryId], [x.ProductCategory.Products].[Image], [x.ProductCategory.Products].[Price], [x.ProductCategory.Products].[PromotionPrice], [x.ProductCategory.Products].[OriginalPrice], [x.ProductCategory.Products].[Description], [x.ProductCategory.Products].[Content], [x.ProductCategory.Products].[HomeFlag], [x.ProductCategory.Products].[HotFlag], [x.ProductCategory.Products].[ViewCount], [x.ProductCategory.Products].[Tags], [x.ProductCategory.Products].[Unit], [x.ProductCategory.Products].[SeoPageTitle], [x.ProductCategory.Products].[SeoAlias], [x.ProductCategory.Products].[SeoKeywords], [x.ProductCategory.Products].[SeoDescription], [x.ProductCategory.Products].[DateCreated] AS [DateCreated0], [x.ProductCategory.Products].[DateModified], [x.ProductCategory.Products].[Status]
+FROM [Products] AS [x.ProductCategory.Products]
+INNER JOIN (
+    SELECT TOP(@__p_0) [x1].[DateCreated], [x1].[Id], [x.ProductCategory1].[Id] AS [Id0]
+    FROM [Products] AS [x1]
+    INNER JOIN [ProductCategories] AS [x.ProductCategory1] ON [x1].[CategoryId] = [x.ProductCategory1].[Id]
+    WHERE ([x1].[Status] = 1) AND ([x1].[HotFlag] = 1)
+    ORDER BY [x1].[DateCreated] DESC, [x1].[Id], [x.ProductCategory1].[Id]
+) AS [t0] ON [x.ProductCategory.Products].[CategoryId] = [t0].[Id0]
+ORDER BY [t0].[DateCreated] DESC, [t0].[Id], [t0].[Id0], [x.ProductCategory.Products].[Id]" (0723d8ff)
+2019-01-03T11:03:11.0263586+07:00 0HLJH61EG6AAI:00000001 [INF] Executed DbCommand ("20"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t2].[DateCreated], [t2].[Id], [t2].[Id0], [t2].[Id1], [x.ProductCategory.Products.ProductTags].[Id] AS [Id3], [x.ProductCategory.Products.ProductTags].[ProductId], [x.ProductCategory.Products.ProductTags].[TagId], CASE
+    WHEN [x.ProductCategory.Products.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag0].[Name], [dto.Tag0].[Type]
+FROM [ProductTags] AS [x.ProductCategory.Products.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag0] ON [x.ProductCategory.Products.ProductTags].[TagId] = [dto.Tag0].[Id]
+INNER JOIN (
+    SELECT [t1].[DateCreated], [t1].[Id], [t1].[Id0], [x.ProductCategory.Products0].[Id] AS [Id1]
+    FROM [Products] AS [x.ProductCategory.Products0]
+    INNER JOIN (
+        SELECT TOP(@__p_0) [x2].[DateCreated], [x2].[Id], [x.ProductCategory2].[Id] AS [Id0]
+        FROM [Products] AS [x2]
+        INNER JOIN [ProductCategories] AS [x.ProductCategory2] ON [x2].[CategoryId] = [x.ProductCategory2].[Id]
+        WHERE ([x2].[Status] = 1) AND ([x2].[HotFlag] = 1)
+        ORDER BY [x2].[DateCreated] DESC, [x2].[Id], [x.ProductCategory2].[Id]
+    ) AS [t1] ON [x.ProductCategory.Products0].[CategoryId] = [t1].[Id0]
+) AS [t2] ON [x.ProductCategory.Products.ProductTags].[ProductId] = [t2].[Id1]
+ORDER BY [t2].[DateCreated] DESC, [t2].[Id], [t2].[Id0], [t2].[Id1]" (0723d8ff)
+2019-01-03T11:03:11.2742282+07:00 0HLJH61EG6AAI:00000001 [INF] Executed DbCommand ("15"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[CategoryId], [x].[Image], [x].[Price], [x].[PromotionPrice], [x].[OriginalPrice], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[Unit], CASE
+    WHEN [x].[CategoryId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [x.ProductCategory].[Name] AS [Name0], [x.ProductCategory].[Description] AS [Description0], [x.ProductCategory].[ParentId], [x.ProductCategory].[HomeOrder], [x.ProductCategory].[Image] AS [Image0], [x.ProductCategory].[HomeFlag] AS [HomeFlag0], [x.ProductCategory].[DateCreated], [x.ProductCategory].[DateModified], [x.ProductCategory].[SortOrder], [x.ProductCategory].[Status], [x.ProductCategory].[SeoPageTitle], [x.ProductCategory].[SeoAlias], [x.ProductCategory].[SeoKeywords], [x.ProductCategory].[SeoDescription], [x].[SeoPageTitle] AS [SeoPageTitle0], [x].[SeoAlias] AS [SeoAlias0], [x].[SeoKeywords] AS [SeoKeywords0], [x].[SeoDescription] AS [SeoDescription0], [x].[DateCreated] AS [DateCreated0], [x].[DateModified] AS [DateModified0], [x].[Status] AS [Status0], [x.ProductCategory].[Id]
+FROM [Products] AS [x]
+INNER JOIN [ProductCategories] AS [x.ProductCategory] ON [x].[CategoryId] = [x.ProductCategory].[Id]
+WHERE [x].[Status] = 1
+ORDER BY [DateCreated0] DESC, [x].[Id], [x.ProductCategory].[Id]" (0723d8ff)
+2019-01-03T11:03:11.3062389+07:00 0HLJH61EG6AAI:00000001 [INF] Executed DbCommand ("17"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[DateCreated], [t].[Id], [x.ProductTags].[Id] AS [Id1], [x.ProductTags].[ProductId], [x.ProductTags].[TagId], CASE
+    WHEN [x.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag].[Name], [dto.Tag].[Type]
+FROM [ProductTags] AS [x.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag] ON [x.ProductTags].[TagId] = [dto.Tag].[Id]
+INNER JOIN (
+    SELECT TOP(@__p_0) [x0].[DateCreated], [x0].[Id]
+    FROM [Products] AS [x0]
+    INNER JOIN [ProductCategories] AS [x.ProductCategory0] ON [x0].[CategoryId] = [x.ProductCategory0].[Id]
+    WHERE [x0].[Status] = 1
+    ORDER BY [x0].[DateCreated] DESC, [x0].[Id]
+) AS [t] ON [x.ProductTags].[ProductId] = [t].[Id]
+ORDER BY [t].[DateCreated] DESC, [t].[Id]" (0723d8ff)
+2019-01-03T11:03:11.3564804+07:00 0HLJH61EG6AAI:00000001 [INF] Executed DbCommand ("21"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t0].[DateCreated], [t0].[Id], [t0].[Id0], [x.ProductCategory.Products].[Id] AS [Id1], [x.ProductCategory.Products].[Name], [x.ProductCategory.Products].[CategoryId], [x.ProductCategory.Products].[Image], [x.ProductCategory.Products].[Price], [x.ProductCategory.Products].[PromotionPrice], [x.ProductCategory.Products].[OriginalPrice], [x.ProductCategory.Products].[Description], [x.ProductCategory.Products].[Content], [x.ProductCategory.Products].[HomeFlag], [x.ProductCategory.Products].[HotFlag], [x.ProductCategory.Products].[ViewCount], [x.ProductCategory.Products].[Tags], [x.ProductCategory.Products].[Unit], [x.ProductCategory.Products].[SeoPageTitle], [x.ProductCategory.Products].[SeoAlias], [x.ProductCategory.Products].[SeoKeywords], [x.ProductCategory.Products].[SeoDescription], [x.ProductCategory.Products].[DateCreated] AS [DateCreated0], [x.ProductCategory.Products].[DateModified], [x.ProductCategory.Products].[Status]
+FROM [Products] AS [x.ProductCategory.Products]
+INNER JOIN (
+    SELECT TOP(@__p_0) [x1].[DateCreated], [x1].[Id], [x.ProductCategory1].[Id] AS [Id0]
+    FROM [Products] AS [x1]
+    INNER JOIN [ProductCategories] AS [x.ProductCategory1] ON [x1].[CategoryId] = [x.ProductCategory1].[Id]
+    WHERE [x1].[Status] = 1
+    ORDER BY [x1].[DateCreated] DESC, [x1].[Id], [x.ProductCategory1].[Id]
+) AS [t0] ON [x.ProductCategory.Products].[CategoryId] = [t0].[Id0]
+ORDER BY [t0].[DateCreated] DESC, [t0].[Id], [t0].[Id0], [x.ProductCategory.Products].[Id]" (0723d8ff)
+2019-01-03T11:03:11.4234354+07:00 0HLJH61EG6AAI:00000001 [INF] Executed DbCommand ("33"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t2].[DateCreated], [t2].[Id], [t2].[Id0], [t2].[Id1], [x.ProductCategory.Products.ProductTags].[Id] AS [Id3], [x.ProductCategory.Products.ProductTags].[ProductId], [x.ProductCategory.Products.ProductTags].[TagId], CASE
+    WHEN [x.ProductCategory.Products.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag0].[Name], [dto.Tag0].[Type]
+FROM [ProductTags] AS [x.ProductCategory.Products.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag0] ON [x.ProductCategory.Products.ProductTags].[TagId] = [dto.Tag0].[Id]
+INNER JOIN (
+    SELECT [t1].[DateCreated], [t1].[Id], [t1].[Id0], [x.ProductCategory.Products0].[Id] AS [Id1]
+    FROM [Products] AS [x.ProductCategory.Products0]
+    INNER JOIN (
+        SELECT TOP(@__p_0) [x2].[DateCreated], [x2].[Id], [x.ProductCategory2].[Id] AS [Id0]
+        FROM [Products] AS [x2]
+        INNER JOIN [ProductCategories] AS [x.ProductCategory2] ON [x2].[CategoryId] = [x.ProductCategory2].[Id]
+        WHERE [x2].[Status] = 1
+        ORDER BY [x2].[DateCreated] DESC, [x2].[Id], [x.ProductCategory2].[Id]
+    ) AS [t1] ON [x.ProductCategory.Products0].[CategoryId] = [t1].[Id0]
+) AS [t2] ON [x.ProductCategory.Products.ProductTags].[ProductId] = [t2].[Id1]
+ORDER BY [t2].[DateCreated] DESC, [t2].[Id], [t2].[Id0], [t2].[Id1]" (0723d8ff)
+2019-01-03T11:03:11.6456347+07:00 0HLJH61EG6AAI:00000001 [INF] Executed DbCommand ("98"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(@__p_0) [x].[Id], [x].[Name], [x].[Image], [x].[Description], [x].[Content], [x].[HomeFlag], [x].[HotFlag], [x].[ViewCount], [x].[Tags], [x].[DateCreated], [x].[DateModified], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [Blogs] AS [x]
+WHERE [x].[Status] = 1
+ORDER BY [x].[DateCreated] DESC, [x].[Id]" (0723d8ff)
+2019-01-03T11:03:11.7592944+07:00 0HLJH61EG6AAI:00000001 [INF] Executed DbCommand ("67"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[DateCreated], [t].[Id], [x.BlogTags].[Id] AS [Id1], [x.BlogTags].[BlogId], [x.BlogTags].[TagId], CASE
+    WHEN [x.BlogTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag].[Name], [dto.Tag].[Type]
+FROM [BlogTags] AS [x.BlogTags]
+INNER JOIN [Tags] AS [dto.Tag] ON [x.BlogTags].[TagId] = [dto.Tag].[Id]
+INNER JOIN (
+    SELECT TOP(@__p_0) [x0].[DateCreated], [x0].[Id]
+    FROM [Blogs] AS [x0]
+    WHERE [x0].[Status] = 1
+    ORDER BY [x0].[DateCreated] DESC, [x0].[Id]
+) AS [t] ON [x.BlogTags].[BlogId] = [t].[Id]
+ORDER BY [t].[DateCreated] DESC, [t].[Id]" (0723d8ff)
+2019-01-03T11:03:11.8480842+07:00 0HLJH61EG6AAI:00000001 [INF] Executed DbCommand ("22"ms) [Parameters=["@__groupAlias_0='?' (Size = 25)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[Image], [x].[Url], [x].[DisplayOrder], [x].[Status], [x].[Content], [x].[GroupAlias]
+FROM [Slides] AS [x]
+WHERE ([x].[Status] = 1) AND ([x].[GroupAlias] = @__groupAlias_0)" (0723d8ff)
+2019-01-03T11:03:11.9741515+07:00 0HLJH61EG6AAI:00000001 [INF] Executed DbCommand ("7"ms) [Parameters=["@__p_0='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(2) [t].*
+FROM (
+    SELECT TOP(@__p_0) [n].[Id], [n].[DateCreated], [n].[DateModified], [n].[Description], [n].[Image], [n].[Name], [n].[PositionId], [n].[SortOrder], [n].[Status], [n].[Url]
+    FROM [Advertisements] AS [n]
+    WHERE [n].[Status] = 1
+    ORDER BY [n].[SortOrder]
+) AS [t]
+ORDER BY [t].[SortOrder]" (0723d8ff)
+2019-01-03T11:03:12.3461984+07:00 0HLJH61EG6AAI:00000001 [INF] Executed action method "ShoppingOnline.WebApplication.Controllers.Home.HomeController.Index (ShoppingOnline.WebApplication)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 3615.8974ms. (50a9e262)
+2019-01-03T11:03:12.4049670+07:00 0HLJH61EG6AAI:00000001 [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2019-01-03T11:03:12.8097542+07:00 0HLJH61EG6AAI:00000001 [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2019-01-03T11:03:12.8262279+07:00 0HLJH61EG6AAI:00000001 [INF] Executed DbCommand ("8"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[Id] AS [Id0], [x.Products].[Name], [x.Products].[CategoryId], [x.Products].[Image], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[OriginalPrice], [x.Products].[Description], [x.Products].[Content], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[ViewCount], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[SeoPageTitle], [x.Products].[SeoAlias], [x.Products].[SeoKeywords], [x.Products].[SeoDescription], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Status]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id], [x.Products].[Id]" (0723d8ff)
+2019-01-03T11:03:12.8886079+07:00 0HLJH61EG6AAI:00000001 [INF] Executed DbCommand ("12"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t1].[ParentId], [t1].[Id], [t1].[Id0], [x.Products.ProductTags].[Id] AS [Id2], [x.Products.ProductTags].[ProductId], [x.Products.ProductTags].[TagId], CASE
+    WHEN [x.Products.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag].[Name], [dto.Tag].[Type]
+FROM [ProductTags] AS [x.Products.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag] ON [x.Products.ProductTags].[TagId] = [dto.Tag].[Id]
+INNER JOIN (
+    SELECT [t0].[ParentId], [t0].[Id], [x.Products0].[Id] AS [Id0]
+    FROM [Products] AS [x.Products0]
+    INNER JOIN (
+        SELECT [x1].[ParentId], [x1].[Id]
+        FROM [ProductCategories] AS [x1]
+    ) AS [t0] ON [x.Products0].[CategoryId] = [t0].[Id]
+) AS [t1] ON [x.Products.ProductTags].[ProductId] = [t1].[Id0]
+ORDER BY [t1].[ParentId], [t1].[Id], [t1].[Id0]" (0723d8ff)
+2019-01-03T11:03:13.1093539+07:00 0HLJH61EG6AAI:00000001 [INF] Accessing expired session, Key:"2bf946aa-82c7-d71c-0096-a87b78d88556" (08c5a9e7)
+2019-01-03T11:03:13.3610577+07:00 0HLJH61EG6AAI:00000001 [INF] Executed DbCommand ("44"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2019-01-03T11:03:13.3846405+07:00 0HLJH61EG6AAI:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[Id] AS [Id0], [x.Products].[Name], [x.Products].[CategoryId], [x.Products].[Image], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[OriginalPrice], [x.Products].[Description], [x.Products].[Content], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[ViewCount], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[SeoPageTitle], [x.Products].[SeoAlias], [x.Products].[SeoKeywords], [x.Products].[SeoDescription], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Status]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id], [x.Products].[Id]" (0723d8ff)
+2019-01-03T11:03:13.5348634+07:00 0HLJH61EG6AAI:00000001 [INF] Executed DbCommand ("17"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t1].[ParentId], [t1].[Id], [t1].[Id0], [x.Products.ProductTags].[Id] AS [Id2], [x.Products.ProductTags].[ProductId], [x.Products.ProductTags].[TagId], CASE
+    WHEN [x.Products.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag].[Name], [dto.Tag].[Type]
+FROM [ProductTags] AS [x.Products.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag] ON [x.Products.ProductTags].[TagId] = [dto.Tag].[Id]
+INNER JOIN (
+    SELECT [t0].[ParentId], [t0].[Id], [x.Products0].[Id] AS [Id0]
+    FROM [Products] AS [x.Products0]
+    INNER JOIN (
+        SELECT [x1].[ParentId], [x1].[Id]
+        FROM [ProductCategories] AS [x1]
+    ) AS [t0] ON [x.Products0].[CategoryId] = [t0].[Id]
+) AS [t1] ON [x.Products.ProductTags].[ProductId] = [t1].[Id0]
+ORDER BY [t1].[ParentId], [t1].[Id], [t1].[Id0]" (0723d8ff)
+2019-01-03T11:03:13.5378465+07:00 0HLJH61EG6AAJ:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin   (ca22a1cb)
+2019-01-03T11:03:13.5711935+07:00 0HLJH61EG6AAJ:00000001 [INF] "Identity.Application" was not authenticated. Failure message: "Ticket expired" (48071232)
+2019-01-03T11:03:13.5890315+07:00 0HLJH61EG6AAJ:00000001 [INF] Route matched with "{area = \"Admin\", action = \"Index\", controller = \"Login\"}". Executing action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Login.LoginController.Index (ShoppingOnline.WebApplication)" (a44c0341)
+2019-01-03T11:03:13.6200760+07:00 0HLJH61EG6AAJ:00000001 [INF] Executing action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Login.LoginController.Index (ShoppingOnline.WebApplication)" - Validation state: Valid (dad538d7)
+2019-01-03T11:03:13.6414842+07:00 0HLJH61EG6AAJ:00000001 [INF] Executed action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Login.LoginController.Index (ShoppingOnline.WebApplication)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 0.6704ms. (50a9e262)
+2019-01-03T11:03:13.6562884+07:00 0HLJH61EG6AAI:00000001 [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2019-01-03T11:03:13.6636043+07:00 0HLJH61EG6AAI:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[Id] AS [Id0], [x.Products].[Name], [x.Products].[CategoryId], [x.Products].[Image], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[OriginalPrice], [x.Products].[Description], [x.Products].[Content], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[ViewCount], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[SeoPageTitle], [x.Products].[SeoAlias], [x.Products].[SeoKeywords], [x.Products].[SeoDescription], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Status]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id], [x.Products].[Id]" (0723d8ff)
+2019-01-03T11:03:13.6726841+07:00 0HLJH61EG6AAJ:00000001 [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2019-01-03T11:03:13.6754253+07:00 0HLJH61EG6AAI:00000001 [INF] Executed DbCommand ("5"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t1].[ParentId], [t1].[Id], [t1].[Id0], [x.Products.ProductTags].[Id] AS [Id2], [x.Products.ProductTags].[ProductId], [x.Products.ProductTags].[TagId], CASE
+    WHEN [x.Products.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag].[Name], [dto.Tag].[Type]
+FROM [ProductTags] AS [x.Products.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag] ON [x.Products.ProductTags].[TagId] = [dto.Tag].[Id]
+INNER JOIN (
+    SELECT [t0].[ParentId], [t0].[Id], [x.Products0].[Id] AS [Id0]
+    FROM [Products] AS [x.Products0]
+    INNER JOIN (
+        SELECT [x1].[ParentId], [x1].[Id]
+        FROM [ProductCategories] AS [x1]
+    ) AS [t0] ON [x.Products0].[CategoryId] = [t0].[Id]
+) AS [t1] ON [x.Products.ProductTags].[ProductId] = [t1].[Id0]
+ORDER BY [t1].[ParentId], [t1].[Id], [t1].[Id0]" (0723d8ff)
+2019-01-03T11:03:13.7220091+07:00 0HLJH61EG6AAI:00000001 [INF] Executed DbCommand ("28"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[Description], [x].[ParentId], [x].[HomeOrder], [x].[Image], [x].[HomeFlag], [x].[DateCreated], [x].[DateModified], [x].[SortOrder], [x].[Status], [x].[SeoPageTitle], [x].[SeoAlias], [x].[SeoKeywords], [x].[SeoDescription]
+FROM [ProductCategories] AS [x]
+ORDER BY [x].[ParentId], [x].[Id]" (0723d8ff)
+2019-01-03T11:03:13.7310782+07:00 0HLJH61EG6AAI:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t].[ParentId], [t].[Id], [x.Products].[Id] AS [Id0], [x.Products].[Name], [x.Products].[CategoryId], [x.Products].[Image], [x.Products].[Price], [x.Products].[PromotionPrice], [x.Products].[OriginalPrice], [x.Products].[Description], [x.Products].[Content], [x.Products].[HomeFlag], [x.Products].[HotFlag], [x.Products].[ViewCount], [x.Products].[Tags], [x.Products].[Unit], [x.Products].[SeoPageTitle], [x.Products].[SeoAlias], [x.Products].[SeoKeywords], [x.Products].[SeoDescription], [x.Products].[DateCreated], [x.Products].[DateModified], [x.Products].[Status]
+FROM [Products] AS [x.Products]
+INNER JOIN (
+    SELECT [x0].[ParentId], [x0].[Id]
+    FROM [ProductCategories] AS [x0]
+) AS [t] ON [x.Products].[CategoryId] = [t].[Id]
+ORDER BY [t].[ParentId], [t].[Id], [x.Products].[Id]" (0723d8ff)
+2019-01-03T11:03:13.7486409+07:00 0HLJH61EG6AAI:00000001 [INF] Executed DbCommand ("7"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [t1].[ParentId], [t1].[Id], [t1].[Id0], [x.Products.ProductTags].[Id] AS [Id2], [x.Products.ProductTags].[ProductId], [x.Products.ProductTags].[TagId], CASE
+    WHEN [x.Products.ProductTags].[TagId] IS NOT NULL
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END, [dto.Tag].[Name], [dto.Tag].[Type]
+FROM [ProductTags] AS [x.Products.ProductTags]
+INNER JOIN [Tags] AS [dto.Tag] ON [x.Products.ProductTags].[TagId] = [dto.Tag].[Id]
+INNER JOIN (
+    SELECT [t0].[ParentId], [t0].[Id], [x.Products0].[Id] AS [Id0]
+    FROM [Products] AS [x.Products0]
+    INNER JOIN (
+        SELECT [x1].[ParentId], [x1].[Id]
+        FROM [ProductCategories] AS [x1]
+    ) AS [t0] ON [x.Products0].[CategoryId] = [t0].[Id]
+) AS [t1] ON [x.Products.ProductTags].[ProductId] = [t1].[Id0]
+ORDER BY [t1].[ParentId], [t1].[Id], [t1].[Id0]" (0723d8ff)
+2019-01-03T11:03:13.9020922+07:00 0HLJH61EG6AAJ:00000001 [INF] Executed ViewResult - view "Index" executed in 246.6677ms. (f66409e9)
+2019-01-03T11:03:13.9020922+07:00 0HLJH61EG6AAI:00000001 [INF] Executed ViewResult - view "Index" executed in 1528.057ms. (f66409e9)
+2019-01-03T11:03:13.9099591+07:00 0HLJH61EG6AAI:00000001 [INF] Executed action "ShoppingOnline.WebApplication.Controllers.Home.HomeController.Index (ShoppingOnline.WebApplication)" in 5292.0295ms (afa2e885)
+2019-01-03T11:03:13.9134319+07:00 0HLJH61EG6AAJ:00000001 [INF] Executed action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Login.LoginController.Index (ShoppingOnline.WebApplication)" in 314.1123ms (afa2e885)
+2019-01-03T11:03:15.4703153+07:00 0HLJH61EG6AAJ:00000001 [INF] Request finished in 1900.8738ms 200 text/html; charset=utf-8 (791a596a)
+2019-01-03T11:03:15.5074594+07:00 0HLJH61EG6AAK:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/font-awesome/css/font-awesome.css   (ca22a1cb)
+2019-01-03T11:03:15.5977140+07:00 0HLJH61EG6AAJ:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/bootstrap/dist/css/bootstrap.min.css   (ca22a1cb)
+2019-01-03T11:03:15.6392970+07:00 0HLJH61EG6AAI:00000001 [INF] Request finished in 8369.9062ms 200 text/html; charset=utf-8 (791a596a)
+2019-01-03T11:03:15.6697298+07:00 0HLJH61EG6AAL:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/nprogress/nprogress.css   (ca22a1cb)
+2019-01-03T11:03:15.6853530+07:00 0HLJH61EG6AAM:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin-site/css/custom.min.css   (ca22a1cb)
+2019-01-03T11:03:15.6935117+07:00 0HLJH61EG6AAO:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/animate.css/animate.min.css   (ca22a1cb)
+2019-01-03T11:03:16.2461004+07:00 0HLJH61EG6AAN:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/notifyjs/dist/styles/metro/notify-metro.css   (ca22a1cb)
+2019-01-03T11:03:16.2592919+07:00 0HLJH61EG6AAL:00000001 [INF] Sending file. Request path: '"/lib/nprogress/nprogress.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\nprogress\nprogress.css"' (27b0a520)
+2019-01-03T11:03:16.2679722+07:00 0HLJH61EG6AAL:00000001 [INF] Request finished in 636.0931ms 200 text/css (791a596a)
+2019-01-03T11:03:16.2750600+07:00 0HLJH61EG6AAM:00000001 [INF] Sending file. Request path: '"/admin-site/css/custom.min.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\admin-site\css\custom.min.css"' (27b0a520)
+2019-01-03T11:03:16.2790975+07:00 0HLJH61EG6AAK:00000001 [INF] Sending file. Request path: '"/lib/font-awesome/css/font-awesome.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\font-awesome\css\font-awesome.css"' (27b0a520)
+2019-01-03T11:03:16.2881063+07:00 0HLJH61EG6AAM:00000001 [INF] Request finished in 634.1945ms 200 text/css (791a596a)
+2019-01-03T11:03:16.3033225+07:00 0HLJH61EG6AAK:00000001 [INF] Request finished in 847.9717ms 200 text/css (791a596a)
+2019-01-03T11:03:16.3093384+07:00 0HLJH61EG6AAN:00000001 [INF] Sending file. Request path: '"/lib/notifyjs/dist/styles/metro/notify-metro.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\notifyjs\dist\styles\metro\notify-metro.css"' (27b0a520)
+2019-01-03T11:03:16.3515278+07:00 0HLJH61EG6AAN:00000001 [INF] Request finished in 633.2033ms 200 text/css (791a596a)
+2019-01-03T11:03:16.3930417+07:00 0HLJH61EG6AAL:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/jquery/dist/jquery.min.js   (ca22a1cb)
+2019-01-03T11:03:16.4006591+07:00 0HLJH61EG6AAN:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/bootstrap/dist/js/bootstrap.min.js   (ca22a1cb)
+2019-01-03T11:03:16.4054712+07:00 0HLJH61EG6AAM:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/notifyjs/dist/notify.js   (ca22a1cb)
+2019-01-03T11:03:16.4092400+07:00 0HLJH61EG6AAK:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/fastclick/lib/fastclick.js   (ca22a1cb)
+2019-01-03T11:03:16.4930330+07:00 0HLJH61EG6AAM:00000002 [INF] Sending file. Request path: '"/lib/notifyjs/dist/notify.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\notifyjs\dist\notify.js"' (27b0a520)
+2019-01-03T11:03:16.5003546+07:00 0HLJH61EG6AAK:00000002 [INF] Sending file. Request path: '"/lib/fastclick/lib/fastclick.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\fastclick\lib\fastclick.js"' (27b0a520)
+2019-01-03T11:03:16.5096048+07:00 0HLJH61EG6AAN:00000002 [INF] Sending file. Request path: '"/lib/bootstrap/dist/js/bootstrap.min.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js"' (27b0a520)
+2019-01-03T11:03:16.5153699+07:00 0HLJH61EG6AAM:00000002 [INF] Request finished in 104.6195ms 200 application/javascript (791a596a)
+2019-01-03T11:03:16.5358307+07:00 0HLJH61EG6AAN:00000002 [INF] Request finished in 157.5074ms 200 application/javascript (791a596a)
+2019-01-03T11:03:16.5621687+07:00 0HLJH61EG6AAK:00000002 [INF] Request finished in 111.7702ms 200 application/javascript (791a596a)
+2019-01-03T11:03:16.6490811+07:00 0HLJH61EG6AAO:00000001 [INF] Sending file. Request path: '"/lib/animate.css/animate.min.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\animate.css\animate.min.css"' (27b0a520)
+2019-01-03T11:03:16.6491251+07:00 0HLJH61EG6AAK:00000003 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/jquery-validation/dist/jquery.validate.js   (ca22a1cb)
+2019-01-03T11:03:16.7009388+07:00 0HLJH61EG6AAO:00000001 [INF] Request finished in 1023.3722ms 200 text/css (791a596a)
+2019-01-03T11:03:16.7199858+07:00 0HLJH61EG6AAM:00000003 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js   (ca22a1cb)
+2019-01-03T11:03:16.7288376+07:00 0HLJH61EG6AAO:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/jquery-validation/dist/additional-methods.js   (ca22a1cb)
+2019-01-03T11:03:16.7722668+07:00 0HLJH61EG6AAL:00000002 [INF] Sending file. Request path: '"/lib/jquery/dist/jquery.min.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\jquery\dist\jquery.min.js"' (27b0a520)
+2019-01-03T11:03:16.7926724+07:00 0HLJH61EG6AAL:00000002 [INF] Request finished in 423.3558ms 200 application/javascript (791a596a)
+2019-01-03T11:03:16.8048112+07:00 0HLJH61EG6AAK:00000003 [INF] Sending file. Request path: '"/lib/jquery-validation/dist/jquery.validate.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\jquery-validation\dist\jquery.validate.js"' (27b0a520)
+2019-01-03T11:03:16.8235226+07:00 0HLJH61EG6AAO:00000002 [INF] Sending file. Request path: '"/lib/jquery-validation/dist/additional-methods.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\jquery-validation\dist\additional-methods.js"' (27b0a520)
+2019-01-03T11:03:16.8432981+07:00 0HLJH61EG6AAM:00000003 [INF] Sending file. Request path: '"/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js"' (27b0a520)
+2019-01-03T11:03:16.9445257+07:00 0HLJH61EG6AAO:00000002 [INF] Request finished in 121.343ms 200 application/javascript (791a596a)
+2019-01-03T11:03:16.9868367+07:00 0HLJH61EG6AAM:00000003 [INF] Request finished in 180.4605ms 200 application/javascript (791a596a)
+2019-01-03T11:03:17.1236705+07:00 0HLJH61EG6AAK:00000003 [INF] Request finished in 173.4143ms 200 application/javascript (791a596a)
+2019-01-03T11:03:17.1463383+07:00 0HLJH61EG6AAO:00000003 [INF] Request starting HTTP/1.1 GET https://localhost:5001/app/controllers/login/index.js?v=7n8GOKD6ncqEC7hTeP0N7FAjx2rnXkUU_4iYLFRQsIQ   (ca22a1cb)
+2019-01-03T11:03:17.1571567+07:00 0HLJH61EG6AAM:00000004 [INF] Request starting HTTP/1.1 GET https://localhost:5001/app/shared/core.js   (ca22a1cb)
+2019-01-03T11:03:17.1752639+07:00 0HLJH61EG6AAJ:00000002 [INF] Sending file. Request path: '"/lib/bootstrap/dist/css/bootstrap.min.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css"' (27b0a520)
+2019-01-03T11:03:17.1848551+07:00 0HLJH61EG6AAN:00000003 [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin-site/js/custom.min.js   (ca22a1cb)
+2019-01-03T11:03:17.2168479+07:00 0HLJH61EG6AAJ:00000002 [INF] Request finished in 1699.3295ms 200 text/css (791a596a)
+2019-01-03T11:03:17.2194953+07:00 0HLJH61EG6AAO:00000003 [INF] Sending file. Request path: '"/app/controllers/login/index.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\app\controllers\login\index.js"' (27b0a520)
+2019-01-03T11:03:17.3744493+07:00 0HLJH61EG6AAM:00000004 [INF] Sending file. Request path: '"/app/shared/core.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\app\shared\core.js"' (27b0a520)
+2019-01-03T11:03:17.3775618+07:00 0HLJH61EG6AAO:00000003 [INF] Request finished in 406.5131ms 200 application/javascript (791a596a)
+2019-01-03T11:03:17.5104125+07:00 0HLJH61EG6AAN:00000003 [INF] Sending file. Request path: '"/admin-site/js/custom.min.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\admin-site\js\custom.min.js"' (27b0a520)
+2019-01-03T11:03:17.5338094+07:00 0HLJH61EG6AAM:00000004 [INF] Request finished in 390.5375ms 200 application/javascript (791a596a)
+2019-01-03T11:03:17.5517662+07:00 0HLJH61EG6AAN:00000003 [INF] Request finished in 670.1085ms 200 application/javascript (791a596a)
+2019-01-03T11:03:17.6361669+07:00 0HLJH61EG6AAO:00000004 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/font-awesome/fonts/fontawesome-webfont.woff2?v=4.7.0   (ca22a1cb)
+2019-01-03T11:03:17.7503606+07:00 0HLJH61EG6AAO:00000004 [INF] Sending file. Request path: '"/lib/font-awesome/fonts/fontawesome-webfont.woff2"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\font-awesome\fonts\fontawesome-webfont.woff2"' (27b0a520)
+2019-01-03T11:03:17.7871313+07:00 0HLJH61EG6AAO:00000004 [INF] Request finished in 236.2055ms 200 font/woff2 (791a596a)
+2019-01-03T11:03:18.6019092+07:00 0HLJH61EG6AAO:00000005 [INF] Request starting HTTP/1.1 GET https://localhost:5001/favicon.ico   (ca22a1cb)
+2019-01-03T11:03:18.8389461+07:00 0HLJH61EG6AAO:00000005 [INF] Sending file. Request path: '"/favicon.ico"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\favicon.ico"' (27b0a520)
+2019-01-03T11:03:19.0015526+07:00 0HLJH61EG6AAO:00000005 [INF] Request finished in 256.3295ms 200 image/x-icon (791a596a)
+2019-01-03T11:03:19.4882582+07:00 0HLJH61EG6AAO:00000006 [INF] Request starting HTTP/1.1 POST https://localhost:5001/Admin/Login/Authen application/x-www-form-urlencoded; charset=UTF-8 30 (ca22a1cb)
+2019-01-03T11:03:19.4967697+07:00 0HLJH61EG6AAO:00000006 [INF] "Identity.Application" was not authenticated. Failure message: "Ticket expired" (48071232)
+2019-01-03T11:03:19.5495233+07:00 0HLJH61EG6AAO:00000006 [INF] Route matched with "{area = \"Admin\", action = \"Authen\", controller = \"Login\"}". Executing action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Login.LoginController.Authen (ShoppingOnline.WebApplication)" (a44c0341)
+2019-01-03T11:03:19.6873418+07:00 0HLJH61EG6AAO:00000006 [INF] Executing action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Login.LoginController.Authen (ShoppingOnline.WebApplication)" with arguments (["ShoppingOnline.WebApplication.Models.AccountViewModel.LoginViewModel"]) - Validation state: Valid (4e3479ed)
+2019-01-03T11:03:19.7182566+07:00 0HLJH61EG6AAO:00000006 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=ShoppingOnline.Data.EF " (9958f5bb)
+2019-01-03T11:03:19.9152691+07:00 0HLJH61EG6AAO:00000006 [INF] Executed DbCommand ("29"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [u].[Id], [u].[AccessFailedCount], [u].[Address], [u].[Avatar], [u].[Balance], [u].[BirthDay], [u].[ConcurrencyStamp], [u].[DateCreated], [u].[DateModified], [u].[Email], [u].[EmailConfirmed], [u].[FullName], [u].[Gender], [u].[LockoutEnabled], [u].[LockoutEnd], [u].[NormalizedEmail], [u].[NormalizedUserName], [u].[PasswordHash], [u].[PhoneNumber], [u].[PhoneNumberConfirmed], [u].[SecurityStamp], [u].[Status], [u].[TwoFactorEnabled], [u].[UserName]
+FROM [AppUsers] AS [u]
+WHERE [u].[NormalizedUserName] = @__normalizedUserName_0" (0723d8ff)
+2019-01-03T11:03:20.5929097+07:00 0HLJH61EG6AAO:00000006 [INF] Executed DbCommand ("52"ms) [Parameters=["@__user_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AppUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2019-01-03T11:03:20.7457388+07:00 0HLJH61EG6AAO:00000006 [INF] Executed DbCommand ("22"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2019-01-03T11:03:20.7926721+07:00 0HLJH61EG6AAO:00000006 [INF] Executed DbCommand ("10"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2019-01-03T11:03:20.9392726+07:00 0HLJH61EG6AAO:00000006 [INF] Executed DbCommand ("69"ms) [Parameters=["@__role_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AppRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2019-01-03T11:03:20.9741791+07:00 0HLJH61EG6AAO:00000006 [INF] Executed DbCommand ("13"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2019-01-03T11:03:21.0319867+07:00 0HLJH61EG6AAO:00000006 [INF] AuthenticationScheme: "Identity.Application" signed in. (c66dd7e7)
+2019-01-03T11:03:21.0487703+07:00 0HLJH61EG6AAO:00000006 [INF] User logged in. (fdce0db4)
+2019-01-03T11:03:21.0579843+07:00 0HLJH61EG6AAO:00000006 [INF] Executed action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Login.LoginController.Authen (ShoppingOnline.WebApplication)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 1366.7799ms. (50a9e262)
+2019-01-03T11:03:21.1046294+07:00 0HLJH61EG6AAO:00000006 [INF] Executing ObjectResult, writing value of type '"ShoppingOnline.Utilities.Dtos.GenericResult"'. (8a1b66c8)
+2019-01-03T11:03:21.3573377+07:00 0HLJH61EG6AAO:00000006 [INF] Executed action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Login.LoginController.Authen (ShoppingOnline.WebApplication)" in 1791.4612ms (afa2e885)
+2019-01-03T11:03:21.3946201+07:00 0HLJH61EG6AAO:00000006 [INF] Request finished in 1894.7756ms 200 application/json; charset=utf-8 (791a596a)
+2019-01-03T11:03:21.4428383+07:00 0HLJH61EG6AAO:00000007 [INF] Request starting HTTP/1.1 GET https://localhost:5001/Admin/Home/Index   (ca22a1cb)
+2019-01-03T11:03:21.5082829+07:00 0HLJH61EG6AAO:00000007 [INF] Route matched with "{area = \"Admin\", action = \"Index\", controller = \"Home\"}". Executing action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Home.HomeController.Index (ShoppingOnline.WebApplication)" (a44c0341)
+2019-01-03T11:03:21.5884842+07:00 0HLJH61EG6AAO:00000007 [INF] Authorization was successful. (0d575a54)
+2019-01-03T11:03:21.6049219+07:00 0HLJH61EG6AAO:00000007 [INF] Executing action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Home.HomeController.Index (ShoppingOnline.WebApplication)" - Validation state: Valid (dad538d7)
+2019-01-03T11:03:21.6130802+07:00 0HLJH61EG6AAO:00000007 [INF] Executed action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Home.HomeController.Index (ShoppingOnline.WebApplication)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 0.3712ms. (50a9e262)
+2019-01-03T11:03:21.6225553+07:00 0HLJH61EG6AAO:00000007 [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2019-01-03T11:03:21.6831965+07:00 0HLJH61EG6AAO:00000007 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=ShoppingOnline.Data.EF " (9958f5bb)
+2019-01-03T11:03:22.0713905+07:00 0HLJH61EG6AAO:00000007 [INF] Executed DbCommand ("205"ms) [Parameters=["@__functionId_1='?' (Size = 128) (DbType = AnsiString)"], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Functions] AS [f]
+        INNER JOIN [Permissions] AS [p] ON [f].[Id] = [p].[FunctionId]
+        INNER JOIN [AppRoles] AS [r] ON [p].[RoleId] = [r].[Id]
+        WHERE ([r].[Name] IN (N'Admin') AND ([f].[Id] = @__functionId_1)) AND ([p].[CanRead] = 1))
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2019-01-03T11:03:22.9446491+07:00 0HLJH61EG6AAO:00000007 [INF] Authorization was successful. (0d575a54)
+2019-01-03T11:03:23.4345467+07:00 0HLJH61EG6AAO:00000007 [INF] Executed DbCommand ("15"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[URL], [x].[ParentId], [x].[IconCss], [x].[SortOrder], [x].[Status]
+FROM [Functions] AS [x]
+WHERE [x].[Status] = 1
+ORDER BY [x].[ParentId]" (0723d8ff)
+2019-01-03T11:03:23.8654454+07:00 0HLJH61EG6AAO:00000007 [INF] Executed ViewResult - view "Index" executed in 2247.7641ms. (f66409e9)
+2019-01-03T11:03:23.8837100+07:00 0HLJH61EG6AAO:00000007 [INF] Executed action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Home.HomeController.Index (ShoppingOnline.WebApplication)" in 2369.5532ms (afa2e885)
+2019-01-03T11:03:23.9275725+07:00 0HLJH61EG6AAO:00000007 [INF] Request finished in 2480.9111ms 200 text/html; charset=utf-8 (791a596a)
+2019-01-03T11:03:24.1819867+07:00 0HLJH61EG6AAN:00000004 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/bootstrap-daterangepicker/daterangepicker.css   (ca22a1cb)
+2019-01-03T11:03:24.2177217+07:00 0HLJH61EG6AAL:00000003 [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin-site/images/user.png   (ca22a1cb)
+2019-01-03T11:03:24.2364928+07:00 0HLJH61EG6AAM:00000005 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/ckeditor/skins/moono/editor.css   (ca22a1cb)
+2019-01-03T11:03:24.2927799+07:00 0HLJH61EG6AAJ:00000003 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/signalr/signalr.js   (ca22a1cb)
+2019-01-03T11:03:24.5430430+07:00 0HLJH61EG6AAO:00000008 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/font-awesome/css/font-awesome.min.css   (ca22a1cb)
+2019-01-03T11:03:24.8878400+07:00 0HLJH61EG6AAN:00000004 [INF] Sending file. Request path: '"/lib/bootstrap-daterangepicker/daterangepicker.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\bootstrap-daterangepicker\daterangepicker.css"' (27b0a520)
+2019-01-03T11:03:25.0577047+07:00 0HLJH61EG6AAM:00000005 [INF] Sending file. Request path: '"/lib/ckeditor/skins/moono/editor.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\ckeditor\skins\moono\editor.css"' (27b0a520)
+2019-01-03T11:03:25.1421657+07:00 0HLJH61EG6AAN:00000004 [INF] Request finished in 808.8228ms 200 text/css (791a596a)
+2019-01-03T11:03:25.1598685+07:00 0HLJH61EG6AAO:00000008 [INF] Sending file. Request path: '"/lib/font-awesome/css/font-awesome.min.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\font-awesome\css\font-awesome.min.css"' (27b0a520)
+2019-01-03T11:03:25.1678103+07:00 0HLJH61EG6AAN:00000005 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/nprogress/nprogress.js   (ca22a1cb)
+2019-01-03T11:03:25.1796368+07:00 0HLJH61EG6AAO:00000008 [INF] Request finished in 1025.2769ms 200 text/css (791a596a)
+2019-01-03T11:03:25.1847213+07:00 0HLJH61EG6AAK:00000004 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/moment/min/moment.min.js   (ca22a1cb)
+2019-01-03T11:03:25.2442009+07:00 0HLJH61EG6AAO:00000009 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/mustache/mustache.js   (ca22a1cb)
+2019-01-03T11:03:25.3013114+07:00 0HLJH61EG6AAN:00000005 [INF] Sending file. Request path: '"/lib/nprogress/nprogress.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\nprogress\nprogress.js"' (27b0a520)
+2019-01-03T11:03:25.3290074+07:00 0HLJH61EG6AAJ:00000003 [INF] Sending file. Request path: '"/lib/signalr/signalr.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\signalr\signalr.js"' (27b0a520)
+2019-01-03T11:03:25.3808335+07:00 0HLJH61EG6AAJ:00000003 [INF] Request finished in 1194.8049ms 200 application/javascript (791a596a)
+2019-01-03T11:03:25.4269930+07:00 0HLJH61EG6AAN:00000005 [INF] Request finished in 159.1234ms 200 application/javascript (791a596a)
+2019-01-03T11:03:25.4298965+07:00 0HLJH61EG6AAO:00000009 [INF] Sending file. Request path: '"/lib/mustache/mustache.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\mustache\mustache.js"' (27b0a520)
+2019-01-03T11:03:25.4341768+07:00 0HLJH61EG6AAK:00000004 [INF] Sending file. Request path: '"/lib/moment/min/moment.min.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\moment\min\moment.min.js"' (27b0a520)
+2019-01-03T11:03:25.4412067+07:00 0HLJH61EG6AAN:00000006 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2   (ca22a1cb)
+2019-01-03T11:03:25.4463537+07:00 0HLJH61EG6AAO:00000009 [INF] Request finished in 250.1667ms 200 application/javascript (791a596a)
+2019-01-03T11:03:25.4523884+07:00 0HLJH61EG6AAK:00000004 [INF] Request finished in 376.063ms 200 application/javascript (791a596a)
+2019-01-03T11:03:25.4672355+07:00 0HLJH61EG6AAO:0000000A [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/ckeditor/ckeditor.js   (ca22a1cb)
+2019-01-03T11:03:25.5003074+07:00 0HLJH61EG6AAK:00000005 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/notifyjs/dist/styles/metro/notify-metro.js   (ca22a1cb)
+2019-01-03T11:03:25.5620883+07:00 0HLJH61EG6AAN:00000006 [INF] Sending file. Request path: '"/lib/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff2"' (27b0a520)
+2019-01-03T11:03:25.6452090+07:00 0HLJH61EG6AAJ:00000004 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/bootstrap-daterangepicker/daterangepicker.js   (ca22a1cb)
+2019-01-03T11:03:25.6831317+07:00 0HLJH61EG6AAN:00000006 [INF] Request finished in 132.135ms 200 font/woff2 (791a596a)
+2019-01-03T11:03:25.7030922+07:00 0HLJH61EG6AAK:00000005 [INF] Sending file. Request path: '"/lib/notifyjs/dist/styles/metro/notify-metro.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\notifyjs\dist\styles\metro\notify-metro.js"' (27b0a520)
+2019-01-03T11:03:25.7110728+07:00 0HLJH61EG6AAN:00000007 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/bootbox/bootbox.js   (ca22a1cb)
+2019-01-03T11:03:25.7343779+07:00 0HLJH61EG6AAK:00000005 [INF] Request finished in 250.5932ms 200 application/javascript (791a596a)
+2019-01-03T11:03:25.7418619+07:00 0HLJH61EG6AAM:00000005 [INF] Request finished in 911.3815ms 200 text/css (791a596a)
+2019-01-03T11:03:25.8181854+07:00 0HLJH61EG6AAK:00000006 [INF] Request starting HTTP/1.1 GET https://localhost:5001/app/shared/signalIR.js   (ca22a1cb)
+2019-01-03T11:03:25.8503012+07:00 0HLJH61EG6AAJ:00000004 [INF] Sending file. Request path: '"/lib/bootstrap-daterangepicker/daterangepicker.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\bootstrap-daterangepicker\daterangepicker.js"' (27b0a520)
+2019-01-03T11:03:25.9047558+07:00 0HLJH61EG6AAM:00000006 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/jquery-sparkline/dist/jquery.sparkline.min.js   (ca22a1cb)
+2019-01-03T11:03:26.1065475+07:00 0HLJH61EG6AAJ:00000004 [INF] Request finished in 469.4198ms 200 application/javascript (791a596a)
+2019-01-03T11:03:26.5442939+07:00 0HLJH61EG6AAN:00000007 [INF] Sending file. Request path: '"/lib/bootbox/bootbox.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\bootbox\bootbox.js"' (27b0a520)
+2019-01-03T11:03:26.5759042+07:00 0HLJH61EG6AAM:00000006 [INF] Sending file. Request path: '"/lib/jquery-sparkline/dist/jquery.sparkline.min.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\jquery-sparkline\dist\jquery.sparkline.min.js"' (27b0a520)
+2019-01-03T11:03:26.5798126+07:00 0HLJH61EG6AAN:00000007 [INF] Request finished in 861.1451ms 200 application/javascript (791a596a)
+2019-01-03T11:03:26.6004955+07:00 0HLJH61EG6AAM:00000006 [INF] Request finished in 834.0023ms 200 application/javascript (791a596a)
+2019-01-03T11:03:26.6328385+07:00 0HLJH61EG6AAN:00000008 [INF] Request starting HTTP/1.1 GET https://localhost:5001/app/shared/base.js   (ca22a1cb)
+2019-01-03T11:03:26.6571676+07:00 0HLJH61EG6AAM:00000007 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/flot/jquery.flot.js   (ca22a1cb)
+2019-01-03T11:03:26.8248512+07:00 0HLJH61EG6AAJ:00000005 [INF] Request starting HTTP/1.1 GET https://localhost:5001/app/shared/core.js?v=UEsERRRY77IRK3FP9MJ3wVbNOJekQyFT_veFUivoNkQ   (ca22a1cb)
+2019-01-03T11:03:26.8677222+07:00 0HLJH61EG6AAK:00000006 [INF] Sending file. Request path: '"/app/shared/signalIR.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\app\shared\signalIR.js"' (27b0a520)
+2019-01-03T11:03:26.9834847+07:00 0HLJH61EG6AAN:00000008 [INF] Sending file. Request path: '"/app/shared/base.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\app\shared\base.js"' (27b0a520)
+2019-01-03T11:03:26.9901528+07:00 0HLJH61EG6AAK:00000006 [INF] Request finished in 1133.3484ms 200 application/javascript (791a596a)
+2019-01-03T11:03:27.0057613+07:00 0HLJH61EG6AAN:00000008 [INF] Request finished in 400.3544ms 200 application/javascript (791a596a)
+2019-01-03T11:03:27.0147409+07:00 0HLJH61EG6AAK:00000007 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/Chart.js/dist/Chart.js   (ca22a1cb)
+2019-01-03T11:03:27.0599592+07:00 0HLJH61EG6AAN:00000009 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/flot/jquery.flot.time.js   (ca22a1cb)
+2019-01-03T11:03:27.1375441+07:00 0HLJH61EG6AAM:00000007 [INF] Sending file. Request path: '"/lib/flot/jquery.flot.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\flot\jquery.flot.js"' (27b0a520)
+2019-01-03T11:03:27.3312345+07:00 0HLJH61EG6AAL:00000003 [INF] Sending file. Request path: '"/admin-site/images/user.png"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\admin-site\images\user.png"' (27b0a520)
+2019-01-03T11:03:27.3647677+07:00 0HLJH61EG6AAN:00000009 [INF] Sending file. Request path: '"/lib/flot/jquery.flot.time.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\flot\jquery.flot.time.js"' (27b0a520)
+2019-01-03T11:03:27.3707890+07:00 0HLJH61EG6AAM:00000007 [INF] Request finished in 537.1527ms 200 application/javascript (791a596a)
+2019-01-03T11:03:27.3879277+07:00 0HLJH61EG6AAN:00000009 [INF] Request finished in 358.927ms 200 application/javascript (791a596a)
+2019-01-03T11:03:27.4078562+07:00 0HLJH61EG6AAM:00000008 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/flot/jquery.flot.stack.js   (ca22a1cb)
+2019-01-03T11:03:27.4596572+07:00 0HLJH61EG6AAL:00000003 [INF] Request finished in 3185.4622ms 200 image/png (791a596a)
+2019-01-03T11:03:27.5049447+07:00 0HLJH61EG6AAO:0000000A [INF] Sending file. Request path: '"/lib/ckeditor/ckeditor.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\ckeditor\ckeditor.js"' (27b0a520)
+2019-01-03T11:03:27.5152797+07:00 0HLJH61EG6AAJ:00000005 [INF] Sending file. Request path: '"/app/shared/core.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\app\shared\core.js"' (27b0a520)
+2019-01-03T11:03:27.5153728+07:00 0HLJH61EG6AAM:00000008 [INF] Sending file. Request path: '"/lib/flot/jquery.flot.stack.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\flot\jquery.flot.stack.js"' (27b0a520)
+2019-01-03T11:03:27.5339023+07:00 0HLJH61EG6AAL:00000004 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/twbs-pagination/jquery.twbsPagination.js   (ca22a1cb)
+2019-01-03T11:03:27.5584177+07:00 0HLJH61EG6AAJ:00000005 [INF] Request finished in 941.8903ms 200 application/javascript (791a596a)
+2019-01-03T11:03:27.5846001+07:00 0HLJH61EG6AAM:00000008 [INF] Request finished in 146.6012ms 200 application/javascript (791a596a)
+2019-01-03T11:03:27.6265173+07:00 0HLJH61EG6AAO:0000000A [INF] Request finished in 2058.71ms 200 application/javascript (791a596a)
+2019-01-03T11:03:27.6403303+07:00 0HLJH61EG6AAO:0000000B [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/flot/jquery.flot.pie.js   (ca22a1cb)
+2019-01-03T11:03:27.7204672+07:00 0HLJH61EG6AAJ:00000006 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/flot.orderbars/js/jquery.flot.orderBars.js   (ca22a1cb)
+2019-01-03T11:03:27.7287637+07:00 0HLJH61EG6AAN:0000000A [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/flot/jquery.flot.resize.js   (ca22a1cb)
+2019-01-03T11:03:27.9305447+07:00 0HLJH61EG6AAL:00000004 [INF] Sending file. Request path: '"/lib/twbs-pagination/jquery.twbsPagination.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\twbs-pagination\jquery.twbsPagination.js"' (27b0a520)
+2019-01-03T11:03:27.9422875+07:00 0HLJH61EG6AAO:0000000B [INF] Sending file. Request path: '"/lib/flot/jquery.flot.pie.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\flot\jquery.flot.pie.js"' (27b0a520)
+2019-01-03T11:03:27.9460082+07:00 0HLJH61EG6AAJ:00000006 [INF] Sending file. Request path: '"/lib/flot.orderbars/js/jquery.flot.orderBars.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\flot.orderbars\js\jquery.flot.orderBars.js"' (27b0a520)
+2019-01-03T11:03:27.9580263+07:00 0HLJH61EG6AAM:00000009 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/flot-spline/js/jquery.flot.spline.min.js   (ca22a1cb)
+2019-01-03T11:03:27.9750183+07:00 0HLJH61EG6AAJ:00000006 [INF] Request finished in 313.8415ms 200 application/javascript (791a596a)
+2019-01-03T11:03:27.9864339+07:00 0HLJH61EG6AAL:00000004 [INF] Request finished in 470.3215ms 200 application/javascript (791a596a)
+2019-01-03T11:03:28.0468267+07:00 0HLJH61EG6AAO:0000000B [INF] Request finished in 315.3675ms 200 application/javascript (791a596a)
+2019-01-03T11:03:28.1639899+07:00 0HLJH61EG6AAN:0000000A [INF] Sending file. Request path: '"/lib/flot/jquery.flot.resize.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\flot\jquery.flot.resize.js"' (27b0a520)
+2019-01-03T11:03:28.5985648+07:00 0HLJH61EG6AAO:0000000C [INF] Request starting HTTP/1.1 POST https://localhost:5001/chatHub/negotiate text/plain;charset=UTF-8 0 (ca22a1cb)
+2019-01-03T11:03:28.8877838+07:00 0HLJH61EG6AAK:00000007 [INF] Sending file. Request path: '"/lib/Chart.js/dist/Chart.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\Chart.js\dist\Chart.js"' (27b0a520)
+2019-01-03T11:03:28.9447595+07:00 0HLJH61EG6AAM:00000009 [INF] Sending file. Request path: '"/lib/flot-spline/js/jquery.flot.spline.min.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\flot-spline\js\jquery.flot.spline.min.js"' (27b0a520)
+2019-01-03T11:03:28.9602909+07:00 0HLJH61EG6AAO:0000000C [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=ShoppingOnline.Data.EF " (9958f5bb)
+2019-01-03T11:03:28.9744274+07:00 0HLJH61EG6AAM:00000009 [INF] Request finished in 1017.0591ms 200 application/javascript (791a596a)
+2019-01-03T11:03:28.9816577+07:00 0HLJH61EG6AAK:00000007 [INF] Request finished in 1897.6016ms 200 application/javascript (791a596a)
+2019-01-03T11:03:29.0118022+07:00 0HLJH61EG6AAM:0000000A [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/DateJS/build/date.js   (ca22a1cb)
+2019-01-03T11:03:29.0225934+07:00 0HLJH61EG6AAK:00000008 [INF] Request starting HTTP/1.1 GET https://localhost:5001/app/controllers/home/index.js?v=_5dAA6SdIQtzBmPKhVHc_pAlkPOvEMEnsJJ8DeH6Kmg   (ca22a1cb)
+2019-01-03T11:03:29.0639854+07:00 0HLJH61EG6AAN:0000000A [INF] Request finished in 527.1537ms 200 application/javascript (791a596a)
+2019-01-03T11:03:29.1104539+07:00 0HLJH61EG6AAJ:00000007 [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin/announcement/GetAllPaging?page=1&pageSize=10   (ca22a1cb)
+2019-01-03T11:03:29.1196259+07:00 0HLJH61EG6AAN:0000000B [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/jquery-sparkline/dist/jquery.sparkline.js   (ca22a1cb)
+2019-01-03T11:03:29.1637366+07:00 0HLJH61EG6AAK:00000008 [INF] Sending file. Request path: '"/app/controllers/home/index.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\app\controllers\home\index.js"' (27b0a520)
+2019-01-03T11:03:29.3869625+07:00 0HLJH61EG6AAJ:00000007 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=ShoppingOnline.Data.EF " (9958f5bb)
+2019-01-03T11:03:29.4605640+07:00 0HLJH61EG6AAK:00000008 [INF] Request finished in 178.7686ms 200 application/javascript (791a596a)
+2019-01-03T11:03:29.4929353+07:00 0HLJH61EG6AAN:0000000B [INF] Sending file. Request path: '"/lib/jquery-sparkline/dist/jquery.sparkline.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\jquery-sparkline\dist\jquery.sparkline.js"' (27b0a520)
+2019-01-03T11:03:29.5637952+07:00 0HLJH61EG6AAM:0000000A [INF] Sending file. Request path: '"/lib/DateJS/build/date.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\DateJS\build\date.js"' (27b0a520)
+2019-01-03T11:03:29.5730874+07:00 0HLJH61EG6AAN:0000000B [INF] Request finished in 428.9102ms 200 application/javascript (791a596a)
+2019-01-03T11:03:29.5985554+07:00 0HLJH61EG6AAM:0000000A [INF] Request finished in 589.5951ms 200 application/javascript (791a596a)
+2019-01-03T11:03:29.6115353+07:00 0HLJH61EG6AAO:0000000C [INF] Executed DbCommand ("150"ms) [Parameters=["@__get_Item_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Address], [e].[Avatar], [e].[Balance], [e].[BirthDay], [e].[ConcurrencyStamp], [e].[DateCreated], [e].[DateModified], [e].[Email], [e].[EmailConfirmed], [e].[FullName], [e].[Gender], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[Status], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AppUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2019-01-03T11:03:29.6159866+07:00 0HLJH61EG6AAJ:00000007 [INF] Executed DbCommand ("21"ms) [Parameters=["@__get_Item_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Address], [e].[Avatar], [e].[Balance], [e].[BirthDay], [e].[ConcurrencyStamp], [e].[DateCreated], [e].[DateModified], [e].[Email], [e].[EmailConfirmed], [e].[FullName], [e].[Gender], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[Status], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AppUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2019-01-03T11:03:29.6485746+07:00 0HLJH61EG6AAL:00000005 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/flot.curvedlines/curvedLines.js   (ca22a1cb)
+2019-01-03T11:03:29.7855332+07:00 0HLJH61EG6AAJ:00000007 [INF] Executed DbCommand ("45"ms) [Parameters=["@__user_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AppUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2019-01-03T11:03:29.9603953+07:00 0HLJH61EG6AAL:00000005 [INF] Sending file. Request path: '"/lib/flot.curvedlines/curvedLines.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\flot.curvedlines\curvedLines.js"' (27b0a520)
+2019-01-03T11:03:30.3428002+07:00 0HLJH61EG6AAO:0000000C [INF] Executed DbCommand ("52"ms) [Parameters=["@__user_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AppUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2019-01-03T11:03:30.5799926+07:00 0HLJH61EG6AAL:00000005 [INF] Request finished in 1910.7099ms 200 application/javascript (791a596a)
+2019-01-03T11:03:30.6228615+07:00 0HLJH61EG6AAJ:00000007 [INF] Executed DbCommand ("136"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2019-01-03T11:03:30.6282928+07:00 0HLJH61EG6AAO:0000000C [INF] Executed DbCommand ("232"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2019-01-03T11:03:30.9968449+07:00 0HLJH61EG6AAO:0000000C [INF] Executed DbCommand ("27"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2019-01-03T11:03:31.0293470+07:00 0HLJH61EG6AAJ:00000007 [INF] Executed DbCommand ("5"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2019-01-03T11:03:31.0452246+07:00 0HLJH61EG6AAO:0000000C [INF] Executed DbCommand ("26"ms) [Parameters=["@__role_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AppRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2019-01-03T11:03:31.1148324+07:00 0HLJH61EG6AAJ:00000007 [INF] Executed DbCommand ("28"ms) [Parameters=["@__role_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AppRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2019-01-03T11:03:31.1196197+07:00 0HLJH61EG6AAO:0000000C [INF] Executed DbCommand ("34"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2019-01-03T11:03:31.1557000+07:00 0HLJH61EG6AAJ:00000007 [INF] Executed DbCommand ("3"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2019-01-03T11:03:31.2521889+07:00 0HLJH61EG6AAJ:00000007 [INF] Route matched with "{area = \"Admin\", action = \"GetAllPaging\", controller = \"Announcement\"}". Executing action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Announcement.AnnouncementController.GetAllPaging (ShoppingOnline.WebApplication)" (a44c0341)
+2019-01-03T11:03:31.3171015+07:00 0HLJH61EG6AAJ:00000007 [INF] Authorization was successful. (0d575a54)
+2019-01-03T11:03:31.3593461+07:00 0HLJH61EG6AAJ:00000007 [INF] Executing action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Announcement.AnnouncementController.GetAllPaging (ShoppingOnline.WebApplication)" with arguments (["1", "10"]) - Validation state: Valid (4e3479ed)
+2019-01-03T11:03:31.3730182+07:00 0HLJH61EG6AAO:0000000C [INF] Request finished in 3283.7576ms 200 application/json (791a596a)
+2019-01-03T11:03:31.4928849+07:00 0HLJH61EG6AAJ:00000007 [INF] Executed DbCommand ("9"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Announcements] AS [x]
+LEFT JOIN [AnnouncementUsers] AS [y] ON [x].[Id] = [y].[AnnouncementId]
+WHERE ([y].[HasRead] = 0) AND ([y].[UserId] IS NULL OR ([y].[UserId] = @__userId_0))" (0723d8ff)
+2019-01-03T11:03:31.5698296+07:00 0HLJH61EG6AAJ:00000007 [INF] Executed DbCommand ("7"ms) [Parameters=["@__userId_0='?' (DbType = Guid), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Title], [x].[Content], [x].[UserId], [x].[DateCreated], [x].[DateModified], [x].[Status]
+FROM [Announcements] AS [x]
+LEFT JOIN [AnnouncementUsers] AS [y] ON [x].[Id] = [y].[AnnouncementId]
+WHERE ([y].[HasRead] = 0) AND ([y].[UserId] IS NULL OR ([y].[UserId] = @__userId_0))
+ORDER BY [x].[DateCreated] DESC, [x].[Id]
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY" (0723d8ff)
+2019-01-03T11:03:31.5854454+07:00 0HLJH61EG6AAJ:00000007 [INF] Executed action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Announcement.AnnouncementController.GetAllPaging (ShoppingOnline.WebApplication)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 220.6703ms. (50a9e262)
+2019-01-03T11:03:31.5946852+07:00 0HLJH61EG6AAJ:00000007 [INF] Executing ObjectResult, writing value of type '"ShoppingOnline.Utilities.Dtos.PagedResult`1[[ShoppingOnline.Application.Systems.Announcements.Dtos.AnnouncementViewModel, ShoppingOnline.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-01-03T11:03:31.6246848+07:00 0HLJH61EG6AAJ:00000007 [INF] Executed action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Announcement.AnnouncementController.GetAllPaging (ShoppingOnline.WebApplication)" in 367.3472ms (afa2e885)
+2019-01-03T11:03:31.6476920+07:00 0HLJH61EG6AAJ:00000007 [INF] Request finished in 3462.6509ms 200 application/json; charset=utf-8 (791a596a)
+2019-01-03T11:03:32.5912251+07:00 0HLJH61EG6AAP:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/Admin/Home/GetRevenue   (ca22a1cb)
+2019-01-03T11:03:32.6101311+07:00 0HLJH61EG6AAQ:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/chatHub?id=wLXlcR3U1weLebeZyuABLw   (ca22a1cb)
+2019-01-03T11:03:32.6246419+07:00 0HLJH61EG6AAP:00000001 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=ShoppingOnline.Data.EF " (9958f5bb)
+2019-01-03T11:03:32.6397012+07:00 0HLJH61EG6AAQ:00000001 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=ShoppingOnline.Data.EF " (9958f5bb)
+2019-01-03T11:03:32.6508413+07:00 0HLJH61EG6AAP:00000001 [INF] Executed DbCommand ("15"ms) [Parameters=["@__get_Item_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Address], [e].[Avatar], [e].[Balance], [e].[BirthDay], [e].[ConcurrencyStamp], [e].[DateCreated], [e].[DateModified], [e].[Email], [e].[EmailConfirmed], [e].[FullName], [e].[Gender], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[Status], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AppUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2019-01-03T11:03:32.6856363+07:00 0HLJH61EG6AAQ:00000001 [INF] Executed DbCommand ("7"ms) [Parameters=["@__get_Item_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Address], [e].[Avatar], [e].[Balance], [e].[BirthDay], [e].[ConcurrencyStamp], [e].[DateCreated], [e].[DateModified], [e].[Email], [e].[EmailConfirmed], [e].[FullName], [e].[Gender], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[Status], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AppUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2019-01-03T11:03:32.6880863+07:00 0HLJH61EG6AAP:00000001 [INF] Executed DbCommand ("27"ms) [Parameters=["@__user_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AppUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2019-01-03T11:03:32.7002352+07:00 0HLJH61EG6AAQ:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__user_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AppUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2019-01-03T11:03:32.7107156+07:00 0HLJH61EG6AAP:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2019-01-03T11:03:32.7238814+07:00 0HLJH61EG6AAQ:00000001 [INF] Executed DbCommand ("14"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2019-01-03T11:03:32.7301539+07:00 0HLJH61EG6AAP:00000001 [INF] Executed DbCommand ("5"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2019-01-03T11:03:32.7399760+07:00 0HLJH61EG6AAQ:00000001 [INF] Executed DbCommand ("4"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2019-01-03T11:03:32.7418630+07:00 0HLJH61EG6AAP:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__role_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AppRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2019-01-03T11:03:32.7558564+07:00 0HLJH61EG6AAQ:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=["@__role_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AppRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2019-01-03T11:03:32.7598056+07:00 0HLJH61EG6AAP:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2019-01-03T11:03:32.7680855+07:00 0HLJH61EG6AAQ:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2019-01-03T11:03:32.7849250+07:00 0HLJH61EG6AAP:00000001 [INF] Route matched with "{area = \"Admin\", action = \"GetRevenue\", controller = \"Home\"}". Executing action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Home.HomeController.GetRevenue (ShoppingOnline.WebApplication)" (a44c0341)
+2019-01-03T11:03:32.8232021+07:00 0HLJH61EG6AAP:00000001 [INF] Authorization was successful. (0d575a54)
+2019-01-03T11:03:32.9263566+07:00 0HLJH61EG6AAP:00000001 [INF] Executing action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Home.HomeController.GetRevenue (ShoppingOnline.WebApplication)" with arguments (["", ""]) - Validation state: Valid (4e3479ed)
+2019-01-03T11:03:34.4448770+07:00 0HLJH61EG6AAP:00000001 [INF] Executed action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Home.HomeController.GetRevenue (ShoppingOnline.WebApplication)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 1160.2656ms. (50a9e262)
+2019-01-03T11:03:34.7876609+07:00 0HLJH61EG6AAP:00000001 [INF] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[ShoppignOnline.Application.Dapper.ViewModels.RevenueReportViewModel, ShoppignOnline.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-01-03T11:03:34.8929253+07:00 0HLJH61EG6AAP:00000001 [INF] Executed action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Home.HomeController.GetRevenue (ShoppingOnline.WebApplication)" in 2007.1306ms (afa2e885)
+2019-01-03T11:03:35.1312891+07:00 0HLJH61EG6AAP:00000001 [INF] Request finished in 2336.2056ms 200 application/json; charset=utf-8 (791a596a)
+2019-01-03T11:03:35.0497062+07:00 0HLJH61EG6AAQ:00000001 [INF] Completed connection handshake. Using HubProtocol '"json"'. (421947a1)
+2019-01-03T11:03:42.2352626+07:00 0HLJH61EG6AAP:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/Admin/Home/GetRevenue?fromDate=01%2F03%2F2019&toDate=01%2F03%2F2019   (ca22a1cb)
+2019-01-03T11:03:42.2427107+07:00 0HLJH61EG6AAP:00000002 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=ShoppingOnline.Data.EF " (9958f5bb)
+2019-01-03T11:03:42.2514882+07:00 0HLJH61EG6AAP:00000002 [INF] Executed DbCommand ("4"ms) [Parameters=["@__get_Item_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Address], [e].[Avatar], [e].[Balance], [e].[BirthDay], [e].[ConcurrencyStamp], [e].[DateCreated], [e].[DateModified], [e].[Email], [e].[EmailConfirmed], [e].[FullName], [e].[Gender], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[Status], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AppUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2019-01-03T11:03:42.2615590+07:00 0HLJH61EG6AAP:00000002 [INF] Executed DbCommand ("3"ms) [Parameters=["@__user_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AppUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2019-01-03T11:03:42.2681720+07:00 0HLJH61EG6AAP:00000002 [INF] Executed DbCommand ("2"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2019-01-03T11:03:42.2762140+07:00 0HLJH61EG6AAP:00000002 [INF] Executed DbCommand ("3"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2019-01-03T11:03:42.2853651+07:00 0HLJH61EG6AAP:00000002 [INF] Executed DbCommand ("3"ms) [Parameters=["@__role_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AppRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2019-01-03T11:03:42.2938475+07:00 0HLJH61EG6AAP:00000002 [INF] Executed DbCommand ("2"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2019-01-03T11:03:42.3015593+07:00 0HLJH61EG6AAP:00000002 [INF] Route matched with "{area = \"Admin\", action = \"GetRevenue\", controller = \"Home\"}". Executing action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Home.HomeController.GetRevenue (ShoppingOnline.WebApplication)" (a44c0341)
+2019-01-03T11:03:42.3104540+07:00 0HLJH61EG6AAP:00000002 [INF] Authorization was successful. (0d575a54)
+2019-01-03T11:03:42.3167333+07:00 0HLJH61EG6AAP:00000002 [INF] Executing action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Home.HomeController.GetRevenue (ShoppingOnline.WebApplication)" with arguments (["01/03/2019", "01/03/2019"]) - Validation state: Valid (4e3479ed)
+2019-01-03T11:03:42.3431943+07:00 0HLJH61EG6AAP:00000002 [INF] Executed action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Home.HomeController.GetRevenue (ShoppingOnline.WebApplication)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 6.8741ms. (50a9e262)
+2019-01-03T11:03:42.3504713+07:00 0HLJH61EG6AAP:00000002 [INF] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[ShoppignOnline.Application.Dapper.ViewModels.RevenueReportViewModel, ShoppignOnline.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-01-03T11:03:42.3562861+07:00 0HLJH61EG6AAP:00000002 [INF] Executed action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Home.HomeController.GetRevenue (ShoppingOnline.WebApplication)" in 48.9282ms (afa2e885)
+2019-01-03T11:03:42.3703394+07:00 0HLJH61EG6AAP:00000002 [INF] Request finished in 130.6952ms 200 application/json; charset=utf-8 (791a596a)
+2019-01-03T11:03:46.0148950+07:00 0HLJH61EG6AAP:00000003 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/signalr/signalr.js.map   (ca22a1cb)
+2019-01-03T11:03:46.0815974+07:00 0HLJH61EG6AAR:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/bootstrap/dist/css/bootstrap.min.css.map   (ca22a1cb)
+2019-01-03T11:03:47.1109594+07:00 0HLJH61EG6AAP:00000003 [INF] Sending file. Request path: '"/lib/signalr/signalr.js.map"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\signalr\signalr.js.map"' (27b0a520)
+2019-01-03T11:03:47.2416841+07:00 0HLJH61EG6AAP:00000003 [INF] Request finished in 1102.8212ms 200 text/plain (791a596a)
+2019-01-03T11:03:48.8855150+07:00 0HLJH61EG6AAR:00000001 [INF] Connection id ""0HLJH61EG6AAR"", Request id ""0HLJH61EG6AAR:00000001"": the application aborted the connection. (9f49aef1)
+2019-01-03T11:03:48.9302354+07:00 0HLJH61EG6AAR:00000001 [INF] Sending file. Request path: '"/lib/bootstrap/dist/css/bootstrap.min.css.map"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map"' (27b0a520)
+2019-01-03T11:03:48.9363308+07:00 0HLJH61EG6AAR:00000001 [INF] Request finished in 2854.0055ms 200 text/plain (791a596a)
+2019-01-03T11:03:50.5591399+07:00 0HLJH61EG6AAP:00000004 [INF] Request starting HTTP/1.1 GET https://localhost:5001/Admin/Home/GetRevenue?fromDate=01%2F02%2F2019&toDate=01%2F02%2F2019   (ca22a1cb)
+2019-01-03T11:03:50.5670382+07:00 0HLJH61EG6AAP:00000004 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=ShoppingOnline.Data.EF " (9958f5bb)
+2019-01-03T11:03:50.5840488+07:00 0HLJH61EG6AAP:00000004 [INF] Executed DbCommand ("4"ms) [Parameters=["@__get_Item_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Address], [e].[Avatar], [e].[Balance], [e].[BirthDay], [e].[ConcurrencyStamp], [e].[DateCreated], [e].[DateModified], [e].[Email], [e].[EmailConfirmed], [e].[FullName], [e].[Gender], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[Status], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AppUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2019-01-03T11:03:50.5944776+07:00 0HLJH61EG6AAP:00000004 [INF] Executed DbCommand ("4"ms) [Parameters=["@__user_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AppUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2019-01-03T11:03:50.6121559+07:00 0HLJH61EG6AAP:00000004 [INF] Executed DbCommand ("6"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2019-01-03T11:03:50.6210546+07:00 0HLJH61EG6AAP:00000004 [INF] Executed DbCommand ("4"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2019-01-03T11:03:50.6341869+07:00 0HLJH61EG6AAP:00000004 [INF] Executed DbCommand ("6"ms) [Parameters=["@__role_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AppRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2019-01-03T11:03:50.6432746+07:00 0HLJH61EG6AAP:00000004 [INF] Executed DbCommand ("4"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2019-01-03T11:03:50.6498274+07:00 0HLJH61EG6AAP:00000004 [INF] Route matched with "{area = \"Admin\", action = \"GetRevenue\", controller = \"Home\"}". Executing action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Home.HomeController.GetRevenue (ShoppingOnline.WebApplication)" (a44c0341)
+2019-01-03T11:03:50.6550068+07:00 0HLJH61EG6AAP:00000004 [INF] Authorization was successful. (0d575a54)
+2019-01-03T11:03:50.6601145+07:00 0HLJH61EG6AAP:00000004 [INF] Executing action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Home.HomeController.GetRevenue (ShoppingOnline.WebApplication)" with arguments (["01/02/2019", "01/02/2019"]) - Validation state: Valid (4e3479ed)
+2019-01-03T11:03:50.6814656+07:00 0HLJH61EG6AAP:00000004 [INF] Executed action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Home.HomeController.GetRevenue (ShoppingOnline.WebApplication)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 16.5925ms. (50a9e262)
+2019-01-03T11:03:50.6850801+07:00 0HLJH61EG6AAP:00000004 [INF] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[ShoppignOnline.Application.Dapper.ViewModels.RevenueReportViewModel, ShoppignOnline.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-01-03T11:03:50.6912747+07:00 0HLJH61EG6AAP:00000004 [INF] Executed action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Home.HomeController.GetRevenue (ShoppingOnline.WebApplication)" in 35.6705ms (afa2e885)
+2019-01-03T11:03:50.7015943+07:00 0HLJH61EG6AAP:00000004 [INF] Request finished in 139.4628ms 200 application/json; charset=utf-8 (791a596a)
+2019-01-03T11:03:53.6297100+07:00 0HLJH61EG6AAP:00000005 [INF] Request starting HTTP/1.1 GET https://localhost:5001/Admin/Home/GetRevenue?fromDate=12%2F01%2F2018&toDate=12%2F31%2F2018   (ca22a1cb)
+2019-01-03T11:03:53.6354064+07:00 0HLJH61EG6AAP:00000005 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=ShoppingOnline.Data.EF " (9958f5bb)
+2019-01-03T11:03:53.6557757+07:00 0HLJH61EG6AAP:00000005 [INF] Executed DbCommand ("10"ms) [Parameters=["@__get_Item_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Address], [e].[Avatar], [e].[Balance], [e].[BirthDay], [e].[ConcurrencyStamp], [e].[DateCreated], [e].[DateModified], [e].[Email], [e].[EmailConfirmed], [e].[FullName], [e].[Gender], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[Status], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AppUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2019-01-03T11:03:53.6707450+07:00 0HLJH61EG6AAP:00000005 [INF] Executed DbCommand ("8"ms) [Parameters=["@__user_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AppUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2019-01-03T11:03:53.6909540+07:00 0HLJH61EG6AAP:00000005 [INF] Executed DbCommand ("10"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2019-01-03T11:03:53.7018323+07:00 0HLJH61EG6AAP:00000005 [INF] Executed DbCommand ("6"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2019-01-03T11:03:53.7153497+07:00 0HLJH61EG6AAP:00000005 [INF] Executed DbCommand ("3"ms) [Parameters=["@__role_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AppRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2019-01-03T11:03:53.7240951+07:00 0HLJH61EG6AAP:00000005 [INF] Executed DbCommand ("2"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2019-01-03T11:03:53.7354914+07:00 0HLJH61EG6AAP:00000005 [INF] Route matched with "{area = \"Admin\", action = \"GetRevenue\", controller = \"Home\"}". Executing action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Home.HomeController.GetRevenue (ShoppingOnline.WebApplication)" (a44c0341)
+2019-01-03T11:03:53.7460707+07:00 0HLJH61EG6AAP:00000005 [INF] Authorization was successful. (0d575a54)
+2019-01-03T11:03:53.7524102+07:00 0HLJH61EG6AAP:00000005 [INF] Executing action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Home.HomeController.GetRevenue (ShoppingOnline.WebApplication)" with arguments (["12/01/2018", "12/31/2018"]) - Validation state: Valid (4e3479ed)
+2019-01-03T11:03:53.7747443+07:00 0HLJH61EG6AAP:00000005 [INF] Executed action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Home.HomeController.GetRevenue (ShoppingOnline.WebApplication)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 19.0094ms. (50a9e262)
+2019-01-03T11:03:53.7813647+07:00 0HLJH61EG6AAP:00000005 [INF] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[ShoppignOnline.Application.Dapper.ViewModels.RevenueReportViewModel, ShoppignOnline.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-01-03T11:03:53.7916531+07:00 0HLJH61EG6AAP:00000005 [INF] Executed action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Home.HomeController.GetRevenue (ShoppingOnline.WebApplication)" in 51.7644ms (afa2e885)
+2019-01-03T11:03:53.8024336+07:00 0HLJH61EG6AAP:00000005 [INF] Request finished in 171.4527ms 200 application/json; charset=utf-8 (791a596a)
+2019-01-03T11:04:04.4052976+07:00 0HLJH61EG6AAP:00000006 [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin/user/index   (ca22a1cb)
+2019-01-03T11:04:04.4316154+07:00 0HLJH61EG6AAP:00000006 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=ShoppingOnline.Data.EF " (9958f5bb)
+2019-01-03T11:04:04.4459489+07:00 0HLJH61EG6AAP:00000006 [INF] Executed DbCommand ("6"ms) [Parameters=["@__get_Item_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Address], [e].[Avatar], [e].[Balance], [e].[BirthDay], [e].[ConcurrencyStamp], [e].[DateCreated], [e].[DateModified], [e].[Email], [e].[EmailConfirmed], [e].[FullName], [e].[Gender], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[Status], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AppUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2019-01-03T11:04:04.4572733+07:00 0HLJH61EG6AAP:00000006 [INF] Executed DbCommand ("5"ms) [Parameters=["@__user_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AppUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2019-01-03T11:04:04.4652014+07:00 0HLJH61EG6AAP:00000006 [INF] Executed DbCommand ("3"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2019-01-03T11:04:04.4790140+07:00 0HLJH61EG6AAP:00000006 [INF] Executed DbCommand ("2"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2019-01-03T11:04:04.4924478+07:00 0HLJH61EG6AAP:00000006 [INF] Executed DbCommand ("8"ms) [Parameters=["@__role_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AppRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2019-01-03T11:04:04.5081612+07:00 0HLJH61EG6AAP:00000006 [INF] Executed DbCommand ("3"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2019-01-03T11:04:04.5277902+07:00 0HLJH61EG6AAP:00000006 [INF] Route matched with "{area = \"Admin\", action = \"Index\", controller = \"User\"}". Executing action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.User.UserController.Index (ShoppingOnline.WebApplication)" (a44c0341)
+2019-01-03T11:04:04.5318704+07:00 0HLJH61EG6AAP:00000006 [INF] Authorization was successful. (0d575a54)
+2019-01-03T11:04:04.5418090+07:00 0HLJH61EG6AAP:00000006 [INF] Executing action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.User.UserController.Index (ShoppingOnline.WebApplication)" - Validation state: Valid (dad538d7)
+2019-01-03T11:04:04.5690699+07:00 0HLJH61EG6AAP:00000006 [INF] Executed DbCommand ("12"ms) [Parameters=["@__functionId_1='?' (Size = 128) (DbType = AnsiString)"], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Functions] AS [f]
+        INNER JOIN [Permissions] AS [p] ON [f].[Id] = [p].[FunctionId]
+        INNER JOIN [AppRoles] AS [r] ON [p].[RoleId] = [r].[Id]
+        WHERE ([r].[Name] IN (N'Admin') AND ([f].[Id] = @__functionId_1)) AND ([p].[CanRead] = 1))
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2019-01-03T11:04:04.5739137+07:00 0HLJH61EG6AAP:00000006 [INF] Authorization was successful. (0d575a54)
+2019-01-03T11:04:04.5780633+07:00 0HLJH61EG6AAP:00000006 [INF] Executed action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.User.UserController.Index (ShoppingOnline.WebApplication)", returned result "Microsoft.AspNetCore.Mvc.ViewResult" in 32.5476ms. (50a9e262)
+2019-01-03T11:04:04.5933467+07:00 0HLJH61EG6AAP:00000006 [INF] Executing ViewResult, running view "Index". (c83d0e25)
+2019-01-03T11:04:04.6513880+07:00 0HLJH61EG6AAP:00000006 [INF] Executed DbCommand ("15"ms) [Parameters=["@__functionId_1='?' (Size = 128) (DbType = AnsiString)"], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Functions] AS [f]
+        INNER JOIN [Permissions] AS [p] ON [f].[Id] = [p].[FunctionId]
+        INNER JOIN [AppRoles] AS [r] ON [p].[RoleId] = [r].[Id]
+        WHERE ([r].[Name] IN (N'Admin') AND ([f].[Id] = @__functionId_1)) AND ([p].[CanCreate] = 1))
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2019-01-03T11:04:04.6557454+07:00 0HLJH61EG6AAP:00000006 [INF] Authorization was successful. (0d575a54)
+2019-01-03T11:04:04.7258668+07:00 0HLJH61EG6AAP:00000006 [INF] Executed DbCommand ("24"ms) [Parameters=["@__functionId_1='?' (Size = 128) (DbType = AnsiString)"], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Functions] AS [f]
+        INNER JOIN [Permissions] AS [p] ON [f].[Id] = [p].[FunctionId]
+        INNER JOIN [AppRoles] AS [r] ON [p].[RoleId] = [r].[Id]
+        WHERE ([r].[Name] IN (N'Admin') AND ([f].[Id] = @__functionId_1)) AND ([p].[CanUpdate] = 1))
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2019-01-03T11:04:04.7358357+07:00 0HLJH61EG6AAP:00000006 [INF] Authorization was successful. (0d575a54)
+2019-01-03T11:04:04.8258533+07:00 0HLJH61EG6AAP:00000006 [INF] Executed DbCommand ("24"ms) [Parameters=["@__functionId_1='?' (Size = 128) (DbType = AnsiString)"], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Functions] AS [f]
+        INNER JOIN [Permissions] AS [p] ON [f].[Id] = [p].[FunctionId]
+        INNER JOIN [AppRoles] AS [r] ON [p].[RoleId] = [r].[Id]
+        WHERE ([r].[Name] IN (N'Admin') AND ([f].[Id] = @__functionId_1)) AND ([p].[CanDelete] = 1))
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2019-01-03T11:04:04.8316646+07:00 0HLJH61EG6AAP:00000006 [INF] Authorization was successful. (0d575a54)
+2019-01-03T11:04:04.8555109+07:00 0HLJH61EG6AAP:00000006 [INF] Executed DbCommand ("2"ms) [Parameters=["@__functionId_1='?' (Size = 128) (DbType = AnsiString)"], CommandType='Text', CommandTimeout='30']"
+""SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Functions] AS [f]
+        INNER JOIN [Permissions] AS [p] ON [f].[Id] = [p].[FunctionId]
+        INNER JOIN [AppRoles] AS [r] ON [p].[RoleId] = [r].[Id]
+        WHERE ([r].[Name] IN (N'Admin') AND ([f].[Id] = @__functionId_1)) AND ([p].[CanCreate] = 1))
+    THEN CAST(1 AS BIT) ELSE CAST(0 AS BIT)
+END" (0723d8ff)
+2019-01-03T11:04:04.8609911+07:00 0HLJH61EG6AAP:00000006 [INF] Authorization was successful. (0d575a54)
+2019-01-03T11:04:04.9040474+07:00 0HLJH61EG6AAP:00000006 [INF] Executed DbCommand ("6"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Name], [x].[URL], [x].[ParentId], [x].[IconCss], [x].[SortOrder], [x].[Status]
+FROM [Functions] AS [x]
+WHERE [x].[Status] = 1
+ORDER BY [x].[ParentId]" (0723d8ff)
+2019-01-03T11:04:05.0355101+07:00 0HLJH61EG6AAP:00000006 [INF] Executed ViewResult - view "Index" executed in 452.0335ms. (f66409e9)
+2019-01-03T11:04:05.0392449+07:00 0HLJH61EG6AAP:00000006 [INF] Executed action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.User.UserController.Index (ShoppingOnline.WebApplication)" in 508.0901ms (afa2e885)
+2019-01-03T11:04:05.0738362+07:00 0HLJH61EG6AAP:00000006 [INF] Request finished in 667.9915ms 200 text/html; charset=utf-8 (791a596a)
+2019-01-03T11:04:05.3589605+07:00 0HLJH61EG6AAP:00000007 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css   (ca22a1cb)
+2019-01-03T11:04:05.4124799+07:00 0HLJH61EG6AAS:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js   (ca22a1cb)
+2019-01-03T11:04:05.4239902+07:00 0HLJH61EG6AAT:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/app/controllers/user/index.js?v=5gmB4y2GNKCSnWKibmc7bIgFHfn-jpIE8BhzP8HX6YE   (ca22a1cb)
+2019-01-03T11:04:05.4381354+07:00 0HLJH61EG6AAQ:00000001 [INF] Request finished in 32848.5872ms 101  (791a596a)
+2019-01-03T11:04:05.5281795+07:00 0HLJH61EG6AAT:00000001 [INF] Sending file. Request path: '"/app/controllers/user/index.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\app\controllers\user\index.js"' (27b0a520)
+2019-01-03T11:04:05.6682443+07:00 0HLJH61EG6AAT:00000001 [INF] Request finished in 122.0158ms 200 application/javascript (791a596a)
+2019-01-03T11:04:05.6759875+07:00 0HLJH61EG6AAS:00000001 [INF] Sending file. Request path: '"/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\bootstrap-datepicker\dist\js\bootstrap-datepicker.js"' (27b0a520)
+2019-01-03T11:04:05.7274251+07:00 0HLJH61EG6AAP:00000007 [INF] Sending file. Request path: '"/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css"'. Physical path: '"G:\Project\ASP.NET CORE\ShoppingOnline\ShoppingOnline\wwwroot\lib\bootstrap-datepicker\dist\css\bootstrap-datepicker3.css"' (27b0a520)
+2019-01-03T11:04:05.7606530+07:00 0HLJH61EG6AAS:00000001 [INF] Request finished in 375.9723ms 200 application/javascript (791a596a)
+2019-01-03T11:04:05.7788530+07:00 0HLJH61EG6AAP:00000007 [INF] Request finished in 506.6646ms 200 text/css (791a596a)
+2019-01-03T11:04:05.9739585+07:00 0HLJH61EG6AAS:00000002 [INF] Request starting HTTP/1.1 POST https://localhost:5001/chatHub/negotiate text/plain;charset=UTF-8 0 (ca22a1cb)
+2019-01-03T11:04:05.9758342+07:00 0HLJH61EG6AAP:00000008 [INF] Request starting HTTP/1.1 GET https://localhost:5001/Admin/User/GetAllPaging?keyword=&page=1&pageSize=10   (ca22a1cb)
+2019-01-03T11:04:06.0330493+07:00 0HLJH61EG6AAP:00000008 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=ShoppingOnline.Data.EF " (9958f5bb)
+2019-01-03T11:04:06.0619274+07:00 0HLJH61EG6AAS:00000002 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=ShoppingOnline.Data.EF " (9958f5bb)
+2019-01-03T11:04:06.0687629+07:00 0HLJH61EG6AAT:00000002 [INF] Request starting HTTP/1.1 GET https://localhost:5001/admin/announcement/GetAllPaging?page=1&pageSize=10   (ca22a1cb)
+2019-01-03T11:04:06.0908454+07:00 0HLJH61EG6AAP:00000008 [INF] Executed DbCommand ("24"ms) [Parameters=["@__get_Item_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Address], [e].[Avatar], [e].[Balance], [e].[BirthDay], [e].[ConcurrencyStamp], [e].[DateCreated], [e].[DateModified], [e].[Email], [e].[EmailConfirmed], [e].[FullName], [e].[Gender], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[Status], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AppUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2019-01-03T11:04:06.3017200+07:00 0HLJH61EG6AAT:00000002 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=ShoppingOnline.Data.EF " (9958f5bb)
+2019-01-03T11:04:06.3672526+07:00 0HLJH61EG6AAS:00000002 [INF] Executed DbCommand ("13"ms) [Parameters=["@__get_Item_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Address], [e].[Avatar], [e].[Balance], [e].[BirthDay], [e].[ConcurrencyStamp], [e].[DateCreated], [e].[DateModified], [e].[Email], [e].[EmailConfirmed], [e].[FullName], [e].[Gender], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[Status], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AppUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2019-01-03T11:04:06.3769818+07:00 0HLJH61EG6AAP:00000008 [INF] Executed DbCommand ("200"ms) [Parameters=["@__user_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AppUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2019-01-03T11:04:07.0079797+07:00 0HLJH61EG6AAS:00000002 [INF] Executed DbCommand ("16"ms) [Parameters=["@__user_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AppUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2019-01-03T11:04:07.0245485+07:00 0HLJH61EG6AAP:00000008 [INF] Executed DbCommand ("359"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2019-01-03T11:04:07.0429379+07:00 0HLJH61EG6AAS:00000002 [INF] Executed DbCommand ("10"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2019-01-03T11:04:07.0591302+07:00 0HLJH61EG6AAT:00000002 [INF] Executed DbCommand ("6"ms) [Parameters=["@__get_Item_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Address], [e].[Avatar], [e].[Balance], [e].[BirthDay], [e].[ConcurrencyStamp], [e].[DateCreated], [e].[DateModified], [e].[Email], [e].[EmailConfirmed], [e].[FullName], [e].[Gender], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[Status], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AppUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2019-01-03T11:04:07.0695328+07:00 0HLJH61EG6AAP:00000008 [INF] Executed DbCommand ("19"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2019-01-03T11:04:07.0782917+07:00 0HLJH61EG6AAT:00000002 [INF] Executed DbCommand ("11"ms) [Parameters=["@__user_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AppUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2019-01-03T11:04:07.0900047+07:00 0HLJH61EG6AAS:00000002 [INF] Executed DbCommand ("6"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2019-01-03T11:04:07.0960630+07:00 0HLJH61EG6AAP:00000008 [INF] Executed DbCommand ("6"ms) [Parameters=["@__role_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AppRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2019-01-03T11:04:07.1067963+07:00 0HLJH61EG6AAT:00000002 [INF] Executed DbCommand ("5"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2019-01-03T11:04:07.1102472+07:00 0HLJH61EG6AAS:00000002 [INF] Executed DbCommand ("8"ms) [Parameters=["@__role_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AppRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2019-01-03T11:04:07.1442106+07:00 0HLJH61EG6AAP:00000008 [INF] Executed DbCommand ("13"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2019-01-03T11:04:07.1723826+07:00 0HLJH61EG6AAS:00000002 [INF] Executed DbCommand ("30"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2019-01-03T11:04:07.1938900+07:00 0HLJH61EG6AAT:00000002 [INF] Executed DbCommand ("30"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2019-01-03T11:04:07.2077934+07:00 0HLJH61EG6AAS:00000002 [INF] Request finished in 1272.7911ms 200 application/json (791a596a)
+2019-01-03T11:04:07.2216446+07:00 0HLJH61EG6AAP:00000008 [INF] Route matched with "{area = \"Admin\", action = \"GetAllPaging\", controller = \"User\"}". Executing action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.User.UserController.GetAllPaging (ShoppingOnline.WebApplication)" (a44c0341)
+2019-01-03T11:04:07.2283207+07:00 0HLJH61EG6AAT:00000002 [INF] Executed DbCommand ("12"ms) [Parameters=["@__role_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AppRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2019-01-03T11:04:07.2313007+07:00 0HLJH61EG6AAP:00000008 [INF] Authorization was successful. (0d575a54)
+2019-01-03T11:04:07.2841591+07:00 0HLJH61EG6AAP:00000008 [INF] Executing action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.User.UserController.GetAllPaging (ShoppingOnline.WebApplication)" with arguments (["", "1", "10"]) - Validation state: Valid (4e3479ed)
+2019-01-03T11:04:07.3106359+07:00 0HLJH61EG6AAT:00000002 [INF] Executed DbCommand ("6"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2019-01-03T11:04:07.3165329+07:00 0HLJH61EG6AAP:00000008 [INF] Executed DbCommand ("6"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [AppUsers] AS [a]" (0723d8ff)
+2019-01-03T11:04:07.3213504+07:00 0HLJH61EG6AAT:00000002 [INF] Route matched with "{area = \"Admin\", action = \"GetAllPaging\", controller = \"Announcement\"}". Executing action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Announcement.AnnouncementController.GetAllPaging (ShoppingOnline.WebApplication)" (a44c0341)
+2019-01-03T11:04:07.3292322+07:00 0HLJH61EG6AAT:00000002 [INF] Authorization was successful. (0d575a54)
+2019-01-03T11:04:07.3667945+07:00 0HLJH61EG6AAT:00000002 [INF] Executing action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Announcement.AnnouncementController.GetAllPaging (ShoppingOnline.WebApplication)" with arguments (["1", "10"]) - Validation state: Valid (4e3479ed)
+2019-01-03T11:04:07.4009459+07:00 0HLJH61EG6AAP:00000008 [WRN] Query: '"(from AppUser n in DbSet<AppUser> select new AppUserViewModel{ { 
+    UserName = [n].UserName, , 
+..."' uses a row limiting operation (Skip/Take) without OrderBy which may lead to unpredictable results. (32148ccc)
+2019-01-03T11:04:07.4053890+07:00 0HLJH61EG6AAT:00000002 [INF] Executed DbCommand ("12"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT COUNT(*)
+FROM [Announcements] AS [x]
+LEFT JOIN [AnnouncementUsers] AS [y] ON [x].[Id] = [y].[AnnouncementId]
+WHERE ([y].[HasRead] = 0) AND ([y].[UserId] IS NULL OR ([y].[UserId] = @__userId_0))" (0723d8ff)
+2019-01-03T11:04:07.4487353+07:00 0HLJH61EG6AAP:00000008 [INF] Executed DbCommand ("14"ms) [Parameters=["@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [n].[UserName], [n].[Avatar], [n].[FullName], [n].[BirthDay], [n].[Email], [n].[Id], [n].[PhoneNumber], [n].[Status], [n].[DateCreated]
+FROM [AppUsers] AS [n]
+ORDER BY (SELECT 1)
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY" (0723d8ff)
+2019-01-03T11:04:07.4510532+07:00 0HLJH61EG6AAT:00000002 [INF] Executed DbCommand ("35"ms) [Parameters=["@__userId_0='?' (DbType = Guid), @__p_1='?' (DbType = Int32), @__p_2='?' (DbType = Int32)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [x].[Id], [x].[Title], [x].[Content], [x].[UserId], [x].[DateCreated], [x].[DateModified], [x].[Status]
+FROM [Announcements] AS [x]
+LEFT JOIN [AnnouncementUsers] AS [y] ON [x].[Id] = [y].[AnnouncementId]
+WHERE ([y].[HasRead] = 0) AND ([y].[UserId] IS NULL OR ([y].[UserId] = @__userId_0))
+ORDER BY [x].[DateCreated] DESC, [x].[Id]
+OFFSET @__p_1 ROWS FETCH NEXT @__p_2 ROWS ONLY" (0723d8ff)
+2019-01-03T11:04:07.4569699+07:00 0HLJH61EG6AAT:00000002 [INF] Executed action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Announcement.AnnouncementController.GetAllPaging (ShoppingOnline.WebApplication)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 84.3486ms. (50a9e262)
+2019-01-03T11:04:07.4737680+07:00 0HLJH61EG6AAT:00000002 [INF] Executing ObjectResult, writing value of type '"ShoppingOnline.Utilities.Dtos.PagedResult`1[[ShoppingOnline.Application.Systems.Announcements.Dtos.AnnouncementViewModel, ShoppingOnline.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-01-03T11:04:07.4766935+07:00 0HLJH61EG6AAP:00000008 [INF] Executed action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.User.UserController.GetAllPaging (ShoppingOnline.WebApplication)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 186.7277ms. (50a9e262)
+2019-01-03T11:04:07.4840664+07:00 0HLJH61EG6AAT:00000002 [INF] Executed action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Announcement.AnnouncementController.GetAllPaging (ShoppingOnline.WebApplication)" in 152.5739ms (afa2e885)
+2019-01-03T11:04:07.4887707+07:00 0HLJH61EG6AAP:00000008 [INF] Executing ObjectResult, writing value of type '"ShoppingOnline.Utilities.Dtos.PagedResult`1[[ShoppingOnline.Application.Systems.Users.Dtos.AppUserViewModel, ShoppingOnline.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-01-03T11:04:07.5182036+07:00 0HLJH61EG6AAT:00000002 [INF] Request finished in 1454.9056ms 200 application/json; charset=utf-8 (791a596a)
+2019-01-03T11:04:07.5557294+07:00 0HLJH61EG6AAP:00000008 [INF] Executed action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.User.UserController.GetAllPaging (ShoppingOnline.WebApplication)" in 326.244ms (afa2e885)
+2019-01-03T11:04:07.6213161+07:00 0HLJH61EG6AAP:00000008 [INF] Request finished in 1605.0224ms 200 application/json; charset=utf-8 (791a596a)
+2019-01-03T11:04:07.8289700+07:00 0HLJH61EG6AAU:00000001 [INF] Request starting HTTP/1.1 GET https://localhost:5001/chatHub?id=gvFUfdoyuYT3zoVwOVip_g   (ca22a1cb)
+2019-01-03T11:04:07.9167926+07:00 0HLJH61EG6AAU:00000001 [INF] Completed connection handshake. Using HubProtocol '"json"'. (421947a1)
+2019-01-03T11:04:10.7522008+07:00 0HLJH61EG6AAP:00000009 [INF] Request starting HTTP/1.1 GET https://localhost:5001/Admin/Role/GetAll   (ca22a1cb)
+2019-01-03T11:04:10.7561672+07:00 0HLJH61EG6AAP:00000009 [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=ShoppingOnline.Data.EF " (9958f5bb)
+2019-01-03T11:04:10.7637178+07:00 0HLJH61EG6AAP:00000009 [INF] Executed DbCommand ("2"ms) [Parameters=["@__get_Item_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Address], [e].[Avatar], [e].[Balance], [e].[BirthDay], [e].[ConcurrencyStamp], [e].[DateCreated], [e].[DateModified], [e].[Email], [e].[EmailConfirmed], [e].[FullName], [e].[Gender], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[Status], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AppUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2019-01-03T11:04:10.7699970+07:00 0HLJH61EG6AAP:00000009 [INF] Executed DbCommand ("2"ms) [Parameters=["@__user_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AppUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2019-01-03T11:04:10.7778315+07:00 0HLJH61EG6AAP:00000009 [INF] Executed DbCommand ("2"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2019-01-03T11:04:10.7894451+07:00 0HLJH61EG6AAP:00000009 [INF] Executed DbCommand ("2"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2019-01-03T11:04:10.7981173+07:00 0HLJH61EG6AAP:00000009 [INF] Executed DbCommand ("4"ms) [Parameters=["@__role_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AppRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2019-01-03T11:04:10.8047129+07:00 0HLJH61EG6AAP:00000009 [INF] Executed DbCommand ("3"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2019-01-03T11:04:10.8177344+07:00 0HLJH61EG6AAP:00000009 [INF] Route matched with "{area = \"Admin\", action = \"GetAll\", controller = \"Role\"}". Executing action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role.RoleController.GetAll (ShoppingOnline.WebApplication)" (a44c0341)
+2019-01-03T11:04:10.8331262+07:00 0HLJH61EG6AAP:00000009 [INF] Authorization was successful. (0d575a54)
+2019-01-03T11:04:10.8370920+07:00 0HLJH61EG6AAP:00000009 [INF] Executing action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role.RoleController.GetAll (ShoppingOnline.WebApplication)" - Validation state: Valid (dad538d7)
+2019-01-03T11:04:10.8790003+07:00 0HLJH61EG6AAP:00000009 [INF] Executed DbCommand ("9"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[Description]
+FROM [AppRoles] AS [dto]" (0723d8ff)
+2019-01-03T11:04:10.8880283+07:00 0HLJH61EG6AAP:00000009 [INF] Executed action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role.RoleController.GetAll (ShoppingOnline.WebApplication)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 47.7167ms. (50a9e262)
+2019-01-03T11:04:10.8977880+07:00 0HLJH61EG6AAP:00000009 [INF] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[ShoppingOnline.Application.Systems.Roles.Dtos.AppRoleViewModel, ShoppingOnline.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-01-03T11:04:10.9128242+07:00 0HLJH61EG6AAP:00000009 [INF] Executed action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role.RoleController.GetAll (ShoppingOnline.WebApplication)" in 89.5422ms (afa2e885)
+2019-01-03T11:04:10.9201830+07:00 0HLJH61EG6AAP:00000009 [INF] Request finished in 164.9794ms 200 application/json; charset=utf-8 (791a596a)
+2019-01-03T11:04:10.9606889+07:00 0HLJH61EG6AAP:0000000A [INF] Request starting HTTP/1.1 GET https://localhost:5001/Admin/Role/GetAll   (ca22a1cb)
+2019-01-03T11:04:10.9654295+07:00 0HLJH61EG6AAP:0000000A [INF] Route matched with "{area = \"Admin\", action = \"GetAll\", controller = \"Role\"}". Executing action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role.RoleController.GetAll (ShoppingOnline.WebApplication)" (a44c0341)
+2019-01-03T11:04:10.9698818+07:00 0HLJH61EG6AAP:0000000A [INF] Authorization was successful. (0d575a54)
+2019-01-03T11:04:10.9743568+07:00 0HLJH61EG6AAP:0000000A [INF] Executing action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role.RoleController.GetAll (ShoppingOnline.WebApplication)" - Validation state: Valid (dad538d7)
+2019-01-03T11:04:10.9791518+07:00 0HLJH61EG6AAP:0000000A [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=ShoppingOnline.Data.EF " (9958f5bb)
+2019-01-03T11:04:10.9878906+07:00 0HLJH61EG6AAP:0000000A [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[Description]
+FROM [AppRoles] AS [dto]" (0723d8ff)
+2019-01-03T11:04:10.9922032+07:00 0HLJH61EG6AAP:0000000A [INF] Executed action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role.RoleController.GetAll (ShoppingOnline.WebApplication)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 13.9863ms. (50a9e262)
+2019-01-03T11:04:11.0015455+07:00 0HLJH61EG6AAP:0000000A [INF] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[ShoppingOnline.Application.Systems.Roles.Dtos.AppRoleViewModel, ShoppingOnline.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-01-03T11:04:11.0111783+07:00 0HLJH61EG6AAP:0000000A [INF] Executed action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role.RoleController.GetAll (ShoppingOnline.WebApplication)" in 38.9237ms (afa2e885)
+2019-01-03T11:04:11.0173306+07:00 0HLJH61EG6AAP:0000000A [INF] Request finished in 55.5537ms 200 application/json; charset=utf-8 (791a596a)
+2019-01-03T11:04:17.8121014+07:00 0HLJH61EG6AAP:0000000B [INF] Request starting HTTP/1.1 GET https://localhost:5001/Admin/Role/GetAll   (ca22a1cb)
+2019-01-03T11:04:17.8163091+07:00 0HLJH61EG6AAP:0000000B [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=ShoppingOnline.Data.EF " (9958f5bb)
+2019-01-03T11:04:17.8239668+07:00 0HLJH61EG6AAP:0000000B [INF] Executed DbCommand ("2"ms) [Parameters=["@__get_Item_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Address], [e].[Avatar], [e].[Balance], [e].[BirthDay], [e].[ConcurrencyStamp], [e].[DateCreated], [e].[DateModified], [e].[Email], [e].[EmailConfirmed], [e].[FullName], [e].[Gender], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[Status], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AppUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2019-01-03T11:04:17.8322748+07:00 0HLJH61EG6AAP:0000000B [INF] Executed DbCommand ("3"ms) [Parameters=["@__user_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AppUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2019-01-03T11:04:17.8407615+07:00 0HLJH61EG6AAP:0000000B [INF] Executed DbCommand ("1"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2019-01-03T11:04:17.8474223+07:00 0HLJH61EG6AAP:0000000B [INF] Executed DbCommand ("1"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2019-01-03T11:04:17.8549767+07:00 0HLJH61EG6AAP:0000000B [INF] Executed DbCommand ("2"ms) [Parameters=["@__role_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AppRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2019-01-03T11:04:17.8621147+07:00 0HLJH61EG6AAP:0000000B [INF] Executed DbCommand ("1"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2019-01-03T11:04:17.8674541+07:00 0HLJH61EG6AAP:0000000B [INF] Route matched with "{area = \"Admin\", action = \"GetAll\", controller = \"Role\"}". Executing action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role.RoleController.GetAll (ShoppingOnline.WebApplication)" (a44c0341)
+2019-01-03T11:04:17.8744252+07:00 0HLJH61EG6AAP:0000000B [INF] Authorization was successful. (0d575a54)
+2019-01-03T11:04:17.8788341+07:00 0HLJH61EG6AAP:0000000B [INF] Executing action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role.RoleController.GetAll (ShoppingOnline.WebApplication)" - Validation state: Valid (dad538d7)
+2019-01-03T11:04:17.8878954+07:00 0HLJH61EG6AAP:0000000B [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[Description]
+FROM [AppRoles] AS [dto]" (0723d8ff)
+2019-01-03T11:04:17.8937464+07:00 0HLJH61EG6AAP:0000000B [INF] Executed action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role.RoleController.GetAll (ShoppingOnline.WebApplication)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 9.6245ms. (50a9e262)
+2019-01-03T11:04:17.9016571+07:00 0HLJH61EG6AAP:0000000B [INF] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[ShoppingOnline.Application.Systems.Roles.Dtos.AppRoleViewModel, ShoppingOnline.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-01-03T11:04:17.9089868+07:00 0HLJH61EG6AAP:0000000B [INF] Executed action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role.RoleController.GetAll (ShoppingOnline.WebApplication)" in 34.7515ms (afa2e885)
+2019-01-03T11:04:17.9166480+07:00 0HLJH61EG6AAP:0000000B [INF] Request finished in 100.6558ms 200 application/json; charset=utf-8 (791a596a)
+2019-01-03T11:04:17.9459030+07:00 0HLJH61EG6AAP:0000000C [INF] Request starting HTTP/1.1 GET https://localhost:5001/Admin/Role/GetAll   (ca22a1cb)
+2019-01-03T11:04:17.9541599+07:00 0HLJH61EG6AAP:0000000C [INF] Route matched with "{area = \"Admin\", action = \"GetAll\", controller = \"Role\"}". Executing action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role.RoleController.GetAll (ShoppingOnline.WebApplication)" (a44c0341)
+2019-01-03T11:04:17.9617437+07:00 0HLJH61EG6AAP:0000000C [INF] Authorization was successful. (0d575a54)
+2019-01-03T11:04:17.9681147+07:00 0HLJH61EG6AAP:0000000C [INF] Executing action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role.RoleController.GetAll (ShoppingOnline.WebApplication)" - Validation state: Valid (dad538d7)
+2019-01-03T11:04:17.9746520+07:00 0HLJH61EG6AAP:0000000C [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=ShoppingOnline.Data.EF " (9958f5bb)
+2019-01-03T11:04:17.9849965+07:00 0HLJH61EG6AAP:0000000C [INF] Executed DbCommand ("4"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[Description]
+FROM [AppRoles] AS [dto]" (0723d8ff)
+2019-01-03T11:04:17.9901304+07:00 0HLJH61EG6AAP:0000000C [INF] Executed action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role.RoleController.GetAll (ShoppingOnline.WebApplication)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 17.2171ms. (50a9e262)
+2019-01-03T11:04:17.9942563+07:00 0HLJH61EG6AAP:0000000C [INF] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[ShoppingOnline.Application.Systems.Roles.Dtos.AppRoleViewModel, ShoppingOnline.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-01-03T11:04:17.9983076+07:00 0HLJH61EG6AAP:0000000C [INF] Executed action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role.RoleController.GetAll (ShoppingOnline.WebApplication)" in 39.5766ms (afa2e885)
+2019-01-03T11:04:18.0086812+07:00 0HLJH61EG6AAP:0000000C [INF] Request finished in 56.5997ms 200 application/json; charset=utf-8 (791a596a)
+2019-01-03T11:04:27.8474651+07:00 0HLJH61EG6AAP:0000000D [INF] Request starting HTTP/1.1 GET https://localhost:5001/Admin/Role/GetAll   (ca22a1cb)
+2019-01-03T11:04:27.8520408+07:00 0HLJH61EG6AAP:0000000D [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=ShoppingOnline.Data.EF " (9958f5bb)
+2019-01-03T11:04:27.8590890+07:00 0HLJH61EG6AAP:0000000D [INF] Executed DbCommand ("2"ms) [Parameters=["@__get_Item_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Address], [e].[Avatar], [e].[Balance], [e].[BirthDay], [e].[ConcurrencyStamp], [e].[DateCreated], [e].[DateModified], [e].[Email], [e].[EmailConfirmed], [e].[FullName], [e].[Gender], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[Status], [e].[TwoFactorEnabled], [e].[UserName]
+FROM [AppUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2019-01-03T11:04:27.8677799+07:00 0HLJH61EG6AAP:0000000D [INF] Executed DbCommand ("2"ms) [Parameters=["@__user_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AppUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2019-01-03T11:04:27.8747792+07:00 0HLJH61EG6AAP:0000000D [INF] Executed DbCommand ("2"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2019-01-03T11:04:27.8829193+07:00 0HLJH61EG6AAP:0000000D [INF] Executed DbCommand ("4"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2019-01-03T11:04:27.8904920+07:00 0HLJH61EG6AAP:0000000D [INF] Executed DbCommand ("2"ms) [Parameters=["@__role_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AppRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2019-01-03T11:04:27.8981530+07:00 0HLJH61EG6AAP:0000000D [INF] Executed DbCommand ("1"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2019-01-03T11:04:27.9033082+07:00 0HLJH61EG6AAP:0000000D [INF] Route matched with "{area = \"Admin\", action = \"GetAll\", controller = \"Role\"}". Executing action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role.RoleController.GetAll (ShoppingOnline.WebApplication)" (a44c0341)
+2019-01-03T11:04:27.9091529+07:00 0HLJH61EG6AAP:0000000D [INF] Authorization was successful. (0d575a54)
+2019-01-03T11:04:27.9172562+07:00 0HLJH61EG6AAP:0000000D [INF] Executing action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role.RoleController.GetAll (ShoppingOnline.WebApplication)" - Validation state: Valid (dad538d7)
+2019-01-03T11:04:27.9247182+07:00 0HLJH61EG6AAP:0000000D [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[Description]
+FROM [AppRoles] AS [dto]" (0723d8ff)
+2019-01-03T11:04:27.9304632+07:00 0HLJH61EG6AAP:0000000D [INF] Executed action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role.RoleController.GetAll (ShoppingOnline.WebApplication)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 8.0447ms. (50a9e262)
+2019-01-03T11:04:27.9342676+07:00 0HLJH61EG6AAP:0000000D [INF] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[ShoppingOnline.Application.Systems.Roles.Dtos.AppRoleViewModel, ShoppingOnline.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-01-03T11:04:27.9382598+07:00 0HLJH61EG6AAP:0000000D [INF] Executed action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role.RoleController.GetAll (ShoppingOnline.WebApplication)" in 31.1547ms (afa2e885)
+2019-01-03T11:04:27.9482833+07:00 0HLJH61EG6AAP:0000000D [INF] Request finished in 96.6925ms 200 application/json; charset=utf-8 (791a596a)
+2019-01-03T11:04:27.9930788+07:00 0HLJH61EG6AAP:0000000E [INF] Request starting HTTP/1.1 GET https://localhost:5001/Admin/Role/GetAll   (ca22a1cb)
+2019-01-03T11:04:27.9986681+07:00 0HLJH61EG6AAP:0000000E [INF] Route matched with "{area = \"Admin\", action = \"GetAll\", controller = \"Role\"}". Executing action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role.RoleController.GetAll (ShoppingOnline.WebApplication)" (a44c0341)
+2019-01-03T11:04:28.0029037+07:00 0HLJH61EG6AAP:0000000E [INF] Authorization was successful. (0d575a54)
+2019-01-03T11:04:28.0067226+07:00 0HLJH61EG6AAP:0000000E [INF] Executing action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role.RoleController.GetAll (ShoppingOnline.WebApplication)" - Validation state: Valid (dad538d7)
+2019-01-03T11:04:28.0151574+07:00 0HLJH61EG6AAP:0000000E [INF] Entity Framework Core "2.1.4-rtm-31024" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=ShoppingOnline.Data.EF " (9958f5bb)
+2019-01-03T11:04:28.0233237+07:00 0HLJH61EG6AAP:0000000E [INF] Executed DbCommand ("2"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
+""SELECT [dto].[Id], [dto].[Name], [dto].[Description]
+FROM [AppRoles] AS [dto]" (0723d8ff)
+2019-01-03T11:04:28.0282497+07:00 0HLJH61EG6AAP:0000000E [INF] Executed action method "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role.RoleController.GetAll (ShoppingOnline.WebApplication)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 17.7913ms. (50a9e262)
+2019-01-03T11:04:28.0321330+07:00 0HLJH61EG6AAP:0000000E [INF] Executing ObjectResult, writing value of type '"System.Collections.Generic.List`1[[ShoppingOnline.Application.Systems.Roles.Dtos.AppRoleViewModel, ShoppingOnline.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2019-01-03T11:04:28.0371538+07:00 0HLJH61EG6AAP:0000000E [INF] Executed action "ShoppingOnline.WebApplication.Areas.Admin.Controllers.Role.RoleController.GetAll (ShoppingOnline.WebApplication)" in 33.7407ms (afa2e885)
+2019-01-03T11:04:28.0429624+07:00 0HLJH61EG6AAP:0000000E [INF] Request finished in 48.3249ms 200 application/json; charset=utf-8 (791a596a)
+2019-01-03T11:09:35.5860158+07:00 0HLJH61EG6AAU:00000001 [INF] Request finished in 327849.7461ms 101  (791a596a)

@@ -1,0 +1,41 @@
+<div class="top_nav">
+    <div class="nav_menu">
+        <nav>
+            <div class="nav toggle">
+                <a id="menu_toggle">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                    <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <img src="@User.GetSpecificClaim("Avatar")" alt="">@User.GetSpecificClaim("FullName")
+                        <span class=" fa fa-angle-down"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-usermenu pull-right">
+                        <li>
+                            <a href="/Admin/Account/Index"> Profile</a>
+                        </li>                       
+                        <li>
+                            <form action="/Admin/Account/Logout" method="post" id="logoutForm" class="navbar-right">
+                                <button type="submit" class="btn btn-link navbar-btn navbar-link" style="color: #5A738E; margin-left: -7px;"><i class="fa fa-sign-out"></i> Log Out</button>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+
+                <li role="presentation" id="announcementArea" class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-envelope-o"></i>
+                        <span class="badge bg-green">
+                            <label id="totalAnnouncement">0</label>
+                        </span>
+                    </a>
+                    <ul id="annoncementList" class="dropdown-menu list-unstyled msg_list" role="menu">
+
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
