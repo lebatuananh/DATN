@@ -66,7 +66,7 @@
 
                 },
                 error: function (status) {
-                    core.notify('Has an error', 'error');
+                    core.notify('Có lỗi xảy ra', 'error');
                     core.stopLoading();
                 }
             });
@@ -100,13 +100,13 @@
                             loadData(true);
                             $('#paginationUL').twbsPagination('destroy');
                         } else {
-                            core.notify('Please check name role', 'error');
+                            core.notify('Kiểm tra tên nhóm quyền', 'error');
                         }
                         core.stopLoading();
 
                     },
                     error: function () {
-                        core.notify('Has an error', 'error');
+                        core.notify('Đã có lỗi xảy ra', 'error');
                         core.stopLoading();
                     }
                 });
@@ -118,7 +118,7 @@
         $('body').on('click', '.btn-delete', function (e) {
             e.preventDefault();
             var id = $(this).data('id');
-            core.confirm('Are you sure to delete?', function () {
+            core.confirm('Bạn có chắc chắn muốn xoá?', function () {
                 $.ajax({
                     type: "POST",
                     url: "/Admin/Role/Delete",
@@ -127,13 +127,13 @@
                         core.startLoading();
                     },
                     success: function (response) {
-                        core.notify('Delete successful', 'success');
+                        core.notify('Xoá thành công', 'success');
                         loadData();
                         $('#paginationUL').twbsPagination('destroy');
                         core.stopLoading();
                     },
                     error: function (status) {
-                        core.notify('Has an error in deleting progress', 'error');
+                        core.notify('Xoá thất bại', 'error');
                         core.stopLoading();
                     }
                 });
@@ -171,12 +171,12 @@
                     core.startLoading();
                 },
                 success: function (response) {
-                    core.notify('Save permission successful', 'success');
+                    core.notify('Lưu quyền thành công', 'success');
                     $('#modal-grantpermission').modal('hide');
                     core.stopLoading();
                 },
                 error: function () {
-                    core.notify('Has an error in save permission progress', 'error');
+                    core.notify('Có lỗi xảy ra', 'error');
                     core.stopLoading();
                 }
             });
@@ -228,7 +228,7 @@
                 core.stopLoading();
             },
             error: function (status) {
-                core.notify('Load record fail', 'error');
+                core.notify('Tải dữ liệu thất bại', 'error');
                 console.log(status);
             }
         });
@@ -248,7 +248,7 @@
             visiblePages: 7,
             first: 'Đầu',
             prev: 'Trước',
-            next: 'Tiếp',
+            next: 'Sau',
             last: 'Cuối',
             onPageClick: function (event, p) {
                 core.configs.pageIndex = p;

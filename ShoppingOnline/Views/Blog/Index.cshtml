@@ -1,6 +1,6 @@
 @model ShoppingOnline.Utilities.Dtos.PagedResult<ShoppingOnline.Application.Content.Blogs.Dtos.BlogViewModel>
 @{
-    ViewData["PageTitle"] = "Blog";
+    ViewData["PageTitle"] = "Bài viết";
     ViewData["SeoKeywords"] = "Blog";
     ViewData["SeoDescription"] = "Blog";
 }
@@ -10,7 +10,7 @@
         <!-- Center colunm-->
         <div class="blog-wrapper">
             <div class="page-title">
-                <h2>Blog</h2>
+                <h2>Bài viết</h2>
             </div>
             <ul class="blog-posts">
                 @foreach (var item in Model.Results)

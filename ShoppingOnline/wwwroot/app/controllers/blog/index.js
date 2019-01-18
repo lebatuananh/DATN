@@ -103,15 +103,15 @@ var BlogController = function () {
                         $('#source-image').html('<img data-path="' + path + '" src="' + path + '"  id="image" style="max-width: 100%">');
                         $('#source-image').show();
                         cropImage();
-                        core.notify('Upload image succesful!', 'success');
+                        core.notify('Tải ảnh thành công!', 'success');
 
                     },
                     error: function () {
-                        core.notify('There was error uploading files!', 'error');
+                        core.notify('Tải ảnh thất bại!', 'error');
                     }
                 });
             } else {
-                core.notify('There was error uploading files!', 'error');
+                core.notify('Tải ảnh thất bại!', 'error');
                 clearFileInput();
             }
         });
@@ -173,12 +173,12 @@ var BlogController = function () {
 
                     });
                 } else {
-                    core.notify('Not found item', 'error');
+                    core.notify('Không có bản ghi nào', 'error');
                 }
             },
             error: function (status) {
                 console.log(status);
-                core.notify('Cannot loading data', 'error');
+                core.notify('Không thể tải dữ liệu', 'error');
             }
         });
     }
@@ -199,10 +199,10 @@ var BlogController = function () {
         $('#paginationUL').twbsPagination({
             totalPages: totalsize,
             visiblePages: 7,
-            first: 'First',
-            prev: 'Previous',
-            next: 'Next',
-            last: 'Last',
+            first: 'Đầu',
+            prev: 'Trước',
+            next: 'Sau',
+            last: 'Cuối',
             onPageClick: function (event, p) {
                 if (core.configs.pageIndex != p) {
                     core.configs.pageIndex = p;
@@ -285,7 +285,7 @@ var BlogController = function () {
                 },
                 success: function (res) {
 
-                    core.notify('Save or update success', 'success');
+                    core.notify('Lưu bài viết thành công', 'success');
 
                     core.stopLoading();
                     $('#paginationUL').twbsPagination('destroy');
@@ -295,7 +295,7 @@ var BlogController = function () {
 
                 },
                 error: function (res) {
-                    core.notify('Has a error in save product progress', 'error');
+                    core.notify('Có lỗi xảy ra', 'error');
                     core.stopLoading();
                 }
             });
@@ -348,7 +348,7 @@ var BlogController = function () {
     }
 
     function deleteItem(that) {
-        core.confirm('Are you sure to delete?', function () {
+        core.confirm('Bạn có chắc chắn muốn xoá?', function () {
 
             $.ajax({
                 url: '/Admin/Blog/Delete',
@@ -360,13 +360,13 @@ var BlogController = function () {
                     core.startLoading();
                 },
                 success: function () {
-                    core.notify('Deleted success', 'success');
+                    core.notify('Xoá thành công', 'success');
                     core.stopLoading();
                     $('#paginationUL').twbsPagination('destroy');
                     loadData();
                 },
                 error: function () {
-                    core.notify('Deleted fail', 'error');
+                    core.notify('Xoá thất bại', 'error');
                     core.stopLoading();
                 }
             });
@@ -418,7 +418,7 @@ var BlogController = function () {
                 $('#source-thumbnail').show();
             },
             error: function () {
-                core.notify('Has an error in process', 'error');
+                core.notify('Có lỗi xảy ra', 'error');
             }
         });
 

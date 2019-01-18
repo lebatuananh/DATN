@@ -3,44 +3,44 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title">Add/edit slide</h4>
+                <h4 class="modal-title">Thêm/sửa quảng cáo</h4>
             </div>
             <div class="modal-body">
                 <div id="horizontal-form">
                     <form class="form-horizontal" role="form" id="frmMaintainance">
 
                         <div class="form-group">
-                            <input type="hidden" id="hidIdM" value="0"/>
-                            <label for="txtNameM" class="col-sm-2 control-label no-padding-right">Name</label>
+                            <input type="hidden" id="hidIdM" value="0" />
+                            <label for="txtNameM" class="col-sm-2 control-label no-padding-right">Tên</label>
                             <div class="col-sm-10">
                                 <input type="text" name="txtNameM" class="form-control" id="txtNameM">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="txtUrlM" class="col-sm-2 control-label no-padding-right">Url</label>
+                            <label for="txtUrlM" class="col-sm-2 control-label no-padding-right">Link url</label>
                             <div class="col-sm-10">
                                 <input type="text" name="txtUrlM" class="form-control" id="txtUrlM" value="#">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="txtImageM" class="col-sm-2 control-label no-padding-right">Image</label>
+                            <label for="txtImageM" class="col-sm-2 control-label no-padding-right">Ảnh</label>
                             <div class="col-sm-6">
                                 <div class="input-group">
-                                    <input type="text" name="txtImageM" class="form-control" id="txtImageM"/>
-                                    <input type="file" id="fileInputImage" style="display: none"/>
+                                    <input type="text" name="txtImageM" class="form-control" id="txtImageM" />
+                                    <input type="file" id="fileInputImage" style="display: none" />
                                     <span class="input-group-btn">
-                                        <input type="button" id="btnSelectImg" class="btn btn-default" value="Browser"/>
+                                        <input type="button" id="btnSelectImg" class="btn btn-default" value="Chọn" />
                                     </span>
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="txtSortOrderM" class="col-sm-2 control-label no-padding-right">Sort Order</label>
+                            <label for="txtSortOrderM" class="col-sm-2 control-label no-padding-right">Thứ tự sắp xếp</label>
                             <div class="col-sm-10">
-                                <input type="number" min="0" value="0" id="txtSortOrderM" class="form-control"/>
+                                <input type="number" min="0" value="0" id="txtSortOrderM" class="form-control" />
                             </div>
                         </div>
 
@@ -49,34 +49,22 @@
                                 <div class="checkbox">
                                     <label>
                                         <input type="checkbox" checked="checked" id="ckStatusM">
-                                        <span class="text">Active.</span>
+                                        <span class="text">Mở khoá.</span>
                                     </label>
                                 </div>
                             </div>
                         </div>
-
-                        @*<div class="form-group">
+                        <div class="form-group ">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <label for="txtPosition" class="col-sm-2 control-label no-padding-right">Position</label>
-                                <div class="col-sm-10">
-                                    <select class="form-control" id="ddlPosition">
-                                        <option>--Select Position--</option>
-                                    </select>
-                                </div>
+                                <button type="button" id="btnSaveM" class="btn btn-success pull-right">
+                                    <i aria-hidden="true" class="fa fa-floppy-o"></i>
+                                </button>
+                                <button type="button" id="btnCancelM" data-dismiss="modal" class="btn btn-danger pull-right">
+                                    <i aria-hidden="true" class="fa fa-close"></i>
+                                </button>
                             </div>
-                        </div>*@
-
-                            <div class="form-group ">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="button" id="btnSaveM" class="btn btn-success pull-right">
-                                        <i aria-hidden="true" class="fa fa-floppy-o"></i>
-                                    </button>
-                                    <button type="button" id="btnCancelM" data-dismiss="modal" class="btn btn-danger pull-right">
-                                        <i aria-hidden="true" class="fa fa-close"></i>
-                                    </button>
-                                </div>
-                            </div>
-</form>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

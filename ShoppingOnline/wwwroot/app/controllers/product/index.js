@@ -101,6 +101,8 @@
             var that = $(this).data('id');
 
             loadDetails(that);
+
+            $(".combo").css("width", "100%");
         });
 
         $('#btnSelectImg').on('click', function () {
@@ -131,15 +133,15 @@
                         $('#source-image').html('<img data-path="' + path + '" src="' + path + '"  id="image" style="max-width: 100%">');
                         $('#source-image').show();
                         cropImage();
-                        core.notify('Upload image succesful!', 'success');
+                        core.notify('Tải ảnh thành công!', 'success');
 
                     },
                     error: function () {
-                        core.notify('There was error uploading files!', 'error');
+                        core.notify('Tải ảnh thất bại!', 'error');
                     }
                 });
             } else {
-                core.notify('There was error uploading files!', 'error');
+                core.notify('Tải ảnh thất bại!', 'error');
                 clearFileInput();
             }
         });
@@ -148,7 +150,7 @@
 
             initTreeDropDownCategory();
             $('#modal-import-excel').modal('show');
-            $(".combo").css("width", "20%");
+            $(".combo").css("width", "100%");
             $('.textbox-text').css("width", "100%")
         });
 
@@ -221,12 +223,12 @@
 
                     });
                 } else {
-                    core.notify('Not found item', 'error');
+                    core.notify('Không có bản ghi nào', 'error');
                 }
             },
             error: function (status) {
                 console.log(status);
-                core.notify('Cannot loading data', 'error');
+                core.notify('Đã có lỗi xảy ra', 'error');
             }
         });
     }
@@ -237,7 +239,7 @@
             url: '/admin/ProductCategory/GetAll',
             dataType: 'json',
             success: function (res) {
-                var render = '<option>---Select category---</option>';
+                var render = '<option>---Chọn danh mục---</option>';
                 $.each(res, function (i, item) {
                     render += '<option value="' + item.Id + '">' + item.Name + '</option>';
                 });
@@ -245,7 +247,7 @@
             },
             error: function (status) {
                 console.log(status);
-                core.notify('Cannot loading product category data', 'error');
+                core.notify('Không thể tải danh mục sản phẩm', 'error');
             }
         });
     }
@@ -307,10 +309,10 @@
         $('#paginationUL').twbsPagination({
             totalPages: totalsize,
             visiblePages: 7,
-            first: 'First',
-            prev: 'Previous',
-            next: 'Next',
-            last: 'Last',
+            first: 'Đầu',
+            prev: 'Trước',
+            next: 'Sau',
+            last: 'Cuối',
             onPageClick: function (event, p) {
                 if (core.configs.pageIndex != p) {
                     core.configs.pageIndex = p;
@@ -411,7 +413,7 @@
                 },
                 success: function (res) {
 
-                    core.notify('Save or update success', 'success');
+                    core.notify('Lưu sản phẩm thành công', 'success');
 
                     core.stopLoading();
                     $('#paginationUL').twbsPagination('destroy');
@@ -421,7 +423,7 @@
 
                 },
                 error: function (res) {
-                    core.notify('Has a error in save product progress', 'error');
+                    core.notify('Đã có lỗi xảy ra', 'error');
                     core.stopLoading();
                 }
             });
@@ -482,7 +484,7 @@
     }
 
     function deleteItem(that) {
-        core.confirm('Are you sure to delete?', function () {
+        core.confirm('Bạn có chắc chắn muốn xoá?', function () {
 
             $.ajax({
                 url: '/Admin/Product/Delete',
@@ -500,7 +502,7 @@
                     loadData();
                 },
                 error: function () {
-                    core.notify('Deleted fail', 'error');
+                    core.notify('Xoá thất bại', 'error');
                     core.stopLoading();
                 }
             });
@@ -520,7 +522,7 @@
                 core.stopLoading();
             },
             error: function () {
-                core.notify('Has an error in progress', 'error');
+                core.notify('CÓ lỗi xảy ra', 'error');
                 core.stopLoading();
             }
         });
@@ -597,7 +599,7 @@
                 $('#source-thumbnail').show();
             },
             error: function () {
-                core.notify('Has an error in process', 'error');
+                core.notify('Đã có lỗi xảy ra', 'error');
             }
         });
 

@@ -1,4 +1,4 @@
-var FeedbackController = function () {
+﻿var FeedbackController = function () {
   this.initialize=function () {
       loadData();
       registerEvents();
@@ -86,10 +86,10 @@ var FeedbackController = function () {
         $('#paginationUL').twbsPagination({
             totalPages: totalsize,
             visiblePages: 7,
-            first: 'First',
-            prev: 'Prevous',
-            next: 'Next',
-            last: 'Last',
+            first: 'Đầu',
+            prev: 'Trước',
+            next: 'Sau',
+            last: 'Cuối',
             onPageClick: function (event, p) {
                 if (core.configs.pageIndex != p) {
                     core.configs.pageIndex = p;

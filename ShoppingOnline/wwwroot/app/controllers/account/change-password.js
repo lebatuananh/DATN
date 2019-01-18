@@ -1,4 +1,4 @@
-var ChangePassword = function () {
+﻿var ChangePassword = function () {
 
     this.initialize = function () {
         registerEvents();
@@ -52,12 +52,12 @@ var ChangePassword = function () {
                         if (res.Success) {
                             window.location.href = "/Admin/Login/Index";
                         } else {
-                            core.notify('Please check current password', 'Error');
+                            core.notify('Xem lại mật khẩu', 'Error');
                         }
                         core.stopLoading();
                     },
                     error: function () {
-                        core.notify('Has an error', 'error');
+                        core.notify('Có lỗi xảy ra', 'error');
                         core.stopLoading();
                     }
                 });

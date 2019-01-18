@@ -1,5 +1,5 @@
-@{
-    ViewData["Title"] = "Your account";
+﻿@{
+    ViewData["Title"] = "Tài khoản của bạn";
 }
 @section Scripts{
     <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
@@ -24,7 +24,7 @@
 <div class="">
     <div class="page-title">
         <div class="title_left">
-            <h3>Your information</h3>
+            <h3>Thông tin tài khoản</h3>
         </div>
 
         <div class="title_right">
@@ -51,17 +51,17 @@
 
     <script id="table-template" type="x-tmpl-mustache">
         <tr>
-            <td>Username</td>
+            <td>Tên tài khoản</td>
             <td>{{Username}}</td>
         </tr>
 
         <tr>
-            <td>Full name</td>
+            <td>Tên đầy đủ</td>
             <td>{{FullName}}</td>
         </tr>
 
         <tr>
-            <td>Birthday</td>
+            <td>Sinh nhật</td>
             <td>{{Birthday}}</td>
         </tr>
 
@@ -71,17 +71,17 @@
         </tr>
 
         <tr>
-            <td>Phone Number</td>
+            <td>Số điện thoại</td>
             <td>{{PhoneNumber}}</td>
         </tr>
 
         <tr>
-            <td>Address</td>
+            <td>Địa chỉ</td>
             <td>{{Address}}</td>
         </tr>
 
         <tr>
-            <td>Gender</td>
+            <td>Giới tính</td>
             <td>{{Gender}}</td>
         </tr>
     </script>

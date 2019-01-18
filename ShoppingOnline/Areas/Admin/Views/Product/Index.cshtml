@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Product Management";
+    ViewData["Title"] = "Quản lý sản phẩm";
 }
 
 @section styles{
@@ -24,38 +24,13 @@
 <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="x_panel">
         <div class="x_title">
-            <h2>List Products</h2>
-            <ul class="nav navbar-right panel_toolbox">
-                <li>
-                    <a class="collapse-link">
-                        <i class="fa fa-chevron-up"></i>
-                    </a>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                        <i class="fa fa-wrench"></i>
-                    </a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li>
-                            <a href="#">Settings 1</a>
-                        </li>
-                        <li>
-                            <a href="#">Settings 2</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a class="close-link">
-                        <i class="fa fa-close"></i>
-                    </a>
-                </li>
-            </ul>
+            <h2> Sản phẩm <small>Danh sách sản phẩm</small></h2>
             <div class="clearfix"></div>
         </div>
         <div class="title_right">
             <div class="col-md-4 col-sm-5 col-xs-12 form-group pull-right top_search">
                 <div class="input-group">
-                    <input type="text" id="txtKeyword" class="form-control" placeholder="Search for...">
+                    <input type="text" id="txtKeyword" class="form-control" placeholder="Tìm kiếm...">
                     <span class="input-group-btn">
                         <button class="btn btn-default" id="btnSearch" type="button">
                             <i class="fa fa-search"></i>
@@ -65,7 +40,7 @@
             </div>
             <div class="col-md-3 col-sm-12  form-group pull-right">
                 <select class="form-control" id="ddlCategorySearch">
-                    <option>--Select category--</option>
+                    <option>--Chọn danh mục--</option>
                 </select>
             </div>
             <div class="col-md-3 col-sm-12  form-group pull-right">
@@ -88,13 +63,13 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th width="12%">Action</th>
-                        <th>Name</th>
-                        <th>Category</th>
-                        <th>Price</th>
-                        <th>Image</th>
-                        <th>CreatedDate</th>
-                        <th>Status</th>
+                        <th width="12%">#</th>
+                        <th>Tên</th>
+                        <th>Danh mục</th>
+                        <th>Giá</th>
+                        <th>Ảnh</th>
+                        <th>Ngày tạo</th>
+                        <th>Trạng thái</th>
                     </tr>
                 </thead>
                 <tbody id="tbl-content"></tbody>
@@ -111,9 +86,9 @@
                             <option value="50">50</option>
                         </select>
                         <span class="item-per-page">
-                            entries/page.
+                            bản ghi/trang.
                         </span>
-                        Total entries: <strong id="lblTotalRecords"></strong>
+                        Tổng số bản ghi: <strong id="lblTotalRecords"></strong>
                     </div>
                 </div>
                 <div class="col-sm-7">

@@ -8,7 +8,7 @@ var ContactController = function () {
     }
 
     function initMap() {
-        var uluru = {lat: parseFloat($('#hidLat').val()), lng: parseFloat($('#hidLng').val())};
+        var uluru = { lat: parseFloat($('#hidLat').val().replace(",", ".")), lng: parseFloat($('#hidLng').val().replace(",", "."))};
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 17,
             center: uluru

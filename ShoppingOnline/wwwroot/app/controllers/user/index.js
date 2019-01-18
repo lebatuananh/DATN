@@ -1,4 +1,4 @@
-var UserController = function () {
+﻿var UserController = function () {
     this.initialize = function () {
         loadData();
         registerEvents();
@@ -81,10 +81,8 @@ var UserController = function () {
                     }
                 });
 
-                debugger
-
                 if (roles.length === 0) {
-                    core.notify('Please, check roles', 'error');
+                    core.notify('Xem lại nhóm quyền', 'error');
                     return false;
                 }
 
@@ -122,7 +120,7 @@ var UserController = function () {
                             loadData(true);
                             $('#paginationUL').twbsPagination('destroy');
                         } else {
-                            core.notify('Please, check username or email or phone number', 'Error');
+                            core.notify('Xem lại email, tên tài khoản và số điện thoại', 'Error');
                         }
                     },
                     error: function () {
@@ -137,7 +135,7 @@ var UserController = function () {
         $('body').on('click', '.btnDelete', function () {
 
             var id = $(this).data('id');
-            core.confirm('Are you sure to delete?', function () {
+            core.confirm('Bạn có chắc chắn muốn xoá?', function () {
 
                 $.ajax({
 
@@ -150,14 +148,14 @@ var UserController = function () {
                         core.startLoading();
                     },
                     success: function () {
-                        core.notify('Delete successful', 'success');
+                        core.notify('Xoá thành công', 'success');
                         core.stopLoading();
                         loadData();
                         $('#paginationUL').twbsPagination('destroy');
 
                     },
                     error: function () {
-                        core.notify('Has an error', 'error');
+                        core.notify('Xoá thất bại', 'error');
                         core.stopLoading();
                     }
 
@@ -219,7 +217,7 @@ var UserController = function () {
             var id = $(this).data('id');
 
 
-            core.confirm('Are you sure to reset password this account ?', function () {
+            core.confirm('Bạn có muốn làm mới mật khẩu ?', function () {
 
                 $.ajax({
 
@@ -235,15 +233,15 @@ var UserController = function () {
                     success: function (res) {
 
                         if (res.Success) {
-                            core.notify('Your password has been reset successfully', 'success');
+                            core.notify('Làm mới thành công', 'success');
                         } else {
-                            core.notify('Reset Password Failed', 'error');
+                            core.notify('Làm mới thất bại', 'error');
                         }
                         core.stopLoading();
 
                     },
                     error: function (res) {
-                        core.notify('Has a error', 'error');
+                        core.notify('Có lỗi xảy ra', 'error');
                         core.stopLoading();
                     }
 
@@ -319,10 +317,10 @@ var UserController = function () {
         $('#paginationUL').twbsPagination({
             totalPages: totalsize,
             visiblePages: 7,
-            first: 'First',
-            prev: 'Previous',
-            next: 'Next',
-            last: 'Last',
+            first: 'Đầu',
+            prev: 'Trước',
+            next: 'Sau',
+            last: 'Cuối',
             onPageClick: function (event, p) {
                 if (core.configs.pageIndex != p) {
                     core.configs.pageIndex = p;

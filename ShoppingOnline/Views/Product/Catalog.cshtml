@@ -1,4 +1,4 @@
-@using ShoppingOnline.WebApplication.Models.ProductViewModels
+﻿@using ShoppingOnline.WebApplication.Models.ProductViewModels
 @model CatalogViewModel
 
 @{
@@ -39,7 +39,7 @@
             <div class="col-xs-12">
                 <ul>
                     <li class="home">
-                        <a title="Go to Home Page" asp-action="Index" asp-controller="Home">Home</a><span>&raquo;</span>
+                        <a title="Trang chủ" asp-action="Index" asp-controller="Home">Trang chủ</a><span>&raquo;</span>
                     </li>
                     <li>
                         <strong>@Model.Category.Name</strong>
@@ -63,7 +63,7 @@
                         <form action="/@Model.Category.SeoAlias-c.@(Model.Category.Id).html" method="get">
                             <div class="sorter">
                                 <div class="short-by">
-                                    <label>Sort By:</label>
+                                    <label>Sắp xếp theo:</label>
                                     <select name="sortBy" asp-for="SortType" onchange="this.form.submit()" asp-items="Model.SortTypes"></select>
                                 </div>
                                 <div class="short-by page">

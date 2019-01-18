@@ -4,19 +4,19 @@ namespace ShoppingOnline.Data.Enum
 {
     public enum BillStatus
     {
-        [Description("New bill")]
+        [Description("Đơn hàng mới")]
         New,
 
-        [Description("In Progress")]
+        [Description("Đang giao hàng")]
         InProgress,
 
-        [Description("Returned")]
+        [Description("Hàng trả lại")]
         Returned,
 
-        [Description("Cancelled")]
+        [Description("Huỷ đơn hàng")]
         Cancelled,
 
-        [Description("Completed")]
+        [Description("Thành công")]
         Completed
     }
 }

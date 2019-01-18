@@ -1,26 +1,26 @@
-@using ShoppingOnline.WebApplication.Extensions
+﻿@using ShoppingOnline.WebApplication.Extensions
 @inject IViewLocalizer Localizer
 @*@section Styles{
-    <link href="~/client-side/css/jquery-ui.css" rel="stylesheet" />
-    <style>
-        .ui-autocomplete-category {
-            font-weight: bold;
-            color: #1f8dd6;
-            padding: .2em .4em;
-            margin: .8em 0 .2em;
-            line-height: 1.5;
-        }
-    </style>
+        <link href="~/client-side/css/jquery-ui.css" rel="stylesheet" />
+        <style>
+            .ui-autocomplete-category {
+                font-weight: bold;
+                color: #1f8dd6;
+                padding: .2em .4em;
+                margin: .8em 0 .2em;
+                line-height: 1.5;
+            }
+        </style>
 
-}
-@section Scripts{
-    
-    <script src="~/app-client/controllers/header/index.js"></script>
-    <script>
-        var HeaderController = new HeaderController();
-        HeaderController.initialize();
-    </script>
-}*@
+    }
+    @section Scripts{
+
+        <script src="~/app-client/controllers/header/index.js"></script>
+        <script>
+            var HeaderController = new HeaderController();
+            HeaderController.initialize();
+        </script>
+    }*@
 <header>
     <div class="header-container">
         <div class="header-top">
@@ -37,46 +37,39 @@
                     </div>
                     <!-- top links -->
                     <div class="headerlinkmenu col-md-8 col-sm-8 col-xs-12">
-                        <span class="phone  hidden-xs hidden-sm">@Localizer["CallUs"]</span>
+
                         <ul class="links">
-                            <li class="hidden-xs">
-                                <a title="@Localizer["HelpCenter"]" href="#">
-                                    <span>@Localizer["HelpCenter"]</span>
-                                </a>
+                            <li>
+                                <a href="tel:0333355553"><span>LIÊN HỆ: 0333355553</span></a>
                             </li>
                             @if (User.Identity.IsAuthenticated)
                             {
                                 <li>
                                     <div class="dropdown">
-                                        @*<a class="current-open" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">*@
-                                        @*<span>@User.GetSpecificClaim("FullName")</span> <i class="fa fa-angle-down"></i>*@
-                                        @*</a>*@
-                                        @*<ul class="dropdown-menu" role="menu">
-                                                <li>
-                                                    <a href="/account.html">@Localizer["Information"]</a>
-                                                </li>
-                                            </ul>*@
                                         <a class="current-open" href="/account.html"><span>@User.GetSpecificClaim("FullName")</span></a>
                                     </div>
                                 </li>
                                 <li>
                                     <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm">
                                         <a href="#" onclick="document.getElementById('logoutForm').submit()">
-                                            <span>@Localizer["Logout"]</span>
+                                            <span>ĐĂNG XUẤT</span>
                                         </a>
                                     </form>
+                                </li>
+                                <li>
+                                    <a class="current-open" href="/bill.html"><span>ĐƠN HÀNG</span></a>
                                 </li>
                             }
                             else
                             {
                                 <li>
                                     <a title="login" href="/login.html">
-                                        <span>@Localizer["Login"]</span>
+                                        <span>ĐĂNG NHẬP</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a title="register" href="/register.html">
-                                        <span>@Localizer["Register"]</span>
+                                        <span>ĐĂNG KÝ</span>
                                     </a>
                                 </li>
                             }
@@ -107,12 +100,10 @@
 
                     <div class="top-search">
                         <div id="search">
-                            @*<form method="get" action="/search.html">*@
                             <div class="input-group">
-                                <input type="text" class="form-control" required placeholder="@Localizer["Keyword"]" name="keyword">
-                               
+                                <input type="text" class="form-control" required placeholder="Nhập từ khoá..." name="keyword">
+
                             </div>
-                            @*</form>*@
                         </div>
                     </div>
 
@@ -120,7 +111,6 @@
 
                 </div>
                 <div class="col-xs-12 col-sm-4 col-md-3 top-cart">
-                    @*<div class="link-wishlist"> <a href="#"> <i class="icon-heart icons"></i><span> Wishlist</span></a> </div>*@
                     <!-- top cart -->
                     <div class="top-cart-contain">
                         @*<vc:header-cart></vc:header-cart>*@

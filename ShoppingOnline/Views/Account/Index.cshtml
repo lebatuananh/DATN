@@ -1,7 +1,7 @@
-@model ShoppingOnline.Application.Systems.Users.Dtos.AppUserViewModel
+﻿@model ShoppingOnline.Application.Systems.Users.Dtos.AppUserViewModel
 
 @{
-    ViewData["Title"] = "Your account";
+    ViewData["Title"] = "Tài khoản ";
     ViewData["MetaDescription"] = "Shopping cart";
     ViewData["MetaKeyword"] = "Shopping cart";
 }
@@ -13,8 +13,8 @@
         <div class="row">
             <div class="col-xs-12">
                 <ul>
-                    <li class="home"> <a asp-area="" asp-controller="Home" asp-action="Index">Home</a><span>&raquo;</span></li>
-                    <li><a asp-area="" asp-controller="Account" asp-action="Index"><strong>My Account</strong></a></li>
+                    <li class="home"> <a asp-area="" asp-controller="Home" asp-action="Index">Trang chủ</a><span>&raquo;</span></li>
+                    <li><a asp-area="" asp-controller="Account" asp-action="Index"><strong>Tài khoản</strong></a></li>
                 </ul>
             </div>
         </div>
@@ -28,24 +28,24 @@
             <div class="col-main col-sm-9 col-xs-12">
                 <div class="my-account">
                     <div class="page-title">
-                        <h2>Account Information</h2>
+                        <h2>Thông tin tài khoản</h2>
                     </div>
                     <div class="dashboard">
                         <div class="table-responsive">
                             <table class="table table-bordered cart_summary table-striped">
                                 <tbody>
                                     <tr class="first odd">
-                                        <td>Username</td>
+                                        <td>Tên tài khoản</td>
                                         <td>@Model.UserName</td>
                                     </tr>
 
                                     <tr class="flast even">
-                                        <td>Full name</td>
+                                        <td>Tên đầy đủ</td>
                                         <td>@Model.FullName</td>
                                     </tr>
 
                                     <tr class="first odd">
-                                        <td>Birthday</td>
+                                        <td>Sinh nhật</td>
                                         <td>
                                             @if (@Model.BirthDay.HasValue)
                                             {
@@ -60,18 +60,18 @@
                                     </tr>
 
                                     <tr class="first odd">
-                                        <td>Phone Number</td>
+                                        <td>Số điện thoại</td>
                                         <td>@Model.PhoneNumber</td>
                                     </tr>
 
                                     <tr class="last even">
-                                        <td>Address</td>
+                                        <td>Địa chỉ</td>
                                         <td>@Model.Address</td>
                                     </tr>
 
                                     <tr class="first odd">
-                                        <td>Gender</td>
-                                        <td>@(Model.Gender ? "Male" : "Female")</td>
+                                        <td>Giới tính</td>
+                                        <td>@(Model.Gender ? "Nam" : "Nữ")</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -82,12 +82,12 @@
             <aside class="right sidebar col-sm-3 col-xs-12">
                 <div class="sidebar-account block">
                     <div class="sidebar-bar-title">
-                        <h3>My Account</h3>
+                        <h3>Tài khoản</h3>
                     </div>
                     <div class="block-content">
                         <ul>
-                            <li><a asp-area="" asp-controller="Account" asp-action="UpdateAccount">Update account</a></li>
-                            <li><a asp-area="" asp-controller="Account" asp-action="UpdatePassword">Update password</a></li>
+                            <li><a asp-area="" asp-controller="Account" asp-action="UpdateAccount">Thay đổi thông tin</a></li>
+                            <li><a asp-area="" asp-controller="Account" asp-action="UpdatePassword">Thay đổi mật khẩu</a></li>
                         </ul>
                     </div>
                 </div>

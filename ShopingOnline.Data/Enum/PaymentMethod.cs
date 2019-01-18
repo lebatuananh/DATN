@@ -4,13 +4,13 @@ namespace ShoppingOnline.Data.Enum
 {
     public enum PaymentMethod
     {
-        [Description("Cash on delivery")]
+        [Description("Thanh toán khi giao hàng")]
         CashOnDelivery,
 
-        [Description("Onlin Banking")]
+        [Description("Chuyển khoản trực tuyến")]
         OnlinBanking,
 
-        [Description("Payment Gateway")]
+        [Description("Cổng thanh toán ngân lượng")]
         PaymentGateway,
 
         [Description("Visa")]
@@ -22,7 +22,7 @@ namespace ShoppingOnline.Data.Enum
         [Description("PayPal")]
         PayPal,
 
-        [Description("Atm")]
+        [Description("Chuyển khoản ngân hàng")]
         Atm
     }
 }

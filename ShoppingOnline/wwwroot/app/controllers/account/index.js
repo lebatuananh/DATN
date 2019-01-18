@@ -1,4 +1,4 @@
-var AccountController = function () {
+﻿var AccountController = function () {
 
     var changePassword = new ChangePassword();
 
@@ -92,15 +92,15 @@ var AccountController = function () {
                     success: function (res) {
                         if (res.Success) {
                             loadData();
-                            core.notify('Save user succesful', 'success');
+                            core.notify('Lưu tài khoản thành công', 'success');
                             $('#modal-add-edit').modal('hide');
                         } else {
-                            core.notify('Please check username and email', 'Error');
+                            core.notify('Xem lại tên tài khoản và mật khẩu', 'Error');
                         }
                         core.stopLoading();
                     },
                     error: function () {
-                        core.notify('Has an error', 'error');
+                        core.notify('Có lỗi xảy ra', 'error');
                         core.stopLoading();
                     }
                 });
@@ -137,12 +137,12 @@ var AccountController = function () {
                     $('#tbl-content').html(render);
                 }
                 else {
-                    core.notify('Can not load data', 'error');
+                    core.notify('Không thể tải dữ liệu', 'error');
                 }
                 core.stopLoading();
             },
             error: function () {
-                core.notify('Can not load data', 'error');
+                core.notify('Không thể tải dữ liệu', 'error');
                 core.stopLoading();
             }
         });

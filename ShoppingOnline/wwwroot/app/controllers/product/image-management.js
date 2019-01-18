@@ -1,4 +1,4 @@
-var ImageManagement = function () {
+﻿var ImageManagement = function () {
 
     //var images = [];
 
@@ -57,17 +57,17 @@ var ImageManagement = function () {
                         $('#image-detail').html('<img data-path="' + path + '" src="' + path + '"  id="image" style="max-width: 100%">');
                         $('#image-detail').show();
                         cropImage();
-                        core.notify('Image uploaded successfully', 'success');
+                        core.notify('Tải ảnh thành công', 'success');
                     },
                     error: function () {
-                        core.notify('There was error uploading files!', 'error');
+                        core.notify('Tải ảnh thất bại', 'error');
                         clearFileInput();
                     }
 
                 });
             }
             else {
-                core.notify('There was error uploading files!', 'error');
+                core.notify('Tải ảnh thất bại', 'error');
                 clearFileInput();
             }
 
@@ -92,7 +92,7 @@ var ImageManagement = function () {
                     $('#modal-image-manage').modal('hide');
                     $('#image-list').html('');
                     clearFileInput();
-                    core.notify('Save successfully', 'success');
+                    core.notify('Lưu ảnh thành công', 'success');
                 }
 
             });
@@ -180,7 +180,7 @@ var ImageManagement = function () {
 
             },
             error: function () {
-                core.notify('Has an error in process', 'error');
+                core.notify('Đã có lỗi xảy ra', 'error');
             }
         });
 

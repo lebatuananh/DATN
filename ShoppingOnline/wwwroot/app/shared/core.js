@@ -142,9 +142,9 @@
 
     getStatus: function (status) {
         if (status == 1)
-            return '<span class="badge bg-green">Active</span>';
+            return '<span class="badge bg-green">Kích hoạt</span>';
         else
-            return '<span class="badge bg-red">InActive</span>';
+            return '<span class="badge bg-red">Khoá</span>';
     },
 
     formatNumber: function (number, precision) {

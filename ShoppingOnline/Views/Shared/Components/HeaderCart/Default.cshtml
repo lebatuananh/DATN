@@ -1,4 +1,4 @@
-@model System.Collections.Generic.List<ShoppingOnline.WebApplication.Models.ShoppingCartViewModel>
+﻿@model System.Collections.Generic.List<ShoppingOnline.WebApplication.Models.ShoppingCartViewModel>
 @inject IViewLocalizer Localizer
 
 <div class="mini-cart" id="headerCart">
@@ -11,14 +11,14 @@
                     <span class="cart-total">@Model.Count</span>
                 }
             </div>
-            <div class="shoppingcart-inner hidden-xs"><span class="cart-title">@Localizer["MyCart"]</span> </div>
+            <div class="shoppingcart-inner hidden-xs"><span class="cart-title">GIỎ HÀNG</span> </div>
         </a>
     </div>
     <div>
         <div class="top-cart-content">
             @if (Model.Count > 0)
             {
-                <div class="block-subtitle hidden">Recently added items</div>
+                <div class="block-subtitle hidden">Sản phẩm được thêm gần đây</div>
                 <ul id="cart-sidebar" class="mini-products-list">
                     @foreach (var item in Model)
                     {
@@ -40,14 +40,14 @@
                 </ul>
                 <div class="top-subtotal">Subtotal: <span class="price">@Model.Sum(x => x.Quantity * x.Price).ToString("N0")</span></div>
                 <div class="actions">
-                    <button class="btn-checkout" type="button" onClick="location.href='/checkout.html'"><i class="fa fa-check"></i><span>@Localizer["Checkout"]</span></button>
-                    <button class="view-cart" type="button" onClick="location.href='/cart.html'"><i class="fa fa-shopping-cart"></i><span>@Localizer["ViewCart"]</span></button>
+                    <button class="btn-checkout" type="button" onClick="location.href='/checkout.html'"><i class="fa fa-check"></i><span>ĐẶT HÀNG</span></button>
+                    <button class="view-cart" type="button" onClick="location.href='/cart.html'"><i class="fa fa-shopping-cart"></i><span>GIỎ HÀNG</span></button>
                 </div>
 
             }
             else
             {
-                <p>@Localizer["NoProductCart"]</p>
+                <p>Bạn không có sản phẩm nào</p>
             }
         </div>
     </div>

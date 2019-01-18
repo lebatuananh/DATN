@@ -1,4 +1,4 @@
-var AnnouncementController = function () {
+﻿var AnnouncementController = function () {
     this.initialize = function () {
         loadData();
         registerEvents();
@@ -25,11 +25,11 @@ var AnnouncementController = function () {
                 success: function () {
                     loadData();
                     core.loadAnnouncement();
-                    core.notify('Read', 'success');
+                    core.notify('Đã đọc', 'success');
                     core.stopLoading();
                 },
                 error: function () {
-                    core.notify('Has an error progress', 'error');
+                    core.notify('Có lỗi xảy ra', 'error');
                     core.stopLoading();
                 }
             });
@@ -48,11 +48,11 @@ var AnnouncementController = function () {
                 success: function () {
                     loadData();
                     core.loadAnnouncement();
-                    core.notify('Read all', 'success');
+                    core.notify('Đã đọc tất cả', 'success');
                     core.stopLoading();
                 },
                 error: function () {
-                    core.notify('Has an error progress', 'error');
+                    core.notify('Có lỗi xảy ra', 'error');
                     core.stopLoading();
                 }
             });
@@ -61,7 +61,7 @@ var AnnouncementController = function () {
         $('body').on('click', '.btn-delete', function (e) {
             e.preventDefault();
             var that = $(this).data('id');
-            core.confirm('Are you sure to delete?', function () {
+            core.confirm('Bạn có chắc chắn muốn xoá?', function () {
                 $.ajax({
                     type: "POST",
                     url: "/Admin/Announcement/Delete",
@@ -72,12 +72,12 @@ var AnnouncementController = function () {
                     success: function () {
                         core.loadAnnouncement();
                         loadData();
-                        core.notify('Delete this announcement successful', 'success');
+                        core.notify('Xoá thành công', 'success');
                         core.stopLoading();
                         $('#paginationUL').twbsPagination('destroy');
                     },
                     error: function () {
-                        core.notify('Have an error in progress', 'error');
+                        core.notify('Xoá thất bại', 'error');
                         core.stopLoading();
                     }
                 });
@@ -143,10 +143,10 @@ var AnnouncementController = function () {
         $('#paginationUL').twbsPagination({
             totalPages: totalsize,
             visiblePages: 7,
-            first: 'First',
-            prev: 'Prevous',
-            next: 'Next',
-            last: 'Last',
+            first: 'Đầu',
+            prev: 'Trước',
+            next: 'Sau',
+            last: 'Cuối',
             onPageClick: function (event, p) {
                 if (core.configs.pageIndex != p) {
                     core.configs.pageIndex = p;

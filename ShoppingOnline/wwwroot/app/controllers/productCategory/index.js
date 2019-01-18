@@ -115,7 +115,7 @@ var productCategoryController = function () {
                         core.startLoading();
                     },
                     success: function (response) {
-                        core.notify('Save or update success', 'success');
+                        core.notify('Lưu thành công', 'success');
                         $('#modal-add-edit').modal('hide');
 
                         resetFormMaintainance();
@@ -124,7 +124,7 @@ var productCategoryController = function () {
                         loadData(true);
                     },
                     error: function () {
-                        core.notify('Has an error in update progress', 'error');
+                        core.notify('Đã có lỗi xảy ra', 'error');
                         core.stopLoading();
                     }
                 });
@@ -136,7 +136,7 @@ var productCategoryController = function () {
         $('body').on('click', '#btnDelete', function (e) {
             e.preventDefault();
             var that = $('#hidIdM').val();
-            core.confirm('Are you sure to delete?', function () {
+            core.confirm('Bạn có chắc chắn muốn xoá?', function () {
                 $.ajax({
                     type: "POST",
                     url: "/Admin/ProductCategory/Delete",
@@ -145,12 +145,12 @@ var productCategoryController = function () {
                         core.startLoading();
                     },
                     success: function (response) {
-                        core.notify('Deleted success', 'success');
+                        core.notify('Xoá thành công', 'success');
                         core.stopLoading();
                         loadData();
                     },
                     error: function (status) {
-                        core.notify('Has an error in deleting progress', 'error');
+                        core.notify('Đã có lỗi xảy ra', 'error');
                         core.stopLoading();
                     }
                 });
@@ -176,11 +176,11 @@ var productCategoryController = function () {
                 data: data,
                 success: function (path) {
                     $('#txtImage').val(path);
-                    core.notify('Upload image succesful!', 'success');
+                    core.notify('Tải ảnh thành công!', 'success');
 
                 },
                 error: function () {
-                    core.notify('There was error uploading files!', 'error');
+                    core.notify('Tải ảnh thất bại!', 'error');
                 }
             });
         });

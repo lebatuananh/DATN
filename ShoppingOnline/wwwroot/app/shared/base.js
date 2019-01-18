@@ -1,4 +1,4 @@
-var BaseController = function () {
+﻿var BaseController = function () {
 
     this.initialize = function () {
         core.loadAnnouncement();
@@ -18,12 +18,12 @@ var BaseController = function () {
                 },
                 success: function () {
                     core.loadAnnouncement();
-                    core.notify('Read', 'success');
+                    core.notify('Đã đọc', 'success');
                     core.stopLoading();
 
                 },
                 error: function () {
-                    core.notify('Has an error progress', 'error');
+                    core.notify('Có lỗi xảy ra', 'error');
                     core.stopLoading();
                 }
             });

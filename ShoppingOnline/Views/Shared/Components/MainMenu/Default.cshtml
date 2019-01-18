@@ -1,4 +1,4 @@
-@using Microsoft.AspNetCore.Mvc.Localization
+﻿@using Microsoft.AspNetCore.Mvc.Localization
 @model System.Collections.Generic.List<ShoppingOnline.Application.ECommerce.ProductCategories.Dtos.ProductCategoryViewModel>
 
 @inject IViewLocalizer Localizer
@@ -10,7 +10,7 @@
             <div class="mt-root-item">
                 <a asp-action="Index" asp-controller="Home">
                     <div class="title title_font">
-                        <span class="title-text">@Localizer["Home"]</span>
+                        <span class="title-text">TRANG CHỦ</span>
                     </div>
                 </a>
             </div>
@@ -21,7 +21,7 @@
             <div class="mt-root-item">
                 <a href="/products.html">
                     <div class="title title_font">
-                        <span class="title-text">@Localizer["Products"]</span>
+                        <span class="title-text">SẢN PHẨM</span>
                     </div>
                 </a>
             </div>
@@ -53,7 +53,7 @@
             <div class="mt-root-item">
                 <a href="/page/welcome-to-shopping-online.html">
                     <div class="title title_font">
-                        <span class="title-text">@Localizer["About"]</span>
+                        <span class="title-text">GIỚI THIỆU</span>
                     </div>
                 </a>
             </div>
@@ -62,13 +62,13 @@
             <div class="mt-root-item">
                 <a href="bai-viet.html">
                     <div class="title title_font">
-                        <span class="title-text">@Localizer["Blog"]</span>
+                        <span class="title-text">BÀI VIẾT</span>
                     </div>
                 </a>
             </div>
         </li>
         <li>
-            <a href="/contact.html">@Localizer["Contact"]</a>
+            <a href="/contact.html">THÔNG TIN LIÊN HỆ</a>
         </li>
     </ul>
 </div>

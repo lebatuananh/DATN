@@ -1,4 +1,4 @@
-var AdvertisementController = function () {
+﻿var AdvertisementController = function () {
 
     this.initialize = function () {
         loadData();
@@ -75,7 +75,7 @@ var AdvertisementController = function () {
 
                 },
                 error: function () {
-                    core.notify('Has an error', 'error');
+                    core.notify('Có lỗi xảy ra', 'error');
                     core.stopLoading();
                 }
             });
@@ -112,7 +112,7 @@ var AdvertisementController = function () {
                         core.startLoading();
                     },
                     success: function () {
-                        core.notify('Save advertistment successful', 'success');
+                        core.notify('Lưu quảng cáo thành công', 'success');
                         $('#modal-add-edit').modal('hide');
                         resetFormMaintainance();
 
@@ -122,7 +122,7 @@ var AdvertisementController = function () {
 
                     },
                     error: function () {
-                        core.notify('Have an error in progress', 'error');
+                        core.notify('Có lỗi xảy ra', 'error');
                         core.stopLoading();
                     }
                 });
@@ -134,7 +134,7 @@ var AdvertisementController = function () {
         $('body').on('click', '.btn-delete', function (e) {
             e.preventDefault();
             var that = $(this).data('id');
-            core.confirm('Are you sure to delete?', function () {
+            core.confirm('Bạn có muốn xoá quảng cáo này không?', function () {
                 $.ajax({
                     type: "POST",
                     url: "/Admin/advertisement/Delete",
@@ -144,14 +144,14 @@ var AdvertisementController = function () {
                         core.startLoading();
                     },
                     success: function () {
-                        core.notify('Delete advertistment successful', 'success');
+                        core.notify('Xoá thành công', 'success');
                         core.stopLoading();
                         loadData();
                         $('#paginationUL').twbsPagination('destroy');
 
                     },
                     error: function () {
-                        core.notify('Have an error in progress', 'error');
+                        core.notify('Xoá thất bại', 'error');
                         core.stopLoading();
                     }
                 });
@@ -189,16 +189,16 @@ var AdvertisementController = function () {
                     },
                     success: function (path) {
                         $('#txtImageM').val(path);
-                        core.notify('Upload image succesful!', 'success');
+                        core.notify('Tải ảnh thành công!', 'success');
                         core.stopLoading();
                     },
                     error: function () {
-                        core.notify('There was error uploading files!', 'error');
+                        core.notify('Tải ảnh thất bại!', 'error');
                         core.stopLoading();
                     }
                 });
             } else {
-                core.notify('There was error uploading files!', 'error');
+                core.notify('Tải ảnh thất bại!', 'error');
                 clearFileInput();
             }
         });
@@ -274,10 +274,10 @@ var AdvertisementController = function () {
         $('#paginationUL').twbsPagination({
             totalPages: totalsize,
             visiblePages: 7,
-            first: 'First',
-            prev: 'Prevous',
-            next: 'Next',
-            last: 'Last',
+            first: 'Đầu',
+            prev: 'Trước',
+            next: 'Sau',
+            last: 'Cuối',
             onPageClick: function (event, p) {
                 if (core.configs.pageIndex != p) {
                     core.configs.pageIndex = p;

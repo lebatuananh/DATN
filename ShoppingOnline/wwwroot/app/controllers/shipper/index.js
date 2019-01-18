@@ -1,4 +1,4 @@
-var ShipperController = function () {
+﻿var ShipperController = function () {
     this.initialize = function () {
         loadData();
         registerEvents();
@@ -69,7 +69,7 @@ var ShipperController = function () {
 
                 },
                 error: function () {
-                    core.notify('Has an error', 'error');
+                    core.notify('Có lỗi xảy ra', 'error');
                     core.stopLoading();
                 }
             });
@@ -99,7 +99,7 @@ var ShipperController = function () {
                         core.startLoading();
                     },
                     success: function () {
-                        core.notify('Update shipper successful', 'success');
+                        core.notify('Lưu người vận chuyển thành công', 'success');
                         $('#modal-add-edit').modal('hide');
                         resetFormMaintainance();
 
@@ -109,7 +109,7 @@ var ShipperController = function () {
 
                     },
                     error: function () {
-                        core.notify('Have an error in progress', 'error');
+                        core.notify('Có lỗi xảy ra', 'error');
                         core.stopLoading();
                     }
                 });
@@ -121,7 +121,7 @@ var ShipperController = function () {
         $('body').on('click', '.btn-delete', function (e) {
             e.preventDefault();
             var that = $(this).data('id');
-            core.confirm('Are you sure to delete?', function () {
+            core.confirm('Bạn có chắc chắn muốn xoá?', function () {
                 $.ajax({
                     type: "POST",
                     url: "/Admin/Shipper/Delete",
@@ -131,14 +131,14 @@ var ShipperController = function () {
                         core.startLoading();
                     },
                     error: function () {
-                        core.notify('Delete shipper successful', 'success');
+                        core.notify('Xoá thành công', 'success');
                         core.stopLoading();
                         loadData();
                         $('#paginationUL').twbsPagination('destroy');
 
                     },
                     success: function () {
-                        core.notify('Have an error in progress', 'error');
+                        core.notify('Xoá thất bại', 'error');
                         core.stopLoading();
                     }
                 });
@@ -212,10 +212,10 @@ var ShipperController = function () {
         $('#paginationUL').twbsPagination({
             totalPages: totalsize,
             visiblePages: 7,
-            first: 'First',
-            prev: 'Prevous',
-            next: 'Next',
-            last: 'Last',
+            first: 'Đầu',
+            prev: 'Trước',
+            next: 'Sau',
+            last: 'Cuối',
             onPageClick: function (event, p) {
                 if (core.configs.pageIndex != p) {
                     core.configs.pageIndex = p;

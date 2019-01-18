@@ -1,9 +1,9 @@
-@using ShoppingOnline.WebApplication.Authorization
+﻿@using ShoppingOnline.WebApplication.Authorization
 @using Microsoft.AspNetCore.Authorization
 @inject IAuthorizationService AuthorizationService
 
 @{
-    ViewData["Title"] = "Advertistment";
+    ViewData["Title"] = "Quản lý quảng cáo";
 }
 
 @section Scripts{
@@ -19,20 +19,20 @@
 
 }
 
-<input type="hidden" id="hid-category-id" value="0"/>
+<input type="hidden" id="hid-category-id" value="0" />
 <div class="">
     <div class="page-title">
         <div class="title_left">
-            <h3>Advertistment management</h3>
+            <h3>Quản lý quảng cáo</h3>
         </div>
 
         <div class="title_right">
 
             <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                 <div class="input-group">
-                    <input type="text" id="txt-search-keyword" class="form-control" placeholder="Keyword...">
+                    <input type="text" id="txt-search-keyword" class="form-control" placeholder="Từ khoá...">
                     <span class="input-group-btn">
-                        <button class="btn btn-default" id="btn-search" type="button">Search!</button>
+                        <button class="btn btn-default" id="btn-search" type="button">Tìm kiếm!</button>
                     </span>
                 </div>
             </div>
@@ -54,14 +54,14 @@
                     <div class="x_content">
                         <table id="tbl-product" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0">
                             <thead>
-                            <tr>
-                                <th width="8%"></th>
-                                <th>Name</th>
-                                <th>Date Created</th>
-                                <th>Image</th>
-                                <th>Sort Order</th>
-                                <th>Status</th>
-                            </tr>
+                                <tr>
+                                    <th width="8%">#</th>
+                                    <th>Tên</th>
+                                    <th>Ngày tạo</th>
+                                    <th>Ảnh</th>
+                                    <th>Thứ tự sắp xếp</th>
+                                    <th>Trạng thái</th>
+                                </tr>
                             </thead>
                             <tbody id="tbl-content"></tbody>
                         </table>
@@ -76,9 +76,9 @@
                                         <option value="50">50</option>
                                     </select>
                                     <span class="item-per-page">
-                                        records/page.
+                                        bản ghi/trang.
                                     </span>
-                                    Total record count: <strong id="lbl-total-records"></strong>
+                                    Tổng số bản ghi: <strong id="lbl-total-records"></strong>
                                 </div>
                             </div>
                             <div class="col-sm-7">

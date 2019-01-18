@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewData["Title"] = "Feedback";
+    ViewData["Title"] = "Quản lý phản hồi khách hàng";
 }
 @section Scripts{
 
@@ -18,15 +18,15 @@
 <div class="">
     <div class="page-title">
         <div class="title_left">
-            <h3>Slide</h3>
+            <h3>Phản hồi khách hàng</h3>
         </div>
 
         <div class="title_right">
             <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                 <div class="input-group">
-                    <input type="text" id="txt-search-keyword" class="form-control" placeholder="Keyword...">
+                    <input type="text" id="txt-search-keyword" class="form-control" placeholder="Từ khoá...">
                     <span class="input-group-btn">
-                        <button class="btn btn-default" id="btn-search" type="button">Search!</button>
+                        <button class="btn btn-default" id="btn-search" type="button">Tìm kiếm!</button>
                     </span>
                 </div>
             </div>           
@@ -41,10 +41,10 @@
                         <table id="tbl-product" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>Name</th>
+                                    <th>Tên</th>
                                     <th>Email</th>
-                                    <th>Message</th>
-                                    <th>CreatedDate</th>
+                                    <th>Tin nhắn</th>
+                                    <th>Ngày phản hổi</th>
                                 </tr>
                             </thead>
                             <tbody id="tbl-content"></tbody>
@@ -60,9 +60,9 @@
                                         <option value="50">50</option>
                                     </select>
                                     <span class="item-per-page">
-                                        records/page.
+                                        bản ghi/trang.
                                     </span>
-                                    Total record count: <strong id="lbl-total-records"></strong>
+                                    Tổng số bản ghi: <strong id="lbl-total-records"></strong>
                                 </div>
                             </div><div class="col-sm-7">
                                 <div class="dataTables_paginate paging_simple_numbers" id="datatable-checkbox_paginate">

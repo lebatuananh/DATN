@@ -1,8 +1,8 @@
-<div id="modal-add-edit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+﻿<div id="modal-add-edit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Create or update category</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">Thêm hoặc sửa danh mục sản phẩm</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -13,49 +13,43 @@
 
                         <div class="form-group">
                             <input type="hidden" id="hidIdM" value="0"/>
-                            <label for="txtNameM" class="col-sm-3 control-label no-padding-right">Name</label>
+                            <label for="txtNameM" class="col-sm-3 control-label no-padding-right">Tên</label>
                             <div class="col-sm-9">
                                 <input type="text" name="txtNameM" class="form-control" id="txtNameM" placeholder="Name of category">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-3 control-label no-padding-right">Parent</label>
+                            <label class="col-sm-3 control-label no-padding-right">Danh mục cha</label>
                             <div class="col-sm-9">
                                 <input id="ddlCategoryIdM" class="form-control" name="ddlCategoryIdM" value="">
                             </div>
                         </div>
-                        @*<div class="form-group">
-                            <label for="txtAliasM" class="col-sm-3 control-label no-padding-right">Alias</label>
-                            <div class="col-sm-9">
-                                <input type="text" name="txtAliasM" class="form-control" id="txtAliasM">
-                            </div>
-                        </div>*@
                         <div class="form-group">
-                            <label for="txtDescM" class="col-sm-3 control-label no-padding-right">Description</label>
+                            <label for="txtDescM" class="col-sm-3 control-label no-padding-right">Mô tả</label>
                             <div class="col-sm-9">
                                 <textarea rows="3" name="txtDescM" class="form-control" id="txtDescM"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="txtOrderM" class="col-sm-3 control-label no-padding-right">Sort Order</label>
+                            <label for="txtOrderM" class="col-sm-3 control-label no-padding-right">Thứ tự sắp xếp</label>
                             <div class="col-sm-9">
                                 <input type="number" name="txtOrderM" class="form-control" id="txtOrderM">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="txtHomeOrderM" class="col-sm-3 control-label no-padding-right">Home Order</label>
+                            <label for="txtHomeOrderM" class="col-sm-3 control-label no-padding-right">Thứ sắp xếp trang chủ</label>
                             <div class="col-sm-9">
                                 <input type="number" name="txtHomeOrderM" class="form-control" id="txtHomeOrderM">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="txtImageM" class="col-sm-3 control-label no-padding-right">Images</label>
+                            <label for="txtImageM" class="col-sm-3 control-label no-padding-right">Ảnh</label>
                             <div class="col-sm-6">
                                 <div class="input-group">
                                     <input type="text" name="txtImage" class="form-control" id="txtImage"/>
                                     <input type="file" id="fileInputImage" style="display: none"/>
                                     <span class="input-group-btn">
-                                        <input type="button" id="btnSelectImg" class="btn btn-default" value="Browser"/>
+                                        <input type="button" id="btnSelectImg" class="btn btn-default" value="Chọn"/>
                                     </span>
                                 </div><!-- /input-group -->
 
@@ -91,11 +85,11 @@
                                 <div class="checkbox">
                                     <label>
                                         <input type="checkbox" checked="checked" id="ckStatusM">
-                                        <span class="text">Active.</span>
+                                        <span class="text">Active</span>
                                     </label>
                                     <label>
                                         <input type="checkbox" id="ckShowHomeM">
-                                        <span class="text">Show on home.</span>
+                                        <span class="text">Có hiện ở trang chủ</span>
                                     </label>
                                 </div>
                             </div>

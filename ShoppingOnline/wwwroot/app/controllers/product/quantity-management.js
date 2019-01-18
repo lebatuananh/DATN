@@ -1,4 +1,4 @@
-var QuantityManagement = function () {
+﻿var QuantityManagement = function () {
 
     var cacheObj = {
         colors: [],
@@ -63,10 +63,10 @@ var QuantityManagement = function () {
                 success: function (res) {
                     $('#modal-quantity-management').modal('hide');
                     $('#table-quantity-content').html('');
-                    core.notify('Save successful', 'success');
+                    core.notify('Lưu thành công', 'success');
                 },
                 error: function (res) {
-                    core.notify('Has an error', 'error');
+                    core.notify('Đã có lỗi xảy ra', 'error');
                 }
 
             });
@@ -82,7 +82,7 @@ var QuantityManagement = function () {
                 cacheObj.sizes = res;
             },
             error: function (res) {
-                core.notify('Has an error', 'error');
+                core.notify('Đã có lỗi xảy ra', 'error');
             }
         });
     }
@@ -96,7 +96,7 @@ var QuantityManagement = function () {
                 cacheObj.colors = res;
             },
             error: function (res) {
-                core.notify('Has an error', 'error');
+                core.notify('Đã có lỗi xảy ra', 'error');
             }
         });
     }

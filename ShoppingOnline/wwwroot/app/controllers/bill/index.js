@@ -1,4 +1,4 @@
-var BillController = function () {
+﻿var BillController = function () {
 
     var cachedObj = {
         products: [],
@@ -27,13 +27,13 @@ var BillController = function () {
             autoclose: true,
             format: 'dd/mm/yyyy',
             setDate: new Date()
-        }).datepicker("update", new Date(new Date().getFullYear(), new Date().getMonth(), 01));
+        });
 
         $('#txtToDate').datepicker({
             autoclose: true,
             format: 'dd/mm/yyyy',
             setDate: new Date()
-        }).datepicker("update", new Date());
+        });
 
         //Init validation
         $('#frmMaintainance').validate({
@@ -63,6 +63,7 @@ var BillController = function () {
         $("#btn-create").on('click', function () {
             resetFormMaintainance();
             $('#modal-detail').modal('show');
+            $(".combo").css("width", "100%");
         });
 
         $("#ddl-show-page").on('change', function () {
@@ -115,17 +116,20 @@ var BillController = function () {
                         });
                         $('#tbl-bill-details').html(render);
                     } else {
-                        $('#tbl-bill-details').html('');
+                        $('#tbl-bill-details').html('');                     
                     }
                     $('#modal-detail').modal('show');
+                    $(".combo").css("width", "100%");
+                    $(".textbox-text").css("width", "100%");
                     core.stopLoading();
 
                 },
                 error: function (e) {
-                    core.notify('Has an error in progress', 'error');
+                    core.notify('Đã có lỗi xảy ra', 'error');
                     core.stopLoading();
                 }
             });
+            
         });
 
         $('#btnSave').on('click', function (e) {
@@ -175,7 +179,7 @@ var BillController = function () {
                         core.startLoading();
                     },
                     success: function (response) {
-                        core.notify('Save order successful', 'success');
+                        core.notify('Lưu đơn hàng thành công', 'success');
                         $('#modal-detail').modal('hide');
                         resetFormMaintainance();
 
@@ -183,7 +187,7 @@ var BillController = function () {
                         loadData(true);
                     },
                     error: function () {
-                        core.notify('Has an error in progress', 'error');
+                        core.notify('Đã có lỗi xảy ra', 'error');
                         core.stopLoading();
                     }
                 });
@@ -240,6 +244,7 @@ var BillController = function () {
                 var customerId = $('#ddlCustomerId').val();
                 var customerMobile = $('#txtCustomerMobile').val();
                 var customerMessage = $('#txtCustomerMessage').val();
+                var shipperId = $('#ddlShipperM').combotree('getValue');
                 var paymentMethod = $('#ddlPaymentMethod').val();
                 var billStatus = 4;
                 //bill detail
@@ -268,6 +273,7 @@ var BillController = function () {
                         CustomerMobile: customerMobile,
                         CustomerName: customerName,
                         PaymentMethod: paymentMethod,
+                        ShipperId: shipperId,
                         Status: 1,
                         BillDetails: billDetails
                     },
@@ -276,7 +282,7 @@ var BillController = function () {
                         core.startLoading();
                     },
                     success: function (response) {
-                        core.notify('Save order successful', 'success');
+                        core.notify('Lưu đơn hàng thành công', 'success');
                         $('#modal-detail').modal('hide');
                         resetFormMaintainance();
 
@@ -284,7 +290,7 @@ var BillController = function () {
                         loadData(true);
                     },
                     error: function () {
-                        core.notify('Has an error in progress', 'error');
+                        core.notify('Đã có lỗi xảy ra', 'error');
                         core.stopLoading();
                     }
                 });
@@ -302,6 +308,7 @@ var BillController = function () {
                 var customerMobile = $('#txtCustomerMobile').val();
                 var customerMessage = $('#txtCustomerMessage').val();
                 var paymentMethod = $('#ddlPaymentMethod').val();
+                var shipperId = $('#ddlShipperM').combotree('getValue');
                 var billStatus = 1;
                 //bill detail
 
@@ -328,6 +335,7 @@ var BillController = function () {
                         CustomerMessage: customerMessage,
                         CustomerMobile: customerMobile,
                         CustomerName: customerName,
+                        ShipperId: shipperId,
                         PaymentMethod: paymentMethod,
                         Status: 1,
                         BillDetails: billDetails
@@ -337,7 +345,7 @@ var BillController = function () {
                         core.startLoading();
                     },
                     success: function (response) {
-                        core.notify('Save order successful', 'success');
+                        core.notify('Lưu đơn hàng thành công', 'success');
                         $('#modal-detail').modal('hide');
                         resetFormMaintainance();
 
@@ -345,7 +353,7 @@ var BillController = function () {
                         loadData(true);
                     },
                     error: function () {
-                        core.notify('Has an error in progress', 'error');
+                        core.notify('Đã có lỗi xảy ra', 'error');
                         core.stopLoading();
                     }
                 });
@@ -400,7 +408,7 @@ var BillController = function () {
                         core.startLoading();
                     },
                     success: function (response) {
-                        core.notify('Save order successful', 'success');
+                        core.notify('Lưu đơn hàng thành công', 'success');
                         $('#modal-detail').modal('hide');
                         resetFormMaintainance();
 
@@ -408,7 +416,7 @@ var BillController = function () {
                         loadData(true);
                     },
                     error: function () {
-                        core.notify('Has an error in progress', 'error');
+                        core.notify('Đã có lỗi xảy ra', 'error');
                         core.stopLoading();
                     }
                 });
@@ -463,7 +471,7 @@ var BillController = function () {
             },
             error: function (status) {
                 console.log(status);
-                core.notify('Cannot loading product category data', 'error');
+                core.notify('Không thể tải dữ liệu', 'error');
             }
         });
     }
@@ -514,7 +522,7 @@ var BillController = function () {
                 cachedObj.products = response;
             },
             error: function () {
-                core.notify('Has an error in progress', 'error');
+                core.notify('Đã có lỗi xảy ra', 'error');
             }
         });
     }
@@ -528,7 +536,7 @@ var BillController = function () {
                 cachedObj.colors = response;
             },
             error: function () {
-                core.notify('Has an error in progress', 'error');
+                core.notify('Đã có lỗi xảy ra', 'error');
             }
         });
     }
@@ -542,7 +550,7 @@ var BillController = function () {
                 cachedObj.sizes = response;
             },
             error: function () {
-                core.notify('Has an error in progress', 'error');
+                core.notify('Đã có lỗi xảy ra', 'error');
             }
         });
     }
@@ -625,7 +633,7 @@ var BillController = function () {
                             BillStatus: getBillStatusName(item.BillStatus)
                         });
                     });
-                    core.notify("Loaded " + response.RowCount + " bill", 'success');
+                    core.notify("Đã tải được " + response.RowCount + " đơn hàng", 'success');
                     $("#lbl-total-records").text(response.RowCount);
                     if (render != undefined) {
                         $('#tbl-content').html(render);
@@ -679,10 +687,10 @@ var BillController = function () {
         $('#paginationUL').twbsPagination({
             totalPages: totalsize,
             visiblePages: 7,
-            first: 'First',
-            prev: 'Previous',
-            next: 'Next',
-            last: 'Last',
+            first: 'Đầu',
+            prev: 'Trước',
+            next: 'Sau',
+            last: 'Cuối',
             onPageClick: function (event, p) {
                 if (core.configs.pageIndex != p) {
                     core.configs.pageIndex = p;

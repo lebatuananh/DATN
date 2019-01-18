@@ -1,6 +1,6 @@
-@model List<ShoppingOnline.Application.ECommerce.Bills.Dtos.BillViewModel> 
+﻿@model List<ShoppingOnline.Application.ECommerce.Bills.Dtos.BillViewModel> 
 @{
-    ViewData["PageTitle"] = "Bill";
+    ViewData["PageTitle"] = "Đơn hàng";
     ViewData["SeoKeywords"] = "Bill";
     ViewData["SeoDescription"] = "Bill";
 }
@@ -10,7 +10,7 @@
         <!-- Center colunm-->
         <div class="blog-wrapper">
             <div class="page-title">
-                <h2>Blog</h2>
+                <h2>Đơn hàng</h2>
             </div>
             <ul class="blog-posts">
                 @foreach (var item in Model)
@@ -23,9 +23,8 @@
                                 <div class="blog-top-desc">
                                     <div class="blog-date"> @item.DateCreated.ToString("dd/MM/yyyy") </div>
                                     <h4><a href="@url">@item.CustomerName</a></h4>
-                                    <div class="jtv-entry-meta">
-                                        <i class="fa fa-user-o"></i> <strong>Admin</strong>
-                                    </div>
+                                    <h4>@item.CustomerMobile</h4>
+                                    <h4>@item.CustomerAddress</h4>
                                 </div>
                             </div>
                         </div>

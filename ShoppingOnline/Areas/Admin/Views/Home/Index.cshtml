@@ -1,8 +1,8 @@
-@using ShoppingOnline.WebApplication.Authorization
+﻿@using ShoppingOnline.WebApplication.Authorization
 @using Microsoft.AspNetCore.Authorization
 @inject IAuthorizationService AuthorizationService
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Trang quản trị";
 }
 
 @section styles{
@@ -32,47 +32,27 @@
         homeObj.initialize();
     </script>
 }
-<div class="row top_tiles">
-    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-        <div class="tile-stats">
-            <div class="icon"><i class="fa fa-caret-square-o-right"></i></div>
-            <div class="count">179</div>
-            <h3>New Sign ups</h3>
-            <p>Lorem ipsum psdea itgum rixt.</p>
+
+<div class="col-md-12">
+ 
+        <div class="bs-example" data-example-id="simple-jumbotron">
+            <div class="jumbotron">
+                <h1>Chào mừng bạn đến với trang quản trị Shop Mart</h1>
+                <p class="text-center">Tốt nhất hoặc không có gì</p>
+            </div>
         </div>
-    </div>
-    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-        <div class="tile-stats">
-            <div class="icon"><i class="fa fa-comments-o"></i></div>
-            <div class="count">179</div>
-            <h3>New Sign ups</h3>
-            <p>Lorem ipsum psdea itgum rixt.</p>
-        </div>
-    </div>
-    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-        <div class="tile-stats">
-            <div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
-            <div class="count">179</div>
-            <h3>New Sign ups</h3>
-            <p>Lorem ipsum psdea itgum rixt.</p>
-        </div>
-    </div>
-    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-        <div class="tile-stats">
-            <div class="icon"><i class="fa fa-check-square-o"></i></div>
-            <div class="count">179</div>
-            <h3>New Sign ups</h3>
-            <p>Lorem ipsum psdea itgum rixt.</p>
-        </div>
-    </div>
+
 </div>
+
+
+
 @if ((await AuthorizationService.AuthorizeAsync(User, "REVENUES", Operations.Read)).Succeeded)
 {
     <div class="row">
         <div class="col-md-12">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>Transaction Summary <small>Weekly progress</small></h2>
+                    <h2>Biểu đồ giao dịch <small>cửa hàng</small></h2>
                     <div class="filter">
                         <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
                             <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>

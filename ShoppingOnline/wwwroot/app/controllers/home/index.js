@@ -109,7 +109,7 @@
 
             $.plot($("#chart_plot_02"),
                 [{
-                    label: "Revenue",
+                    label: "Doanh thu",
                     data: arrRevenue,
                     lines: {
                         fillColor: "rgba(150, 202, 89, 0.12)"
@@ -119,7 +119,7 @@
                     }
                 },
                 {
-                    label: "Profit",
+                    label: "Lợi nhuận",
                     data: arrProfit,
                     lines: {
                         fillColor: "rgba(140, 232, 289, 0.12)"

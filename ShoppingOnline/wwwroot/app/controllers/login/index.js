@@ -1,4 +1,4 @@
-var loginController = function () {
+﻿var loginController = function () {
     this.initialize = function () {
         registerEvents();
     };
@@ -55,7 +55,7 @@ var loginController = function () {
                     // window.location.href = '/Admin/Home/Index';
                 }
                 else {
-                    core.notify('Login Failed', 'error');
+                    core.notify('Đăng nhập thất bại', 'error');
                 }
 
             }

@@ -1,9 +1,9 @@
-@using ShoppingOnline.WebApplication.Authorization
+﻿@using ShoppingOnline.WebApplication.Authorization
 @using Microsoft.AspNetCore.Authorization
 @inject IAuthorizationService AuthorizationService
 
 @{
-    ViewData["Title"] = "Announcements";
+    ViewData["Title"] = "Quản lý thông báo";
 }
 @section Scripts{
 
@@ -20,7 +20,7 @@
 <div class="">
     <div class="page-title">
         <div class="title_left">
-            <h3>Announcements</h3>
+            <h3>Thông báo</h3>
         </div>
 
         <div class="title_right">
@@ -45,9 +45,9 @@
                             <thead>
                                 <tr>
                                     <th width="8%"></th>
-                                    <th>Date Created</th>
-                                    <th>Title</th>
-                                    <th>Content</th>
+                                    <th>Ngày tạo</th>
+                                    <th>Tiêu đề</th>
+                                    <th>Nội dung</th>
                                 </tr>
                             </thead>
                             <tbody id="tbl-content"></tbody>
@@ -63,9 +63,9 @@
                                         <option value="50">50</option>
                                     </select>
                                     <span class="item-per-page">
-                                        records/page.
+                                        bản ghi/trang.
                                     </span>
-                                    Total record count: <strong id="lbl-total-records"></strong>
+                                    Tổng số bản ghi: <strong id="lbl-total-records"></strong>
                                 </div>
                             </div><div class="col-sm-7">
                                 <div class="dataTables_paginate paging_simple_numbers" id="datatable-checkbox_paginate">
